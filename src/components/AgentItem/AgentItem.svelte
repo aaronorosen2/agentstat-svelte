@@ -6,6 +6,7 @@
     }
 
     function xSold(str, prop){
+        if(!str) return 0
         let arr = JSON.parse(str)
         let n  = 0
         for(let elm of arr){
@@ -18,6 +19,7 @@
     }
 
     function info(str){
+        if(!str) return ""
         return str.split('\n')[0]
     }
 
@@ -35,7 +37,9 @@
     <div class="agent-body">
         <a href={linkProfile(agent.agent_screen_name)} target="_blank" class="agent-name">
             {agent.agent_full_name}
-            <span class="info">{info(agent.agent_brokerage_info)}</span>
+            {#if agent.agent_brokerage_info}
+                <span class="info">{info(agent.agent_brokerage_info)}</span>
+            {/if}
         </a>
         <div class="agent-stat">
             <div class="span-1 label">

@@ -1,0 +1,81 @@
+.dropdown {
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+
+    
+    .selected {
+        &--error{
+            border: 1px solid red;
+        }
+        padding: 0.5rem 1rem;
+        border: 1px solid #aaa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        white-space: nowrap;
+        i{
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+        &.radius {
+            &--none{
+                border-radius: 0;
+            }
+            &--left{
+                border-top-left-radius: 0.5rem;
+                border-bottom-left-radius: 0.5rem;
+            }
+            &--right{
+                border-top-right-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+            }
+            &--center{
+                border-radius: 0.5rem;
+            }
+        }
+        &.border {
+            &--none{
+                border-left: none;
+                border-right: none;
+            }
+            &--left{
+                border-right: none;
+            }
+            &--right{
+                border-left: none;
+            }
+        }
+    }
+    .options{
+        z-index: 60;
+        max-height: 25rem;
+        overflow-y: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-top: 2.8rem;
+        border-radius: 0.5rem;
+        background: #eee;   
+        --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow:  0 0 #0000, 0 0 #0000, var(--tw-shadow);
+
+        &--item{
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            border: none;
+            &:hover, &.selected {
+                background-color: var(--blue-color);
+                color: #fff;
+            }
+            &:first-child {
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+            }
+            &:last-child {
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+            }
+        }
+    }
+}
