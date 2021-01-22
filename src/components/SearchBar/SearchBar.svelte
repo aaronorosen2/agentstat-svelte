@@ -21,6 +21,11 @@
         }
     ]
 
+    function filterLabel(val){
+        if(!val) return
+        return SearchBy.find(s => s.value == val).label
+    }
+
     const HomeTypes = [
         { 
             label: 'Houses', value: 'SINGLE_FAMILY'
@@ -41,6 +46,13 @@
             label: 'Townhomes', value: 'TOWNHOUSE'
         }
     ]
+
+    function homeTypeLabel(val){
+        if(!val) return
+        let ht = HomeTypes.find(s => s.value == val)
+        if(!ht) return
+        return ht.label
+    }
 
     let optionTypes = {
         address: "address",
@@ -88,20 +100,41 @@
             errorState = true
             return
         }
+        delete filter.page
         dispatch('search', filter)
     }
+
+    // init from url params
+    async function initFilter(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const entries = urlParams.entries()
+        for(let entry of entries){
+            filter[entry[0]] = entry[1]
+        }
+        if(filter.filter_by =='agent_name'){
+            listStates = ['States'].concat(await fetchStates())
+        }
+        filter = filter
+        setTimeout(()=>{
+            dispatch('load', filter)
+        })     
+    }
+
+    initFilter()
+
 </script>
 
 <div class="search-bar">
-    <Dropdown  options={SearchBy} on:select={selectFilter} radius="left" border={filter.filter_by == 'agent_name' ? "left":"both"} ></Dropdown>
+    <Dropdown selected={filterLabel(filter.filter_by)}  options={SearchBy} on:select={selectFilter} radius="left" border={filter.filter_by == 'agent_name' ? "left":"both"} ></Dropdown>
     {#if filter.filter_by == 'agent_name'}
         <Dropdown options={listStates} error={errorState} selected={filter.state} on:select={selectState} radius="none" ></Dropdown>
         <SearchInput bind:value={filter.agent_name} on:search={search} />
     {:else}
-        <AutoCompleteAddress on:select={selectAddress} optionType={optionTypes[filter.filter_by]}  />
-        <Dropdown options={HomeTypes} on:select={selectHomeType} radius="none" border="left" ></Dropdown>
+        <AutoCompleteAddress bind:value={filter.address} on:select={selectAddress} optionType={optionTypes[filter.filter_by]}  />
+        <Dropdown options={HomeTypes} selected={homeTypeLabel(filter.home_type)} on:select={selectHomeType} radius="none" border="left" ></Dropdown>
     {/if}
     <div role="button" class="search-bar--btn" on:click={search}>
+        <span class="mobile">Search</span>
         <i class="fas fa-search"></i>
     </div>
 </div>

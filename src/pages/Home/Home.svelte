@@ -1,18 +1,34 @@
 <script>
-    import {AgentList, SearchBar} from '../../components'
-    let filter = {}
+    import {AgentList, NavBar, Pagination} from '../../components'
+ 
     let searchAgents 
-    function reloadAgents(){
-        searchAgents && searchAgents(filter)
+    let setUrlParams
+    let filter
+    let numItems = 0;
+    let current = 1;
+    async function reloadAgents(evt){
+        filter = evt.detail
+        let list = searchAgents && await searchAgents(filter)
+        numItems = list.total
+        current = filter.page ? parseInt(filter.page) : 1
+    }
+
+    function setParams(evt){
+        filter = evt.detail
+        setUrlParams && setUrlParams(filter)
+    }
+
+    function paginate(evt){
+        filter.page=evt.detail
+        setUrlParams && setUrlParams(filter)
     }
 </script>
 
-<section class="filter">
-    <SearchBar bind:filter on:search={reloadAgents} />
-</section>
+<NavBar on:search={setParams} on:load={reloadAgents} />
 
 <section class="list-agents">
-    <AgentList bind:searchAgents />
+    <AgentList bind:searchAgents bind:setUrlParams />
+    <Pagination {numItems} on:navigate={paginate} perPage={10} {current} />
 </section>
 
 <style src="./home.scss"></style>

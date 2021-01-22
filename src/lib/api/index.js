@@ -18,16 +18,26 @@ export async function fetchStates(){
     return listStates
 }
 
+export function getAgentUrlParams(filter){
+    return uparam('home_type',filter.home_type||'House', false)+
+    uparam('filter_by',filter.filter_by)+
+    uparam('city',filter.city)+
+    uparam('address',filter.street_address||filter.address)+
+    uparam('state',filter.state)+
+    uparam('agent_name',filter.agent_name)+
+    uparam('page',filter.page)
+}
 
 export async function fetchAgents(filter){
     let url = API_URL+
         `reports/${filter.state||'CA'}?`+
         uparam('home_type',filter.home_type||'House', false)+
         uparam('city',filter.city)+
-        uparam('address',filter.street_address)+
+        uparam('address',filter.street_address||filter.address)+
         uparam('state',filter.state)+
-        uparam('agent_name',filter.agent_name)
+        uparam('agent_name',filter.agent_name)+
+        uparam('page',filter.page)
         
     let res = await fetch(url).then(res => res.json())
-    return res.results
+    return res
 }

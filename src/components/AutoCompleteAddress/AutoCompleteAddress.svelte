@@ -4,7 +4,7 @@
     const dispatch = createEventDispatcher()
     export let placeholder="Search Address"
     export let optionType = "address" // or "(cities)"
-
+    export let value = ""
 
     let inputNode
     let search_data = {}
@@ -54,13 +54,16 @@
             if(optionType == '(cities)'){
                 placeholder = "Search City"
             }
+            if(optionType == 'address'){
+                placeholder = "Search Address"
+            }
         }
     }
 
 </script>
 
 <div class="autocomplete-address">
-    <input type="search" class="input" {placeholder} bind:this={inputNode} />
+    <input type="search" class="input" {value} {placeholder} bind:this={inputNode} />
 </div>
 
 <style src="./auto-complete-address.scss"></style>

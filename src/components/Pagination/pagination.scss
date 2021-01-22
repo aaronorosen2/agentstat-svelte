@@ -1,0 +1,65 @@
+.pagination {
+    font-size: 1.1rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    user-select: none;
+  
+    &--pointer {
+      cursor: pointer;
+    }
+  
+    &--fade {
+      color: #aaa;
+    }
+  
+    &--control {
+      margin: 0 0.7rem;
+      font-size: 0.9rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    &--numbers {
+      display: flex;
+      align-items: center;
+      border-radius: 2rem;
+      background-color: #eee;
+      & > div:first-child{
+          margin-left: 0.5rem;
+      }
+      & > div:last-child{
+          margin-right: 0.5rem;
+      }
+      & > div.pagination--current{
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  
+    &--number {
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+    }
+  
+    &--current {
+      font-size: 1rem;
+      padding: 0;
+      cursor: default;
+      font-weight: 700;
+      color: white;
+      background-color: var(--blue-color);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  

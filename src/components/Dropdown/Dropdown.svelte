@@ -31,7 +31,7 @@
         open = false
     }
 
-    $: if(!selected || !options.find(o => val(o)==val(selected))){
+    $: if(!selected || !options.find(o => label(o)==label(selected)||val(o)==val(selected))){
         selected = options[0]
     }
 
@@ -47,7 +47,7 @@
     {#if open}
         <div class="options">
             {#each options as opt}
-                <div class="options--item {val(opt) == val(selected) ? 'selected':''}" on:click={() => selectOption(opt)}>
+                <div class="options--item {label(opt) == label(selected) ? 'selected':''}" on:click={() => selectOption(opt)}>
                     {label(opt)}
                 </div>
             {/each}

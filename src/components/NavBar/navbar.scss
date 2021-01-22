@@ -1,0 +1,42 @@
+.nav-bar {
+    position: sticky;
+    top:0;
+    left:0;
+    padding: 0.5rem;
+    width: 100%;
+    margin: 0;
+    box-shadow:  0 0 #0000, 0 0 #0000, var(--tw-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: white;
+    z-index: 40;
+    .logo {
+        display: block;
+        padding: 0 1rem;
+        max-width: 8rem;
+        img{
+            width: 100%;
+        }
+    }
+    .filter{
+        flex: auto;
+        max-width: 55rem;
+    }
+
+}
+
+@media(max-width: 770px){
+    .nav-bar {
+        position: relative;
+        flex-direction: column;
+        .filter {
+            width: 100%;
+        }
+        .logo{
+            max-width: 12rem;
+            padding: 2rem 0;
+        }
+    }
+}

@@ -15,3 +15,14 @@
         }
     }
 }
+
+@media(max-width: 770px){
+    .autocomplete-address {
+        width: 100%;
+        .input{
+            border: 1px solid #aaa;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+        }
+    }
+}

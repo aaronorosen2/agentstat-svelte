@@ -1,27 +1,48 @@
 <script>
     import AgentItem from '../AgentItem/AgentItem.svelte'
     import Loader from '../Loader/Loader.svelte'
-    import {fetchAgents} from '../../lib/api'
+    import {fetchAgents, getAgentUrlParams} from '../../lib/api'
     let agents = []
-    // const URL = "https://app.agentstat.com/api/reports/CA/?city=Clovis&lat=36.8037082&lng=-119.6550051&home_type=House&page=1&address=Locan"
     let loading = false
+    let error = false
+
     export async function searchAgents(filter={}){
+        error = false
         loading = true
-        agents = []
-        agents = await fetchAgents(filter)        
+        let list = {results: []}
+        try {
+            list = await fetchAgents(filter)  
+            agents = list.results
+        }catch(err){
+            console.error(err.message)
+            error = true
+        }
         loading = false
+        return list
     }
 
-    searchAgents()
-    
+    export function setUrlParams(filter){
+        window.location = "?"+getAgentUrlParams(filter)
+    }
+
 
 </script>
 
 <div class="list">
     <Loader show={loading} text="Loading agents..." />
-    {#each agents as agent}
-        <AgentItem {agent} />
-    {/each}
+    {#if error}
+        <div class="error">
+            Error occured while fetching agents list, please try again later
+        </div>
+    {:else if agents.length}
+        {#each agents as agent}
+            <AgentItem {agent} />
+        {/each}
+    {:else if !loading}
+        <div class="info">
+            No Agent was found with your search parameters!
+        </div>
+    {/if}
 </div>
 
 <style src="./agent-list.scss"></style>
