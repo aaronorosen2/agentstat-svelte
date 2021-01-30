@@ -2,13 +2,12 @@
     position: relative;
     user-select: none;
     cursor: pointer;
-
     
     .selected {
         &--error{
             border: 1px solid red;
         }
-        padding: 0.51rem 1rem;
+        padding: 10px 1rem;
         border: 1px solid #aaa;
         display: flex;
         justify-content: space-between;

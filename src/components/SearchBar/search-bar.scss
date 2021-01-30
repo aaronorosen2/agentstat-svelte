@@ -5,10 +5,11 @@
     &--btn{
         cursor: pointer;
         font-size: 1.2rem;
-        padding: 0.59rem 1rem;
-        height: 100%;
+        padding: 0 1rem;
+        
         display: flex;
         flex-direction: column;
+        justify-content: center;
         
         border-top-right-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
