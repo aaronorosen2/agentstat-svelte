@@ -1,5 +1,6 @@
 <script>
     export let agent = {}
+    import page from 'page'
 
     function round(n){
         return (Math.round(n*100)/100).toFixed(2)
