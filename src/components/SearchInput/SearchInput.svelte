@@ -6,7 +6,7 @@
 
     function handleKeyDown(e){
         if(e.keyCode == 13){
-            dispatch('search')
+            dispatch('search', value)
         }
     }
 </script>

@@ -15,15 +15,16 @@
 	page("/", (ctx) => {
 		active = Home
 	})
-	page("/profile", (ctx) => {
+	page("/profile/:name", (ctx) => {
 		active = Profile
-		// props = ctx.params
+		props = ctx.params
 	})
 	
 	page("*", () => page.redirect("/"))
 
-	onMount(() => {
-		page.replace(location.pathname);
+	onMount(() => {	
+		if(location.pathname != "/")
+			page.replace(location.pathname);
 	});
 
 </script>

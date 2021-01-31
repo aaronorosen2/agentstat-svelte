@@ -25,7 +25,7 @@
     }
 
     function linkProfile(name){
-        return `https://agentstat.com/profile/${name}`
+        return `/profile/${name}`
     }
 
 </script>
@@ -36,7 +36,7 @@
     </div>
     
     <div class="agent-body">
-        <a href={linkProfile(agent.agent_screen_name)} target="_blank" class="agent-name">
+        <a href={linkProfile(agent.agent_screen_name)} class="agent-name">
             {agent.agent_full_name}
             {#if agent.agent_brokerage_info}
                 <span class="info">{info(agent.agent_brokerage_info)}</span>

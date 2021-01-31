@@ -40,3 +40,7 @@ export async function fetchAgents(filter){
 export async function agentDetails(name){
     return await fetch(link('agents/'+name)).then(res => res.json())
 }
+
+export async function agentScores(name, duration=36){
+    return await fetch(link(`agent_scores/${name}/?time_duration=${duration}`)).then(res => res.json())
+}
