@@ -1,4 +1,11 @@
 .ranking {
+    position: relative;
+    min-height: 300px;
+    .filter{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .stat {
         display: flex;
         justify-content: space-around;
@@ -17,4 +24,11 @@
             }
         }
     }
+}
+.badges{
+    display: flex;
+    min-height: 250px;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: -3rem;
 }

@@ -1,6 +1,7 @@
 <script>
     import Pagination from '../Pagination/Pagination.svelte'
     export let agentScores
+    export let update= true
 
     let limit = 10
     let current = 1
@@ -9,8 +10,8 @@
 
     let groups = []
     
-    let update= true
     $: if(agentScores && update){
+        groups = []
         update = false
         let items = agentScores.filter(i => i.city&&i.agent_rank)
                 .sort((a,b) => a.city>b.city || (a.city == b.city && String(a.home_type)<String(b.home_type)) ? 1 : -1)
@@ -21,7 +22,12 @@
                 groups.push([item])
                 i++
             }else{
-                groups[i].push(item)
+                if(groups[i])
+                    groups[i].push(item)
+                else {
+                    groups.push([item])
+                    i++
+                }
             }
         }
         groups = groups
@@ -38,10 +44,6 @@
         grp.open = !grp.open
         list_groups = list_groups
     }
-
-    
-
-    
 
     
 </script>
@@ -107,7 +109,9 @@
         </tbody>
     </table>
     <div class="paginate">
-        <Pagination perPage={limit} numItems={groups.length} bind:current />
+        {#if groups.length>limit}
+            <Pagination perPage={limit} numItems={groups.length} bind:current />
+        {/if}
     </div>
 </div>
 

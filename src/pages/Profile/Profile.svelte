@@ -8,13 +8,21 @@
     Loader
   } from "../../components";
   import { agentDetails, getAgentUrlParams } from "../../lib/api";
+  
   export let name;
   let agent;
+  let error;
+
   let loading = false;
 
   async function fetchAgentDetails() {
     loading = true;
-    agent = await agentDetails(name);
+    error = false
+    try{
+        agent = await agentDetails(name);
+    }catch{
+        error = true
+    }
     loading = false;
   }
 
@@ -37,6 +45,11 @@
 
 <NavBar on:search={setParams} />
 
+{#if error}
+    <div class="error">
+        Error: Cannot fetch agent details
+    </div>
+{/if}
 <section class="profile">
   <Loader show={loading} text="Loading details..." />
   {#if agent}

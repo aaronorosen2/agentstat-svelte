@@ -1,0 +1,18 @@
+.toggle-grp{
+    display: flex;
+    .item{
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+        border-right: 1px solid #222;
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        user-select: none;
+        &.selected{
+            background-color: #ddd;
+        }
+        &:first-child{
+            border-left: 1px solid #222;
+        }
+        
+    }
+}
