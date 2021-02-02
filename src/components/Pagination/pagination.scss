@@ -63,3 +63,13 @@
     }
   }
   
+  @media(max-width: 480px){
+    .pagination {
+      &--number{
+        display: none;
+      }
+      &--current{
+        display: flex;
+      }
+    }
+  }

@@ -78,10 +78,12 @@
     </div>
 {/if}
 {#if badges.length}
-    <div class="badges">
-        {#each badges as badge}
-            <Badge {badge} />
-        {/each}
+    <div class="list">
+        <div class="badges">
+            {#each badges as badge}
+                <Badge {badge} />
+            {/each}
+        </div>
     </div>
 {/if}
 <div class="ranking">

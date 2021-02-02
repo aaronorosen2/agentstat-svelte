@@ -117,95 +117,96 @@
             <SearchInput placeholder="Search" bind:value={searchVal} />
         </div>
     </div>
-    <table>
-        <thead>
-            <tr>
-                {#each Object.keys(head_values) as k}
-                 <th on:click={()=> toggleSort(k)}><div class="flex">{head_values[k]}  <SortIcon selected={sortBy==k ? sortUp ? 'up':'down':false} /></div></th>
-                {/each}
-               
-            </tr>
-        </thead>
-        <tbody>
-            {#each transactions as tr}
-                <tr on:click={() => select(tr)}>
-                    <td class="status-{tr.status}">{tr.status||''}</td>
-                    <td>{currencyFormat(tr.list_price_int)}</td>
-                    <td><div class="no-wrap">{@html soldPrice(tr)}</div></td>
-                    <td>{tr.days_on_market}</td>
-                    <td>{dateFormat(tr.list_date)}</td>
-                    <td><div class="no-wrap">{onlyAddress(tr.address_text)}</div></td>
-                    <td>{tr.city}</td>
-                    <td>{tr.zipcode}</td>
-                    <td>{tr.year_built}</td>
-                    <td>{homeType(tr)}</td>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    {#each Object.keys(head_values) as k}
+                    <th on:click={()=> toggleSort(k)}><div class="flex">{head_values[k]}  <SortIcon selected={sortBy==k ? sortUp ? 'up':'down':false} /></div></th>
+                    {/each}
+                
                 </tr>
-                {#if selected == tr}
-                    <tr>
-                        <td class="no-p" colspan="10">
-                            <div class="details">
-                                <i class="fas fa-times close" on:click={unselect}></i>
-                                <div class="title">{tr.address_text}</div>
-                                <div class="flex">
+            </thead>
+            <tbody>
+                {#each transactions as tr}
+                    <tr on:click={() => select(tr)}>
+                        <td class="status-{tr.status}">{tr.status||''}</td>
+                        <td>{currencyFormat(tr.list_price_int)}</td>
+                        <td><div class="no-wrap">{@html soldPrice(tr)}</div></td>
+                        <td>{tr.days_on_market}</td>
+                        <td>{dateFormat(tr.list_date)}</td>
+                        <td><div class="no-wrap">{onlyAddress(tr.address_text)}</div></td>
+                        <td>{tr.city}</td>
+                        <td>{tr.zipcode}</td>
+                        <td>{tr.year_built}</td>
+                        <td>{homeType(tr)}</td>
+                    </tr>
+                    {#if selected == tr}
+                        <tr>
+                            <td class="no-p" colspan="10">
+                                <div class="details">
+                                    <i class="fas fa-times close" on:click={unselect}></i>
+                                    <div class="title">{tr.address_text}</div>
                                     <div class="flex">
-                                        <div >
-                                            <div class="subtitle mb">Listed:</div>
-                                            <div>{dateFormat(tr.list_date)}</div>
-                                            <div>{currencyFormat(tr.list_price_int)}</div>
-                                            <div class="elm">
-                                                <span class="subtitle">Days on Market:</span>
-                                                {tr.days_on_market}
+                                        <div class="flex">
+                                            <div >
+                                                <div class="subtitle mb">Listed:</div>
+                                                <div>{dateFormat(tr.list_date)}</div>
+                                                <div>{currencyFormat(tr.list_price_int)}</div>
+                                                <div class="elm">
+                                                    <span class="subtitle">Days on Market:</span>
+                                                    {tr.days_on_market}
+                                                </div>
+                                                <div class="elm">
+                                                    <span class="subtitle">List to Sell Ratio:</span>
+                                                    100% 
+                                                </div>
                                             </div>
-                                            <div class="elm">
-                                                <span class="subtitle">List to Sell Ratio:</span>
-                                                100% 
+                                            <div>
+                                                <div class="subtitle mb">Sold: </div>
+                                                <div>{dateFormat(tr.sold_date)}</div>
+                                                <div>{currencyFormat(tr.sold_price_int)}</div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="subtitle mb">Sold: </div>
-                                            <div>{dateFormat(tr.sold_date)}</div>
-                                            <div>{currencyFormat(tr.sold_price_int)}</div>
+                                        <div class="grid">
+                                            <div class="subtitle">Type</div>
+                                            <div>{homeType(tr)}</div>
+                                            <div class="subtitle">Heating</div>
+                                            <div>{tr.heating||'None'}</div>
+                                            <div class="subtitle">Beds</div>
+                                            <div>{tr.beds||'None'}</div>
+                                            <div class="subtitle">Cooling</div>
+                                            <div>{tr.cooling||'None'}</div>
+                                            <div class="subtitle">Baths</div>
+                                            <div>{tr.baths||'None'}</div>
+                                            <div class="subtitle">Parking</div>
+                                            <div>{tr.parking||'None'}</div>
+                                            <div class="subtitle">Sqft</div>
+                                            <div>{tr.sqft||'None'}</div>
+                                            <div class="subtitle">Basement</div>
+                                            <div>{tr.basement||'None'}</div>
+                                            <div class="subtitle">Lot</div>
+                                            <div>{tr.lot||'None'}</div>
+                                            <div class="subtitle">Flooring</div>
+                                            <div>{tr.flooring||'None'}</div>
+                                            <div class="subtitle">Year Built</div>
+                                            <div>{tr.year_built||'None'}</div>
+                                            <div class="subtitle">Roof</div>
+                                            <div>{tr.roof||'None'}</div>
+                                            <div class="subtitle">County</div>
+                                            <div>{tr.county||'None'}</div>
+                                            <div class="subtitle">Foundation</div>
+                                            <div>{tr.foundation||'None'}</div>
                                         </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="subtitle">Type</div>
-                                        <div>{homeType(tr)}</div>
-                                        <div class="subtitle">Heating</div>
-                                        <div>{tr.heating||'None'}</div>
-                                        <div class="subtitle">Beds</div>
-                                        <div>{tr.beds||'None'}</div>
-                                        <div class="subtitle">Cooling</div>
-                                        <div>{tr.cooling||'None'}</div>
-                                        <div class="subtitle">Baths</div>
-                                        <div>{tr.baths||'None'}</div>
-                                        <div class="subtitle">Parking</div>
-                                        <div>{tr.parking||'None'}</div>
-                                        <div class="subtitle">Sqft</div>
-                                        <div>{tr.sqft||'None'}</div>
-                                        <div class="subtitle">Basement</div>
-                                        <div>{tr.basement||'None'}</div>
-                                        <div class="subtitle">Lot</div>
-                                        <div>{tr.lot||'None'}</div>
-                                        <div class="subtitle">Flooring</div>
-                                        <div>{tr.flooring||'None'}</div>
-                                        <div class="subtitle">Year Built</div>
-                                        <div>{tr.year_built||'None'}</div>
-                                        <div class="subtitle">Roof</div>
-                                        <div>{tr.roof||'None'}</div>
-                                        <div class="subtitle">County</div>
-                                        <div>{tr.county||'None'}</div>
-                                        <div class="subtitle">Foundation</div>
-                                        <div>{tr.foundation||'None'}</div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                {/if}
-            {/each}
-        </tbody>
-    </table>
-
+                            </td>
+                        </tr>
+                    {/if}
+                {/each}
+            </tbody>
+        </table>
+    </div>
     <div class="paginate">
         <Pagination perPage={limit} numItems={filter_list.length} bind:current />
     </div>

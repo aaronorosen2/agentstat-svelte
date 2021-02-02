@@ -1,90 +1,92 @@
 .transactions{
-    table{
-        font-size: 0.9rem;
-        width: 100%;
-        border-collapse: collapse;
-        th {
-            background: #eee;
-            cursor: pointer;
-            .flex{
-                display: flex;
-                gap: 0.5rem;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-        td, th{
-            &.no-p{
-                padding: 0;
-            }
-            text-align: center;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            div.no-wrap {
-                white-space: nowrap;
+    .container{
+        table{
+            font-size: 0.9rem;
+            width: 100%;
+            border-collapse: collapse;
+            th {
+                background: #eee;
                 cursor: pointer;
-                i{
-                    font-size: 0.8rem;
+                .flex{
+                    display: flex;
+                    gap: 0.5rem;
+                    align-items: center;
+                    justify-content: space-between;
                 }
             }
-            .details{
-                position: relative;
-                text-align: left;
+            td, th{
+                &.no-p{
+                    padding: 0;
+                }
+                text-align: center;
                 padding: 1rem;
-                font-size: 1rem;
-                background-color: #eee;
-                div{
-                    padding: 2px;
-                }
-                .close{
-                    color: var(--blue-color);
-                    position: absolute;
-                    top: 0;
-                    right: 0;
+                border: 1px solid #ccc;
+                div.no-wrap {
+                    white-space: nowrap;
                     cursor: pointer;
-                    margin: 1rem 1rem 0 0;
-                }
-                .flex {
-                    display: flex;
-                    padding: 1rem;
-                    align-items: flex-start;
-                    gap: 1rem;
-                    flex: auto;
-                }
-                .title{
-                    font-weight: 700;
-                    font-size: 1.1rem;
-                }
-                .subtitle{
-                    font-weight: 600;
-                    &.mb{
-                        margin-bottom: 0.5rem;
+                    i{
+                        font-size: 0.8rem;
                     }
                 }
-                .elm {
-                    margin: 0.7rem 0 0.4rem 0;
+                .details{
+                    position: relative;
+                    text-align: left;
+                    padding: 1rem;
+                    font-size: 1rem;
+                    background-color: #eee;
+                    div{
+                        padding: 2px;
+                    }
+                    .close{
+                        color: var(--blue-color);
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        cursor: pointer;
+                        margin: 1rem 1rem 0 0;
+                    }
+                    .flex {
+                        display: flex;
+                        padding: 1rem;
+                        align-items: flex-start;
+                        gap: 1rem;
+                        flex: auto;
+                    }
+                    .title{
+                        font-weight: 700;
+                        font-size: 1.1rem;
+                    }
+                    .subtitle{
+                        font-weight: 600;
+                        &.mb{
+                            margin-bottom: 0.5rem;
+                        }
+                    }
+                    .elm {
+                        margin: 0.7rem 0 0.4rem 0;
+                    }
+                    .grid{
+                        flex: auto;
+                        display: grid;
+                        grid-template-columns: auto auto auto auto;
+                        row-gap: 0.5rem;
+                        column-gap: 1rem;
+                        border-left: 2px solid #222;
+                        padding-left: 2rem;
+                    }
                 }
-                .grid{
-                    flex: auto;
-                    display: grid;
-                    grid-template-columns: auto auto auto auto;
-                    row-gap: 0.5rem;
-                    column-gap: 1rem;
-                    border-left: 2px solid #222;
-                    padding-left: 2rem;
+            }
+            
+            .status{
+                &-Sold{
+                    color: green;
+                }
+                &-Failed{
+                    color: red;
                 }
             }
-        }
-        
-        .status{
-            &-Sold{
-                color: green;
-            }
-            &-Failed{
-                color: red;
-            }
-        }
-
+         }
+    
     }
     .paginate{
         padding: 2rem 0;
@@ -103,6 +105,36 @@
             max-width: 300px;
             border-left: 1px solid #aaa;
             border-right: 1px solid #aaa;
+        }
+    }
+}
+
+@media (max-width: 1080px){
+    .transactions{
+        .container{
+            overflow-x: scroll;
+            table{
+                width: 1080px;
+            }
+        }
+    }
+}
+
+@media (max-width: 770px){
+    .transactions {
+        .search{
+            div{
+                border-left: none;
+                border-right: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px){
+    .transactions {
+        .search{
+            flex-direction: column;
         }
     }
 }

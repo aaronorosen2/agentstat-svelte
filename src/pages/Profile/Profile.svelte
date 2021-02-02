@@ -5,6 +5,7 @@
     NavBar,
     TransactionMap,
     TransactionTable,
+    ContactLead,
     Loader
   } from "../../components";
   import { agentDetails, getAgentUrlParams } from "../../lib/api";
@@ -55,6 +56,7 @@
   {#if agent}
     <div class="details">
       <ProfileDetails {agent} />
+      <ContactLead {agent} />
     </div>
     <AgentReport {name} />
     <TransactionMap {agent} />

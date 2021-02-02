@@ -12,6 +12,7 @@
         font-size: 1.2rem;
         padding: 3rem 0;
         font-weight: 500;
+        gap: 1rem;
         &--box{
             display: flex;
             flex-direction: column;
@@ -21,14 +22,38 @@
             div{
                 font-size: 1.2rem;
                 margin-top: 1rem;
+                text-align: center;
             }
         }
     }
 }
-.badges{
+.list{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
     display: flex;
-    min-height: 250px;
-    gap: 3rem;
-    justify-content: center;
-    margin-top: -3rem;
+    .badges{
+        display: flex;
+        min-height: 250px;
+        gap: 3rem;
+        margin: auto;
+        margin-top: -3rem;    
+    }
+}
+
+@media(max-width: 480px){
+    .ranking {
+        .filter{
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .stat {
+            &--box{
+                font-size: 1.4rem;
+                div{
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
 }

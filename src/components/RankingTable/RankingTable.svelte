@@ -50,64 +50,65 @@
 
 
 <div class="ranking">
-    
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    City
-                </th>
-                <th>
-                    Property Type
-                </th>
-                <th>
-                    Rank
-                </th>
-                <th>
-                    Success Rate
-                </th>
-                <th>
-                    List of Sell Price
-                </th>
-                <th>
-                    Days on Market
-                </th>
-                <th>
-                    # Sold
-                </th>
-                <th>
-                    # Failed
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {#each list_groups as grp}
-                {#each grp as item,i}
-                    {#if i == 0 || grp.open}
-                        <tr>
-                            <td >
-                                {#if i == 0 }
-                                <div on:click={()=>toggleGrp(grp)}>
-                                    {item.city}
-                                    {#if grp.length>1}
-                                        <i class="fas fa-chevron-{grp.open ? 'down':'right'}"  />
+    <div class="container">    
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        City
+                    </th>
+                    <th>
+                        Property Type
+                    </th>
+                    <th>
+                        Rank
+                    </th>
+                    <th>
+                        Success Rate
+                    </th>
+                    <th>
+                        List of Sell Price
+                    </th>
+                    <th>
+                        Days on Market
+                    </th>
+                    <th>
+                        # Sold
+                    </th>
+                    <th>
+                        # Failed
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {#each list_groups as grp}
+                    {#each grp as item,i}
+                        {#if i == 0 || grp.open}
+                            <tr>
+                                <td >
+                                    {#if i == 0 }
+                                    <div on:click={()=>toggleGrp(grp)}>
+                                        {item.city}
+                                        {#if grp.length>1}
+                                            <i class="fas fa-chevron-{grp.open ? 'down':'right'}"  />
+                                        {/if}
+                                    </div>
                                     {/if}
-                                </div>
-                                {/if}
-                            </td>
-                            <td>{item.home_type ? item.home_type : 'Overall'}</td>
-                            <td><div>{item.agent_rank} / {item.rank_count}</div></td>
-                            <td>{successRate(item)}</td>
-                            <td>{Math.round(item.s2l_price)}%</td>
-                            <td>{item.avg_dom ? Math.round(item.avg_dom): 0}</td>
-                            <td>{item.sold_listings}</td>
-                            <td>{item.failed_listings}</td>
-                        </tr>
-                    {/if}
+                                </td>
+                                <td>{item.home_type ? item.home_type : 'Overall'}</td>
+                                <td><div>{item.agent_rank} / {item.rank_count}</div></td>
+                                <td>{successRate(item)}</td>
+                                <td>{Math.round(item.s2l_price)}%</td>
+                                <td>{item.avg_dom ? Math.round(item.avg_dom): 0}</td>
+                                <td>{item.sold_listings}</td>
+                                <td>{item.failed_listings}</td>
+                            </tr>
+                        {/if}
+                    {/each}
                 {/each}
-            {/each}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <div class="paginate">
         {#if groups.length>limit}
             <Pagination perPage={limit} numItems={groups.length} bind:current />

@@ -44,3 +44,13 @@ export async function agentDetails(name){
 export async function agentScores(name, duration=36){
     return await fetch(link(`agent_scores/${name}/?time_duration=${duration}`)).then(res => res.json())
 }
+
+export async function submitLead(data){
+    return await fetch(link('lead/'), {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST', 
+        body: JSON.stringify(data)
+    }).then(res => res.json())
+}
