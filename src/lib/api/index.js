@@ -1,8 +1,4 @@
-const API_URL = "https://app.agentstat.com/api/"
-
-function link(uri){
-    return API_URL+uri
-}
+import {link} from '../env'
 
 function uparam(attr, val, andPre= true){
     if(!val) return ""
@@ -29,9 +25,10 @@ export function getAgentUrlParams(filter){
 }
 
 export async function fetchAgents(filter){
-    let url = API_URL+
+    let url = link(
         `reports/${filter.state||'CA'}?`+
         getAgentUrlParams(filter)
+    )
         
     let res = await fetch(url).then(res => res.json())
     return res

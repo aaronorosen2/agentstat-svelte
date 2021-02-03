@@ -38,7 +38,7 @@
             <input class="input input--full" placeholder="Street Address" bind:value={data.address} />
             <input class="input input--full" placeholder="City" bind:value={data.city} />
             <div class="flex">
-                <select bind:value={data.state}>
+                <select class="input" bind:value={data.state}>
                     {#each states as state}
                         <option value={state} selected={state=='WA'}>{state}</option>
                     {/each}
@@ -56,7 +56,7 @@
             All fields are required
         </div>
     {/if}
-    <button class="btn {submitting ? 'submitting':''}" on:click={submit}>{submitting ? 'Sending...':'Submit'}</button>
+    <button class="btn" class:submitting on:click={submit}>{submitting ? 'Sending...':'Submit'}</button>
 </div>
 
 <style src="./contact-form.scss"></style>

@@ -34,7 +34,6 @@
 
   function setParams(evt) {
     let filter = evt.detail;
-    // redirect home with params!
     window.location = "/?" + getAgentUrlParams(filter);
   }
 

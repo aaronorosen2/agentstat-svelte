@@ -1,7 +1,8 @@
 <script>
 	import {onMount} from 'svelte'
 	import page from "page"
-	import {Home, Profile} from './pages'
+	import {Home, Profile, Login} from './pages'
+	import {isAuthenticated} from './lib/api/auth'
 
 	page.start();
 	page("*", (c, next) => {
@@ -14,6 +15,13 @@
 
 	page("/", (ctx) => {
 		active = Home
+	})
+	page("/login", (ctx) => {
+		if(isAuthenticated()){
+			page.redirect('/')
+			return
+		}
+		active = Login
 	})
 	page("/profile/:name", (ctx) => {
 		active = Profile
