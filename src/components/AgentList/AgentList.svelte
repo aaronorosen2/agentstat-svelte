@@ -1,7 +1,7 @@
 <script>
     import AgentItem from '../AgentItem/AgentItem.svelte'
     import Loader from '../Loader/Loader.svelte'
-    import {fetchAgents, getAgentUrlParams} from '../../lib/api'
+    import {fetchAgents} from '../../lib/api'
     let agents = []
     let loading = false
     let error = false
@@ -20,11 +20,6 @@
         loading = false
         return list
     }
-
-    export function setUrlParams(filter){
-        window.location = "?"+getAgentUrlParams(filter)
-    }
-
 
 </script>
 

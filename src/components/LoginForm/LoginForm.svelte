@@ -32,14 +32,20 @@
         submitting = false
     }
 
+    function downLogin(e){
+        if(e.keyCode == 13){
+            submit()
+        }
+    }
+
 
 </script>
 
 <div class="login-form">
     <input class="input" bind:value={user.email} type="email" placeholder="Email address"  />
-    <input class="input" bind:value={user.password} type="password" placeholder="Password"  />
+    <input class="input" bind:value={user.password} type="password" placeholder="Password" on:keydown={downLogin} />
     {#if state=='signup'}
-        <input class="input" bind:value={user.password2} type="password" placeholder="Repeat Password"  />
+        <input class="input" bind:value={user.password2} type="password" placeholder="Repeat Password" on:keydown{downLogin} />
     {/if}
     {#if error.msg}
         <div class="error">{error.msg}</div>

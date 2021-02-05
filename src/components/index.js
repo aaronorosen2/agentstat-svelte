@@ -9,3 +9,4 @@ export {default as TransactionTable} from './TransactionTable/TransactionTable.s
 export {default as ContactLead} from './ContactLead/ContactLead.svelte'
 export {default as Loader} from './Loader/Loader.svelte'
 export {default as LoginForm} from './LoginForm/LoginForm.svelte'
+export {default as DropdownMenu} from './DropdownMenu/DropdownMenu.svelte'

@@ -26,7 +26,15 @@ export async function signup(user){
         body: JSON.stringify(user)
     }).then(res => res.json())
 
-    // save key to localstorage!
+    return resp
+}
+
+export async function verifyEmail(key){
+    const resp = await fetch(link('registration/verify-email/','rest-auth'),{
+        ...options,
+        body: JSON.stringify({key})
+    }).then(res => res.json())
+
     return resp
 }
 

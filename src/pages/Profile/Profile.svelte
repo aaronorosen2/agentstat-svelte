@@ -8,7 +8,7 @@
     ContactLead,
     Loader
   } from "../../components";
-  import { agentDetails, getAgentUrlParams } from "../../lib/api";
+  import { agentDetails } from "../../lib/api";
   
   export let name;
   let agent;
@@ -32,10 +32,6 @@
       fetchAgentDetails()
   }
 
-  function setParams(evt) {
-    let filter = evt.detail;
-    window.location = "/?" + getAgentUrlParams(filter);
-  }
 
 </script>
 
@@ -43,7 +39,7 @@
 
 </style>
 
-<NavBar on:search={setParams} />
+<NavBar />
 
 {#if error}
     <div class="error">

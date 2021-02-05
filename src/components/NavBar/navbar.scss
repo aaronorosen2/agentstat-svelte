@@ -2,7 +2,7 @@
     position: sticky;
     top:0;
     left:0;
-    padding: 0.5rem 0;
+    // padding: 0.5rem 0;
     width: 100%;
     margin: 0;
     box-shadow:  0 0 #0000, 0 0 #0000, var(--tw-shadow);
@@ -14,39 +14,55 @@
     z-index: 40;
     .logo {
         display: block;
-        padding: 0 1rem;
+        padding: 0.6rem 1rem;
         max-width: 8rem;
         img{
             width: 100%;
         }
     }
+    .nav-icon {
+        display: none;
+    }
     .filter{
         flex: auto;
         max-width: 55rem;
-    }
-    .links{
-        padding: 1rem;
-        .link {
-            color: var(--blue-color);
-            cursor: pointer;
-            &:hover{
-                text-decoration: underline;
-            }
-        }
     }
 
 }
 
 @media(max-width: 770px){
     .nav-bar {
-        position: relative;
+        position: sticky;
         flex-direction: column;
-        .filter {
+        .filter, .links {
             width: 100%;
+            display: none;
+            &.open{
+                display: block;
+            }
         }
-        .logo{
-            max-width: 12rem;
-            padding: 2rem 0;
+
+        &--head {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            .logo{
+                padding: 0.5rem 2rem;
+                
+                img{
+                    width: 8rem;
+                }
+            }
+            .nav-icon{
+                display: block;
+                cursor: pointer;
+                padding: 0 2rem;
+            }
+
         }
     }
 }
+
+

@@ -1,22 +1,25 @@
 <script>
-  
+    import {onMount} from 'svelte'
     import {NavBar, LoginForm} from '../../components'
-
     let tab = "login"
-
-    function setParams(evt) {
-        let filter = evt.detail;
-        window.location = "/?" + getAgentUrlParams(filter);
-    }
+    let urlParams
+    let msg
+    onMount(() => {
+        urlParams = new URLSearchParams(location.search);
+        msg = urlParams.get('success')||urlParams.get('error')
+    })
 
 
 </script>
 
 
-<NavBar on:search={setParams} />
+<NavBar />
 
 
 <div class="login">
+    {#if msg}
+        <h1 class:success={urlParams.get('success')} class:error={urlParams.get('error')}>{msg}</h1>
+    {/if}
     <div class="login--box">
         <div class="tabs">
             <div class="tab" class:selected={tab=='login'} on:click={() => tab='login'}>Login</div>

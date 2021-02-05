@@ -1,7 +1,7 @@
 <script>
 	import {onMount} from 'svelte'
 	import page from "page"
-	import {Home, Profile, Login} from './pages'
+	import {Home, Profile, Login, VerifyEmail} from './pages'
 	import {isAuthenticated} from './lib/api/auth'
 
 	page.start();
@@ -25,6 +25,10 @@
 	})
 	page("/profile/:name", (ctx) => {
 		active = Profile
+		props = ctx.params
+	})
+	page("/verify-email/:key", (ctx) => {
+		active = VerifyEmail
 		props = ctx.params
 	})
 	
