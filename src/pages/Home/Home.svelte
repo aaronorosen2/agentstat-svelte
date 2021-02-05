@@ -2,7 +2,7 @@
     import {AgentList, NavBar, Pagination} from '../../components'
  
     let searchAgents 
-    let setUrlParams
+    let updateParams
     let filter
     let numItems = 0;
     let current = 1;
@@ -14,12 +14,12 @@
     }
 
     function paginate(evt){
-        filter.page=evt.detail
-        setUrlParams && setUrlParams(filter)
+        filter.page = evt.detail
+        updateParams && updateParams({detail: filter})
     }
 </script>
 
-<NavBar on:load={reloadAgents} />
+<NavBar on:load={reloadAgents} bind:updateParams />
 
 <section class="list-agents">
     <AgentList bind:searchAgents />

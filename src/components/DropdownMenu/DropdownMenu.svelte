@@ -21,7 +21,6 @@
 
     onMount(() => {
         currentPage = location.pathname
-        console.log("PATH NAME --> ", currentPage)
     })
 </script>
 

@@ -17,7 +17,6 @@
             user.password1 = user.password
             res = await signup(user)
         }
-        console.log(res)
         if(res.msg)
             error = res
         else if(!res.detail && state == 'signup'){

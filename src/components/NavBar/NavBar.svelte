@@ -3,9 +3,7 @@
     import SearchBar from '../SearchBar/SearchBar.svelte'
     import DropdownMenu from '../DropdownMenu/DropdownMenu.svelte'
 
-    
-
-    function updateParams(evt){
+    export function updateParams(evt){
         window.location = "/?" + getAgentUrlParams(evt.detail);
     }
 

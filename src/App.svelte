@@ -15,6 +15,7 @@
 
 	page("/", (ctx) => {
 		active = Home
+		props = {}
 	})
 	page("/login", (ctx) => {
 		if(isAuthenticated()){
