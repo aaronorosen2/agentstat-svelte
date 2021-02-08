@@ -1,0 +1,15 @@
+.tooltip {
+    position: relative;
+    .text{
+        position: absolute;
+        right: 0;
+        width: 15rem;
+        bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow:  0 0 #0000, 0 0 #0000, var(--tw-shadow);
+        color: #fff;
+        background-color: #222222cc;
+        
+    }
+}

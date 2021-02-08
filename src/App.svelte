@@ -1,7 +1,7 @@
 <script>
 	import {onMount} from 'svelte'
 	import page from "page"
-	import {Home, Profile, Login, VerifyEmail} from './pages'
+	import {Home, Profile, Login, VerifyEmail, ProfileSettings} from './pages'
 	import {isAuthenticated} from './lib/api/auth'
 
 	page.start();
@@ -33,6 +33,13 @@
 		props = ctx.params
 	})
 	
+
+	// Dashboard
+	page("/profile-settings", (ctx) => {
+		active = ProfileSettings
+		props = {}
+	})
+
 	page("*", () => page.redirect("/"))
 
 	onMount(() => {	

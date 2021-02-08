@@ -10,3 +10,6 @@ export {default as ContactLead} from './ContactLead/ContactLead.svelte'
 export {default as Loader} from './Loader/Loader.svelte'
 export {default as LoginForm} from './LoginForm/LoginForm.svelte'
 export {default as DropdownMenu} from './DropdownMenu/DropdownMenu.svelte'
+
+export {default as BasicInfo} from './ProfileSettings/BasicInfo/BasicInfo.svelte'
+export {default as LicenseInfo} from './ProfileSettings/LicenseInfo/LicenseInfo.svelte'

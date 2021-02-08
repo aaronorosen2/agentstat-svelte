@@ -1,0 +1,63 @@
+.license-info{
+    .label-input {
+        font-weight: 1.2rem;
+        color: var(--blue-color);
+        font-weight: 500;
+        padding: 0.5rem 0;
+    }
+    .label-checkbox{
+        margin: 1.2rem 0;
+        font-size: 1.1rem;
+        input{
+            margin-right: 0.5rem;
+        }
+    }
+    .flex {
+        display: flex;
+        gap: 1rem;
+        .auto{
+            flex: auto;
+        }
+    }
+    .input {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        background-color: #eee;
+        border: 1px solid #ccc;
+    }
+    .reverse{
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: 1rem;
+    }
+    .btn{
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        background-color: var(--green);
+        cursor: pointer;
+        padding: 0.5rem 2rem;
+        border-radius: 0.5rem;
+        &:hover {
+            opacity: .9;
+        }
+        &-info{
+            background-color: var(--blue-color);
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+    }
+}
+
+@media(max-width: 480px){
+    .license-info{
+        .flex{
+            flex-wrap: wrap;
+        }
+        .btn {
+            width: 100%;
+        }
+    }
+}
