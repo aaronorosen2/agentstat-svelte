@@ -1,26 +1,23 @@
-.license-info{
+.highlights{
     .label-input {
         font-weight: 1.2rem;
         color: var(--blue-color);
         font-weight: 500;
         padding: 0.5rem 0;
     }
-    .label-checkbox{
-        margin: 1.2rem 0;
-        font-size: 1.1rem;
-        input{
-            margin-right: 0.5rem;
-        }
+    .grid {
+        display: grid;
+        grid-template-columns: auto auto auto;
     }
     .flex {
         display: flex;
         gap: 1rem;
-        .auto{
-            flex: auto;
-        }
+    }
+    .other-sp {
+        margin: 1rem 0 2rem 0;
     }
     .input {
-        width: 100%;
+        width: 13rem;
         padding: 0.5rem;
         border-radius: 0.5rem;
         background-color: #eee;
@@ -55,12 +52,16 @@
 }
 
 @media(max-width: 480px){
-    .license-info{
-        .flex{
-            flex-wrap: wrap;
+    .highlights{
+        .grid{
+            grid-template-columns: auto auto;
+            font-size: 0.8rem;
         }
-        .btn {
+        .btn, .input {
             width: 100%;
+        }
+        .input {
+            min-width: 13rem;
         }
     }
 }

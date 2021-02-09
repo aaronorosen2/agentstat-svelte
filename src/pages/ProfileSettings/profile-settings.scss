@@ -1,8 +1,11 @@
-.profile-settings {
-    background-color: #eee;
+.profile {
+  background-color: #eee;
+  min-height: 100vh;
+  &-settings {
     display: flex;
     align-items: flex-start;
-
+    max-width: 1080px;
+    margin: 0 auto;
     .tabs {
         flex-shrink: 0;
         margin: 2rem;
@@ -55,7 +58,7 @@
             }
         }
     }
-
+  }
 }
 
 @media(max-width: 880px){

@@ -13,3 +13,5 @@ export {default as DropdownMenu} from './DropdownMenu/DropdownMenu.svelte'
 
 export {default as BasicInfo} from './ProfileSettings/BasicInfo/BasicInfo.svelte'
 export {default as LicenseInfo} from './ProfileSettings/LicenseInfo/LicenseInfo.svelte'
+export {default as Highlights} from './ProfileSettings/Highlights/Highlights.svelte'
+export {default as Commission} from './ProfileSettings/Commission/Commission.svelte'

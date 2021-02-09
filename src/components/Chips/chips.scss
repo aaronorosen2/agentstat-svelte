@@ -1,0 +1,23 @@
+.chips{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    .chip {
+        font-size: 0.9rem;
+        border: 1px solid var(--dark-blue);
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-left: 0.3rem;
+        border-radius: 0.2rem;
+        color: #fff;
+        background-color: var(--blue-color);
+        align-items: center;
+        .close{
+            font-size: 0.8rem;
+            padding: 0.3rem;
+            border-left: 1px solid var(--dark-blue);
+            cursor: pointer;
+        }
+    }
+}
