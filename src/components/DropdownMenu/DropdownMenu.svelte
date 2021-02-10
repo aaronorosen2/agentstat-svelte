@@ -1,12 +1,14 @@
 <script>
     import {isAuthenticated, logout} from '../../lib/api/auth'
     import {onMount} from 'svelte'
+    import page from 'page'
 
     let currentPage
     let is_authenticated = isAuthenticated()
     function logoutUser(){
         logout()
         is_authenticated = false
+        page.redirect('/')
     }
 
     let open = false

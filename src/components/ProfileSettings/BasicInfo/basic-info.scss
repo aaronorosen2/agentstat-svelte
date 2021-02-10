@@ -27,6 +27,7 @@
     img {
         margin: 1rem;
         max-width: 12rem;
+        border-radius: 50%;
     }
     .img-container{
         position: relative;
@@ -46,6 +47,10 @@
             border-radius: 0.5rem;
             &:hover {
                 opacity: .9;
+            }
+            &.disabled{
+                opacity: 0.5;
+                cursor: not-allowed;
             }
         }
     }

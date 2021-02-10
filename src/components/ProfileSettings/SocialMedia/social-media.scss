@@ -1,31 +1,20 @@
-.highlights{
-    .label-input {
+.social-media{
+    label {
         font-weight: 1.2rem;
         color: var(--blue-color);
         font-weight: 500;
         padding: 0.5rem 0;
+        margin-top: 1rem;
     }
-    .grid {
-        display: grid;
-        grid-template-columns: auto auto auto;
-    }
-    .flex {
-        display: flex;
-        gap: 1rem;
-    }
-    .other-sp {
-        margin: 1rem 0 2rem 0;
-    }
+
     .input {
-        width: 13rem;
+        width: 100%;
         padding: 0.5rem;
         border-radius: 0.5rem;
         background-color: #eee;
         border: 1px solid #ccc;
     }
-    .inp-error{
-        border: 2px solid red;
-    }
+    
     .reverse{
         display: flex;
         flex-direction: row-reverse;
@@ -42,12 +31,6 @@
         &:hover {
             opacity: .9;
         }
-        &-info{
-            background-color: var(--blue-color);
-            padding: 0.5rem 1rem;
-            font-weight: 500;
-            font-size: 1rem;
-        }
         &.disabled{
             opacity: 0.5;
             cursor: not-allowed;
@@ -56,16 +39,9 @@
 }
 
 @media(max-width: 480px){
-    .highlights{
-        .grid{
-            grid-template-columns: auto auto;
-            font-size: 0.8rem;
-        }
-        .btn, .input {
+    .social-media{
+        .btn {
             width: 100%;
-        }
-        .input {
-            min-width: 13rem;
         }
     }
 }

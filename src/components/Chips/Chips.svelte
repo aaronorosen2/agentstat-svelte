@@ -7,15 +7,17 @@
     }
 </script>
 
-<div class="chips">
-    {#each items as item,i}
-        <div class="chip">
-            {item}
-            <div class="close" on:click={()=>removeItem(i)}>
-                <i class="fas fa-times"/>
+{#if items}
+    <div class="chips">
+        {#each items as item,i}
+            <div class="chip">
+                {item}
+                <div class="close" on:click={()=>removeItem(i)}>
+                    <i class="fas fa-times"/>
+                </div>
             </div>
-        </div>
-    {/each}
-</div>
+        {/each}
+    </div>
+{/if}
 
 <style src="./chips.scss"></style>

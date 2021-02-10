@@ -134,3 +134,7 @@ button:focus {
 .success {
 	color: green;
 }
+
+input:focus, textarea:focus, select:focus{
+	outline: none;
+}

@@ -1,0 +1,16 @@
+.notif{
+    display: flex;
+    font-size: 1.1rem;
+    background-color: var(--green);
+    color: #fff;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    min-width: 20rem;
+    box-shadow:  0 0 #0000, 0 0 #0000, var(--tw-shadow);
+    border-radius: 0.5rem;
+}

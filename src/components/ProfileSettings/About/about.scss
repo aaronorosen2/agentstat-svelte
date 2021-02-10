@@ -1,20 +1,12 @@
-.commission{
-    label {
-        font-weight: 1.2rem;
-        color: var(--blue-color);
-        font-weight: 500;
-        padding: 0.5rem 0;
-        margin-top: 1rem;
-    }
-
-    select {
-        width: 13rem;
-        padding: 0.5rem;
+.about {
+    textarea {
         border-radius: 0.5rem;
-        background-color: #eee;
+        background: #eee;
         border: 1px solid #ccc;
+        width: 100%;
+        resize: none;
+        padding: 0.5rem;
     }
-    
     .reverse{
         display: flex;
         flex-direction: row-reverse;
@@ -31,15 +23,11 @@
         &:hover {
             opacity: .9;
         }
-        &.disabled{
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
     }
 }
 
 @media(max-width: 480px){
-    .commission{
+    .about{
         .btn, select {
             width: 100%;
         }

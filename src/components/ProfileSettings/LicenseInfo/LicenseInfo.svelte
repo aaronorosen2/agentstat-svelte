@@ -1,24 +1,33 @@
 <script>
     import states from '../../../data/states'
     import Chips from '../../Chips/Chips.svelte'
-    let licenses = []
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher();
+    
+    function save() {
+        dispatch("save");
+    }
+
+    export let agent
+    export let saving
     let newLicense = {}
     let licenseError = false
+    agent.licenses = agent.licenses || []
     function addLicense(){
         if (!(newLicense.number && newLicense.state && newLicense.exp)){
             licenseError = true
             return
         }
         licenseError = false
-        licenses.push(`${newLicense.number} ${newLicense.state} - ${newLicense.exp}`)
-        licenses = licenses
+        agent.licenses.push(`${newLicense.number} ${newLicense.state} - ${newLicense.exp}`)
+        agent.licenses = agent.licenses
         newLicense = {state: newLicense.state}
     }
 </script>
 
 <div class="license-info">
     <label class="label-checkbox">
-        <input type="checkbox">
+        <input type="checkbox" bind:checked={agent.show_brokerage_info}>
         Allow to display Brokerage info on agent profile.
     </label>
     <div>
@@ -37,20 +46,20 @@
         </div>
     </div>
 
-    <Chips bind:items={licenses} />
+    <Chips bind:items={agent.licenses} />
 
     <div>
         <label class="label-input">
             Brokerage Name
         </label>
-        <input class="input" placeholder="Brokerage Name" />
+        <input class="input" placeholder="Brokerage Name" bind:value={agent.brokerage_name} />
     </div>
 
     <div>
         <label class="label-input">
             Brokerage Address
         </label>
-        <input class="input" placeholder="Brokerage Address" />
+        <input class="input" placeholder="Brokerage Address" bind:value={agent.brokerage_address} />
     </div>
 
     <div>
@@ -58,19 +67,19 @@
             City, State, ZIP
         </label>
         <div class="flex">
-            <input class="input" placeholder="City" />
-            <select class="input">
+            <input class="input" placeholder="City" bind:value={agent.city} />
+            <select class="input" bind:value={agent.state}>
                 <option >State</option>
                 {#each states as state}
                     <option value={state} selected={state=='WA'}>{state}</option>
                 {/each}
             </select>
-            <input class="input" placeholder="XXXXX" />
+            <input name="zip_code" class="input" placeholder="XXXXX" bind:value={agent.zipcode} />
         </div>
     </div>
 
     <div class="reverse">
-        <button class="btn">Save</button>
+        <button class="btn" class:disabled={saving} on:click={save}>{saving ? 'Saving...':'Save'}</button>
     </div>
 </div>
 
