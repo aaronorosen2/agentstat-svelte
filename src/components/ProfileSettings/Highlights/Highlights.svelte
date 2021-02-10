@@ -57,7 +57,7 @@
     </label>
     <select class="input" bind:value={agent.years_in_bussiness}>
         {#each [...Array(21).keys()] as n}
-            <option value={cy-n}>{cy-n}</option>
+            <option value={cy-n} selected={agent.years_in_bussiness==cy-n}>{cy-n}</option>
         {/each}
         <option value="before {cy-20}">Before {cy-20}</option>
     </select>
