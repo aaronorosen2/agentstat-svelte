@@ -2,7 +2,7 @@
 	import {onMount} from 'svelte'
 	import page from "page"
 	import {Home, Profile, Login, VerifyEmail, ProfileSettings} from './pages'
-	import {Notification} from './components'
+	import {Notification, Modal} from './components'
 	import {notif} from './stores/notif'
 
 	import {isAuthenticated} from './lib/api/auth'
@@ -57,6 +57,7 @@
 </script>
 
 <Notification show={$notif.show} msg={$notif.msg} />
+<Modal />
 <main>
 	<svelte:component this={active} {...props} />
 </main>

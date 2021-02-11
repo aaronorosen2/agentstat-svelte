@@ -1,4 +1,5 @@
 import {link} from '../env'
+import {user} from '../../stores/user'
 
 const options = {
     method: 'POST',
@@ -47,5 +48,14 @@ export function isAuthenticated(){
 }
 
 export function currentUser(){
-    return JSON.parse(localStorage.getItem('auth/user')||false)
+    let u = JSON.parse(localStorage.getItem('auth/user')||false)
+    user.set(u)
+    return u
+}
+
+export function setCurrentUserPic(picture){
+    let cu = currentUser()
+    cu.picture = picture
+    localStorage.setItem('auth/user', JSON.stringify(cu))
+    user.set(cu)
 }

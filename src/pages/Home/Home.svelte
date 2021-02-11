@@ -7,6 +7,7 @@
     let numItems = 0;
     let current = 1;
     async function reloadAgents(evt){
+        if(!['','/'].includes(window.location.pathname)) return
         filter = evt.detail
         let list = searchAgents && await searchAgents(filter)
         numItems = list.total

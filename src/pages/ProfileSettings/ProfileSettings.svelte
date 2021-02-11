@@ -7,14 +7,19 @@
         SocialMedia,
         About,
         NavBar,
+        AgentReview,
+        ReviewForm,
         Loader
     } from '../../components'
 
     import { show as showNotif } from '../../stores/notif'
-
-    import { agentProfile, saveProfileSettings } from '../../lib/api/profile'
+    import { modal } from '../../stores/modal'
+    import { setCurrentUserPic } from '../../lib/api/auth'
+    import { agentProfile, saveProfileSettings, agentReview } from '../../lib/api/profile'
+    
 
     let agent
+    let agent_review
     let saving = false
     let loading = true
     let selected_tab = 'basic_info'
@@ -23,7 +28,7 @@
         {name: 'Licence Information', key: 'license_info', img: '/images/license-icon.png', cmp: LicenseInfo},
         {name: 'Highlights', key: 'highlights', img: '/images/Highlight-icon.png', cmp: Highlights},
         {name: 'Commission', key: 'commission', img: '/images/Commision-icon.png', cmp: Commission},
-        {name: 'Reviews', key: 'reviews', img: '/images/review-icon.png'},
+        {name: 'Reviews', key: 'reviews', img: '/images/review-icon.png', cmp: AgentReview},
         {name: 'Social Media', key: 'social_media', img: '/images/social-media-icon.png', cmp: SocialMedia},
         {name: 'About Me', key: 'about_me', img: '/images/about-me-icon.png', cmp: About}
     ]
@@ -35,6 +40,8 @@
         
         try{
             agent = await agentProfile()
+            agent.picture && setCurrentUserPic(agent.picture)
+            agent_review = await agentReview()
         }catch(e){
             console.error(e.message)
         }
@@ -48,6 +55,20 @@
         await saveProfileSettings(agent)
         saving = false
         showNotif('Profile Saved Successfully !')
+    }
+
+    async function fetchReviews(){
+        $modal = {show: false}
+        agent_review = await agentReview()
+    }
+
+    function addReview(){
+        $modal = {
+            show: true,
+            cmp: ReviewForm,
+            complete: fetchReviews,
+            title: 'Add Review'
+        } 
     }
 
     initProfile()
@@ -74,13 +95,14 @@
                         <div class="head">
                             <img src={tab.img} alt={tab.name} />
                             {tab.name}
+                            {#if tab.key == 'reviews'}
+                                <div class="control">
+                                    <button class="btn" on:click={addReview}>Add review</button>
+                                </div>
+                            {/if}
                         </div>
                         <div class="body">
-                            {#if tab.cmp}
-                                <svelte:component this={tab.cmp} {agent} on:save={saveProfile} saving={saving} />
-                            {:else}
-                                -- TODO CMP --
-                            {/if}
+                            <svelte:component this={tab.cmp} agent={tab.key != 'reviews' ? agent: agent_review} on:save={saveProfile} saving={saving} />
                         </div>
                     </div>
                 {/each}

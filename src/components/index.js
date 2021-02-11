@@ -12,6 +12,7 @@ export {default as LoginForm} from './LoginForm/LoginForm.svelte'
 export {default as DropdownMenu} from './DropdownMenu/DropdownMenu.svelte'
 
 export {default as Notification} from './Notification/Notification.svelte'
+export {default as Modal} from './Modal/Modal.svelte'
 
 export {default as BasicInfo} from './ProfileSettings/BasicInfo/BasicInfo.svelte'
 export {default as LicenseInfo} from './ProfileSettings/LicenseInfo/LicenseInfo.svelte'
@@ -19,3 +20,5 @@ export {default as Highlights} from './ProfileSettings/Highlights/Highlights.sve
 export {default as Commission} from './ProfileSettings/Commission/Commission.svelte'
 export {default as SocialMedia} from './ProfileSettings/SocialMedia/SocialMedia.svelte'
 export {default as About} from './ProfileSettings/About/About.svelte'
+export {default as AgentReview} from './ProfileSettings/AgentReview/AgentReview.svelte'
+export {default as ReviewForm} from './ProfileSettings/ReviewForm/ReviewForm.svelte'

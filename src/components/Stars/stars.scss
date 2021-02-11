@@ -1,0 +1,23 @@
+
+.rating-star{
+    display: block;
+    width: 188px;
+    background: url(/images/rating02.png) no-repeat;
+    position: relative;
+    height: 38px;
+    &.small {
+        background: url(/images/rating03.png) no-repeat;
+        height: 16px;
+        width: 80px;
+    }
+    .fill {
+        background: url(/images/rating01.png) no-repeat;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        &.small {
+            background: url(/images/rating04.png) no-repeat;
+        }
+    }
+}

@@ -2,8 +2,9 @@
     import {isAuthenticated, logout} from '../../lib/api/auth'
     import {onMount} from 'svelte'
     import page from 'page'
-
+    import {user as currentUser} from '../../stores/user'
     let currentPage
+    
     let is_authenticated = isAuthenticated()
     function logoutUser(){
         logout()
@@ -34,7 +35,7 @@
 {:else}   
     <div class="dropdown">
         <div class="dropdown--head" on:click|stopPropagation={toggle}>
-            <img src="/images/blank-profile-pic.webp" alt="user" />
+            <img src={$currentUser.picture ||"/images/blank-profile-pic.webp"} alt="user" />
             <i class="fas fa-chevron-down">
         </div>
         <div class="links" class:open>
