@@ -1,0 +1,33 @@
+.claim-msg {
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    p {
+        margin: 0 0 2rem 0;
+        font-size: 1.2rem;
+    }
+    .control{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center;
+        .btn{
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            background-color: var(--blue-color);
+            cursor: pointer;
+            padding: 0.5rem 2rem;
+            border-radius: 0.5rem;
+            &:hover {
+                opacity: .9;
+            }
+            &-cancel{
+                background-color: #eee;
+                color: #222;
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import {link} from '../env'
+import { currentUser, setUser } from './auth'
 
 function uparam(attr, val, andPre= true){
     if(!val) return ""
@@ -15,13 +16,14 @@ export async function fetchStates(){
 }
 
 export function getAgentUrlParams(filter){
-    return uparam('home_type',filter.home_type||'House', false)+
+    return uparam('home_type',filter.home_type, false)+
     uparam('filter_by',filter.filter_by)+
     uparam('city',filter.city)+
     uparam('address',filter.street_address||filter.address)+
     uparam('state',filter.state)+
     uparam('agent_name',filter.agent_name)+
-    uparam('page',filter.page)
+    uparam('page',filter.page)+
+    uparam('check_claimed',filter.check_claimed)
 }
 
 export async function fetchAgents(filter){
@@ -32,6 +34,40 @@ export async function fetchAgents(filter){
         
     let res = await fetch(url).then(res => res.json())
     return res
+}
+
+export async function claimAgent(agent_id){
+    const user = currentUser()
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`
+        },
+        body: JSON.stringify({agent_id})
+    }
+    let res =  await fetch(link('claim/'), options).then(res => res.json())
+    if(res.status == "success"){
+        user.agent_id = agent_id
+        setUser(user)
+        return true
+    }
+    
+    return false
+    
+}
+
+export async function reClaimAgent(agent){
+    const user = currentUser()
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(agent)
+    }
+    await fetch(link('re-claim/'), options).then(res => res.json())
+    
 }
 
 export async function agentDetails(name){

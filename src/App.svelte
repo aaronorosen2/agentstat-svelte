@@ -1,11 +1,11 @@
 <script>
 	import {onMount} from 'svelte'
 	import page from "page"
-	import {Home, Profile, Login, VerifyEmail, ProfileSettings} from './pages'
+	import {Home, Profile, Login, VerifyEmail, ProfileSettings, ConnectProfile} from './pages'
 	import {Notification, Modal} from './components'
 	import {notif} from './stores/notif'
 
-	import {isAuthenticated} from './lib/api/auth'
+	import {isAuthenticated, currentUser} from './lib/api/auth'
 
 	page.start();
 	page("*", (c, next) => {
@@ -43,7 +43,24 @@
 			page.redirect('/login')
 			return
 		}
+		if(!currentUser().agent_id){
+			page.redirect('/connect-profile')
+			return
+		}
 		active = ProfileSettings
+		props = {}
+	})
+
+	page("/connect-profile", (ctx) => {
+		if(!isAuthenticated()){
+			page.redirect('/login')
+			return
+		}
+		if(currentUser().agent_id){
+			page.redirect('/profile-settings')
+			return
+		}
+		active = ConnectProfile
 		props = {}
 	})
 

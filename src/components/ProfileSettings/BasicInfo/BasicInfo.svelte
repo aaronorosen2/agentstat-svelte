@@ -28,7 +28,7 @@
     }
 
     function setPfImg(evt){
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function (e) {
             pf_img = e.target.result;
         };

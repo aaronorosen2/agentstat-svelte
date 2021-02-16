@@ -9,10 +9,12 @@
 {#if $modal.show}
     <div class="modal" on:click={close}>
         <div class="container" on:click|stopPropagation>
-            <div class="head">
-                {$modal.title}
-                <i class="fas fa-times" on:click={close}></i>
-            </div>
+            {#if $modal.title}
+                <div class="head">
+                    {$modal.title}
+                    <i class="fas fa-times" on:click={close}></i>
+                </div>
+            {/if}
             <div class="body">
                 <svelte:component this={$modal.cmp} complete={$modal.complete} />
             </div>

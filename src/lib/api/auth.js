@@ -56,6 +56,10 @@ export function currentUser(){
 export function setCurrentUserPic(picture){
     let cu = currentUser()
     cu.picture = picture
-    localStorage.setItem('auth/user', JSON.stringify(cu))
+    setUser(cu)
     user.set(cu)
+}
+
+export function setUser(user){
+    localStorage.setItem('auth/user', JSON.stringify(user))
 }

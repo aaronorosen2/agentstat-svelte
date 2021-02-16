@@ -1,0 +1,23 @@
+.connect-profile {
+    background-color: #eee;
+    min-height: 100vh;
+    padding-top: 1rem;
+    .body {
+        max-width: var(--max-profile-width);
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 0.5rem;
+    }
+    .head{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .link{
+            color: var(--blue-color);
+            cursor: pointer;
+            font-weight: 500;
+        }
+    }
+
+}

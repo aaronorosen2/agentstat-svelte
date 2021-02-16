@@ -1,0 +1,62 @@
+.profile-claim {
+    .search {
+        display: flex;
+        gap: 1rem;
+        max-width: 35rem;
+    }
+    .input{
+        margin-top: 0.2rem;
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    
+        &:focus {
+            outline: none;
+        }
+    }
+    .btn{
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        background-color: var(--green);
+        cursor: pointer;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        &:hover {
+            opacity: .9;
+        }
+        &-claim{
+            background-color: var(--yellow-color);
+            color: #333;
+            font-size: 1.1rem;
+            border: 2px solid #333;
+        }
+    }
+    .claim {
+        padding: 1rem;
+    }
+    
+    .result{
+        margin-top: 2rem;
+        padding: 1rem;
+        .agent {
+            input{
+                margin: 0;
+            }
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .tag {
+                padding: 0.2rem 0.5rem;
+                font-size: 0.8rem;
+                background-color: var(--green);
+                color: #fff;
+                font-weight: 500;
+                border-radius: 0.5rem;
+            }
+        }
+    }
+}

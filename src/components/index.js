@@ -22,3 +22,6 @@ export {default as SocialMedia} from './ProfileSettings/SocialMedia/SocialMedia.
 export {default as About} from './ProfileSettings/About/About.svelte'
 export {default as AgentReview} from './ProfileSettings/AgentReview/AgentReview.svelte'
 export {default as ReviewForm} from './ProfileSettings/ReviewForm/ReviewForm.svelte'
+
+export {default as ProfileClaim} from './ProfileClaim/ProfileClaim.svelte'
+export {default as NewProfileForm} from './ProfileClaim/NewProfileForm.svelte'
