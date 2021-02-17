@@ -57,6 +57,17 @@ export async function claimAgent(agent_id){
     
 }
 
+export async function newAgentProfile(agent){
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(agent)
+    }
+    return await fetch(link('agent-request/'), options).then(res => res.json())
+}
+
 export async function reClaimAgent(agent){
     const user = currentUser()
     const options = {

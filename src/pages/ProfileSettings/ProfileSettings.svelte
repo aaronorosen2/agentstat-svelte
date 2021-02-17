@@ -9,13 +9,14 @@
         NavBar,
         AgentReview,
         ReviewForm,
+        ImportFromZillow,
         Loader
     } from '../../components'
 
     import { show as showNotif } from '../../stores/notif'
     import { modal } from '../../stores/modal'
     import { setCurrentUserPic } from '../../lib/api/auth'
-    import { agentProfile, saveProfileSettings, agentReview } from '../../lib/api/profile'
+    import { agentProfile, saveProfileSettings, agentReview, syncZillowReview } from '../../lib/api/profile'
     
 
     let agent
@@ -71,6 +72,25 @@
         } 
     }
 
+    let review_success = ''
+    async function processZillowImport(link){
+        $modal = {show: false}
+        await syncZillowReview(link)
+        review_success = 'SUCCESS! Please allow 24 hours for reviews to import.'
+        agent_review.allow_sync = false
+    }
+
+    function importFromZillow(){
+        $modal = {
+            show: true,
+            cmp: ImportFromZillow,
+            complete: processZillowImport,
+            title: 'Import From Zillow',
+            props: {link: agent && agent.connector && agent.connector.zillow_profile_link}
+
+        }
+    }
+
     initProfile()
 </script>
 
@@ -98,10 +118,16 @@
                             {#if tab.key == 'reviews'}
                                 <div class="control">
                                     <button class="btn" on:click={addReview}>Add review</button>
+                                    {#if agent_review && agent_review.allow_sync}
+                                        <button class="btn btn-blue" on:click={importFromZillow}>Import From Zillow</button>
+                                    {/if}
                                 </div>
                             {/if}
                         </div>
                         <div class="body">
+                            {#if tab.key == 'reviews' && review_success}
+                                <div class="success">{review_success}</div>
+                            {/if}    
                             <svelte:component this={tab.cmp} agent={tab.key != 'reviews' ? agent: agent_review} on:save={saveProfile} saving={saving} />
                         </div>
                     </div>

@@ -16,7 +16,7 @@
                 </div>
             {/if}
             <div class="body">
-                <svelte:component this={$modal.cmp} complete={$modal.complete} />
+                <svelte:component this={$modal.cmp} {...$modal.props} complete={$modal.complete} />
             </div>
         </div>
     </div>

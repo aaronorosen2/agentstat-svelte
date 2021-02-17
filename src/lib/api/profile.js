@@ -57,3 +57,15 @@ export async function addAgentReview(review){
 }
 
 
+export async function syncZillowReview(url){
+    const user = currentUser()
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`
+        },
+        body: JSON.stringify({url})
+    }
+    return await fetch(link('sync-zillow-review/'), options).then(res => res.json())  
+}
