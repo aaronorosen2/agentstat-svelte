@@ -4,7 +4,7 @@
     import DisputeForm from './DisputeForm.svelte'
     import {fetchStates, fetchAgents, claimAgent, reClaimAgent} from '../../lib/api'
     import {modal} from '../../stores/modal'
-    import {currentUser} from '../../lib/api/auth'
+    import {currentUser, setUser} from '../../lib/api/auth'
 
     import page from 'page'
     let filter = {check_claimed: 'True', agent_name: '', state: 'AK'}
@@ -45,10 +45,24 @@
     }
 
     let reclaimed_profile = false
+    let reclaimed_profile_error = false
     async function reClaim(agent, data){
+        reclaimed_profile_error = false
+        let user = currentUser()
         data.agent_profile_connector = agent.agent_id
-        data.dispute_web_agent = currentUser().web_agent_id
-        await reClaimAgent(data)
+        data.dispute_web_agent = user.web_agent_id
+        try {
+            let res = await reClaimAgent(data)
+            if(res.status == "pending"){
+                // set pending dispute
+                user.pending_dispute = true
+                setUser(user)
+            }else{
+                reclaimed_profile_error = true
+            }
+        }catch{
+            reclaimed_profile_error = true
+        }
         reclaimed_profile = true
         $modal = {show: false}
     }
@@ -89,7 +103,11 @@
 
 <div class="profile-claim">
     {#if reclaimed_profile}
-        <div class="success">We will review your dispute and get back to you within 48 hours</div>
+        {#if reclaimed_profile_error}
+            <div class="error">Error occured while submitting your data, Please try again later!</div>
+        {:else}
+            <div class="success">We will review your dispute and get back to you within 48 hours</div>
+        {/if}
     {:else}
         <div class="search">
             <input class="input" type="search" placeholder="Full Name" bind:value={filter.agent_name} on:keydown={handleKeyDown} />

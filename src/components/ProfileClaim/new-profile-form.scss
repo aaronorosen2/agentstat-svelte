@@ -44,8 +44,20 @@
         font-size: 1.1rem;
         border: 2px solid #333;
     }
+    .center{
+        display: flex;
+        justify-content: center;
+    }
     .error{
         font-size: 1rem;
         padding: 1rem 0;
+    }
+}
+
+@media(max-width: 480px){
+    .profile-form {
+        .personal{
+            grid-template-columns: auto;
+        }
     }
 }

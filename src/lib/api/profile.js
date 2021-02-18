@@ -69,3 +69,10 @@ export async function syncZillowReview(url){
     }
     return await fetch(link('sync-zillow-review/'), options).then(res => res.json())  
 }
+
+export async function checkAgentConnect(url){
+    const user = currentUser()
+    return await fetch(link(`check-agent-connect/${user.web_agent_id}/`)).then(res => res.json())  
+}
+
+

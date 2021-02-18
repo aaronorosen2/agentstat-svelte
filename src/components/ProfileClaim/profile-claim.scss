@@ -60,3 +60,14 @@
         }
     }
 }
+
+@media(max-width: 480px){
+    .profile-claim {
+        .search {
+            display: block;
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}

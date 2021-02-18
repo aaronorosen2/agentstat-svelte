@@ -1,8 +1,25 @@
 <script>
     import UploadImage from '../UploadImage/UploadImage.svelte'
     export let complete = null
-    let agent = {}
+    let agent = {
+        full_name: '',
+        email: '',
+        phone: '',
+        brokerage_name: '',
+        id_picture: '',
+        real_estate_license: ''
+    }
+    let submitting = false
+    let error = false
     function submit(){
+        error = false
+        for(let k in agent){
+            if(!agent[k]){
+                error = true
+                return
+            }
+        }
+        submitting = true
         complete && complete(agent)
     }
 
@@ -47,7 +64,14 @@
     <UploadImage on:input={setLicense} />
     
 </div>
+{#if error}
+    <div class="error">
+        All fields are required
+    </div>
+{/if}
 
-<button class="btn" on:click={submit}>Submit Proof</button>
+<div class="center">
+    <button class="btn" class:disabled={submitting} on:click={submit}>{submitting ? 'Submitting...' : 'Submit Proof'}</button>
+</div>
 
 <style src="./dispute-form.scss"></style>

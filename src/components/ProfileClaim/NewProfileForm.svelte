@@ -16,7 +16,6 @@
     }
 
     function requestProfile(){
-        submitting = true
         error = false
         for(let k in agent){
             if(!agent[k]){
@@ -24,6 +23,7 @@
                 return
             }
         }
+        submitting = true
         complete && complete(agent)
     }
 </script>
@@ -56,7 +56,9 @@
     {#if error}
         <div class="error">All fields are required!</div>
     {/if}
-    <button class="btn" class:disabled={submitting} on:click={requestProfile}>{submitting ? 'Requesting...':'Request'}</button>
+    <div class="center">
+        <button class="btn" class:disabled={submitting} on:click={requestProfile}>{submitting ? 'Requesting...':'Request'}</button>
+    </div>
 </div>
 
 <style src="./new-profile-form.scss"></style>

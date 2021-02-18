@@ -6,7 +6,7 @@
         Commission,
         SocialMedia,
         About,
-        NavBar,
+        NavDashboard,
         AgentReview,
         ReviewForm,
         ImportFromZillow,
@@ -95,7 +95,7 @@
 </script>
 
 <section class="profile">
-    <NavBar />
+    <NavDashboard />
     <Loader show={loading} text="Load Profile..."/>
     {#if agent}
         <div class="profile-settings">

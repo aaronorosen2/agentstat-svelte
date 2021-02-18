@@ -26,3 +26,5 @@ export {default as ImportFromZillow} from './ProfileSettings/ImportFromZillow/Im
 
 export {default as ProfileClaim} from './ProfileClaim/ProfileClaim.svelte'
 export {default as NewProfileForm} from './ProfileClaim/NewProfileForm.svelte'
+
+export {default as NavDashboard} from './NavDashboard/NavDashboard.svelte'

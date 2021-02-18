@@ -77,7 +77,7 @@ export async function reClaimAgent(agent){
         },
         body: JSON.stringify(agent)
     }
-    await fetch(link('re-claim/'), options).then(res => res.json())
+    return await fetch(link('re-claim/'), options).then(res => res.json())
     
 }
 

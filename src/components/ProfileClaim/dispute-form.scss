@@ -15,6 +15,14 @@
         }
     }
 }
+.error {
+    font-size: 1rem;
+    padding: 1rem 0;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
 .btn{
     font-size: 1rem;
     font-weight: 500;
@@ -24,8 +32,18 @@
     &:hover {
         opacity: .9;
     }
+    &.disabled{
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
     background-color: var(--yellow-color);
     color: #333;
     font-size: 1.1rem;
     border: 2px solid #333;
+}
+
+@media(max-width: 480px) {
+    .dispute-form {
+        grid-template-columns: auto;
+    }
 }
