@@ -27,14 +27,18 @@
         max-width: var(--max-profile-width);
         display: flex;
         gap: 1rem;
-        a{
-            text-decoration: none;
-            color: #222;
-            font-weight: 500;
-            font-size: 1.1rem;
-            &:hover{
-                color: var(--yellow-color);
-            }
+    }
+    .links{
+        display: flex;
+        align-items: center;
+    }
+    a{
+        text-decoration: none;
+        color: #222;
+        font-weight: 500;
+        font-size: 1.1rem;
+        &:hover{
+            color: var(--yellow-color);
         }
     }
 
@@ -54,8 +58,13 @@
                 a {
                     display: block;
                     padding: 0 2rem;
+                    width: 100%;
                 }
             }
+        }
+        .links {
+            width: 100%;
+            align-items: stretch;
         }
 
         &--head {

@@ -1,5 +1,6 @@
 <script>
     import DropdownMenu from '../DropdownMenu/DropdownMenu.svelte'
+    import {currentUser} from '../../lib/api/auth'
     export let empty = false
     let navOpen = false
     function toggleNav(){
@@ -29,6 +30,7 @@
     </div>
 
     <div class="links" class:open={navOpen}>
+        <a href="/profile/{currentUser().agent_slug}" target="_blank">My Profile</a>
         <DropdownMenu />
     </div>
 </nav>
