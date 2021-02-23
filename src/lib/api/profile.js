@@ -75,4 +75,26 @@ export async function checkAgentConnect(url){
     return await fetch(link(`check-agent-connect/${user.web_agent_id}/`)).then(res => res.json())  
 }
 
+export async function fetchInbox(){
+    const user = currentUser()
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`
+        }
+    }
+    return await fetch(link('leads/?page=1'), options).then(res => res.json())  
+}
 
+export async function readMessage(id){
+    const user = currentUser()
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`
+        }
+    }
+    return await fetch(link(`read-message-status/${id}/`), options).then(res => res.json())  
+}

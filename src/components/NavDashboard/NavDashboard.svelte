@@ -30,7 +30,9 @@
     </div>
 
     <div class="links" class:open={navOpen}>
-        <a href="/profile/{currentUser().agent_slug}" target="_blank">My Profile</a>
+        {#if currentUser().agent_slug}
+            <a href="/profile/{currentUser().agent_slug}" target="_blank">My Profile</a>
+        {/if}
         <DropdownMenu />
     </div>
 </nav>
