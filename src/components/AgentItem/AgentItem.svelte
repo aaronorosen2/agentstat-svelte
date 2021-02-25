@@ -32,7 +32,7 @@
 
 <div class="agent">
     <div class="agent-img">
-        <img alt={agent.agent_full_name} src={agent.agent_image}/>
+        <img alt={agent.agent_full_name} src={agent.agent_profile_pic||agent.agent_image}/>
     </div>
     
     <div class="agent-body">

@@ -91,7 +91,7 @@
   });
 </script>
 
-<Notification show={$notif.show} msg={$notif.msg} />
+<Notification show={$notif.show} msg={$notif.msg} error={$notif.error} />
 <Modal />
 <main>
   <svelte:component this={active} {...props} />

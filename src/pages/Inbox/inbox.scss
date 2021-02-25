@@ -11,6 +11,8 @@
         background: #fff;
         margin: 0 auto;
         .tabs {
+            width: 20rem;
+            flex-shrink: 0;
             max-height: 90vh;
             overflow-y: auto;
             border-right: 1px solid #ccc;
@@ -54,6 +56,9 @@
     .inbox {
         .container{
             display: block;
+            .tabs{
+                width: 100%;
+            }
             .details{
                 display: none;
             }

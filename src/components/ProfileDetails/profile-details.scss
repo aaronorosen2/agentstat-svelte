@@ -3,9 +3,33 @@
     flex: auto;
     gap: 2rem;
     align-items: center;
-    img{
-        width: 6rem;
-        height: 6rem;
+    h2, p {
+        margin: 0;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    .edit {
+        margin: 0.5rem 0;
+    }
+    a, .link {
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--blue-color);
+        font-weight: 500;
+    }
+    .link{
+        font-weight: 400;
+    }
+    img {
+        width: 10rem;
+        height: 10rem;
         border-radius: 50%;
+    }
+    .review {
+        margin: 0.5rem 0;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
     }
 }

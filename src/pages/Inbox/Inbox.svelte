@@ -6,15 +6,21 @@
     } from '../../components'
     import Util from '../../lib/util'
     import {fetchInbox, readMessage} from '../../lib/api/profile'
+    import {profileNotif} from '../../stores/notif'
+
     let leads = []
     let selected_lead 
     let loading = false
     let error = false
+    let page = 1
+
     async function fetchInboxLeads(){
         loading = true
         try {
-            leads = await fetchInbox()
-            selected_lead = leads && leads[0]
+            leads = await fetchInbox(page)
+            if(leads && leads[0]){
+                selectLead(leads[0])
+            }
         }catch{
             error = true
         }
@@ -25,11 +31,27 @@
         selected_lead = lead
         if(!lead.is_read){
             lead.is_read = 1
+            if($profileNotif.inbox)
+                $profileNotif.inbox -= 1;
             leads = leads
             let res = await readMessage(lead.id)
-            console.log("READ MESSAGE! ", res)
         }
     }
+
+    let stopScroll = false
+    async function scrollTabs(e){
+        if(stopScroll) return
+        let elm = e.currentTarget
+        if (elm.offsetHeight + elm.scrollTop + 10 >= elm.scrollHeight) {
+            stopScroll = true
+            page++
+            let res = await fetchInbox(page)
+            if(Array.isArray(res)){
+                stopScroll = false
+            }
+        }
+    }
+
 
     fetchInboxLeads()
 </script>
@@ -41,7 +63,7 @@
         <div class="error">Error occured while fetching inbox, please try again later</div>
     {:else}
         <div class="container">
-            <div class="tabs">
+            <div class="tabs" on:scroll={scrollTabs}>
                 {#each leads as lead}
                     <div class="tab" class:read={lead.is_read} class:selected={lead == selected_lead} on:click={() => selectLead(lead)}>
                         <div class="flex">

@@ -35,10 +35,6 @@
 
 </script>
 
-<style src="./profile.scss">
-
-</style>
-
 <NavBar />
 
 {#if error}
@@ -58,3 +54,6 @@
     <TransactionTable list={agent.agent_lists} />
   {/if}
 </section>
+
+<style src="./profile.scss">
+</style>

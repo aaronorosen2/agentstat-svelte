@@ -27,6 +27,26 @@
         max-width: var(--max-profile-width);
         display: flex;
         gap: 1rem;
+        a {
+            position: relative;
+            .notif-badge {
+                width: 20px;
+                height: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: red;
+                color: white;
+                font-weight: 500;
+                border-radius: 10px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 0.8rem;
+                margin-top: -10px;
+                margin-right: -10px;
+            }
+        }
     }
     .links{
         display: flex;

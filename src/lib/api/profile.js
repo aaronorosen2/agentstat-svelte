@@ -29,17 +29,19 @@ export async function saveProfileSettings(agent){
 }
 
 
-export async function agentReview(){
+export async function agentReview(id=null){
     const user = currentUser()
-    if(!user || !user.agent_id) return 
+    if(!id && (!user || !user.agent_id)) return 
+    if(!id){
+        id = user.agent_id
+    }
     const options = {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Token ${user.token}`
+            'Content-Type': 'application/json'
         }
     }
-    return await fetch(link(`review/${user.agent_id}/`), options).then(res => res.json())
+    return await fetch(link(`review/${id}/`), options).then(res => res.json())
 }
 
 export async function addAgentReview(review){
@@ -75,7 +77,7 @@ export async function checkAgentConnect(url){
     return await fetch(link(`check-agent-connect/${user.web_agent_id}/`)).then(res => res.json())  
 }
 
-export async function fetchInbox(){
+export async function fetchInbox(page){
     const user = currentUser()
     const options = {
         method: 'GET',
@@ -84,7 +86,7 @@ export async function fetchInbox(){
             Authorization: `Token ${user.token}`
         }
     }
-    return await fetch(link('leads/?page=1'), options).then(res => res.json())  
+    return await fetch(link(`leads/?page=${page}`), options).then(res => res.json())  
 }
 
 export async function readMessage(id){
@@ -97,4 +99,16 @@ export async function readMessage(id){
         }
     }
     return await fetch(link(`read-message-status/${id}/`), options).then(res => res.json())  
+}
+
+export async function fetchNotifs(){
+    const user = currentUser()
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`
+        }
+    }
+    return await fetch(link(`unread-notification/`), options).then(res => res.json())  
 }
