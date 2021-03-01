@@ -7,6 +7,8 @@
     import Util from '../../lib/util'
     import {fetchInbox, readMessage} from '../../lib/api/profile'
     import {profileNotif} from '../../stores/notif'
+    import {onMount} from 'svelte'
+    import { showOnboarding } from '../../stores/modal'
 
     let leads = []
     let selected_lead 
@@ -54,6 +56,7 @@
 
 
     fetchInboxLeads()
+    onMount(() => showOnboarding('inbox'))
 </script>
 
 <NavDashboard />

@@ -4,11 +4,12 @@
   import {
     Home,
     Profile,
-    Login,
+	Login,
     VerifyEmail,
     ProfileSettings,
 	ConnectProfile,
-	Inbox
+	Inbox,
+	Reports
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
@@ -81,6 +82,19 @@
       return;
     }
     active = Inbox;
+    props = {};
+  });
+  
+  page("/reports", ctx => {
+    if (!isAuthenticated()) {
+      page.redirect("/login");
+      return;
+	}
+	if (!currentUser().agent_id) {
+      page.redirect("/connect-profile");
+      return;
+    }
+    active = Reports;
     props = {};
   });
 

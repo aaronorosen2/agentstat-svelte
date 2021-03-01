@@ -14,10 +14,10 @@
     } from '../../components'
 
     import { show as showNotif } from '../../stores/notif'
-    import { modal } from '../../stores/modal'
+    import { modal, showOnboarding } from '../../stores/modal'
     import { setCurrentUserPic } from '../../lib/api/auth'
     import { agentProfile, saveProfileSettings, agentReview, syncZillowReview } from '../../lib/api/profile'
-    
+    import { onMount } from 'svelte'
 
     let agent
     let agent_review
@@ -92,6 +92,9 @@
     }
 
     initProfile()
+
+    onMount(() => showOnboarding('profile'))
+
 </script>
 
 <section class="profile">

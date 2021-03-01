@@ -32,7 +32,6 @@
       fetchAgentDetails()
   }
 
-
 </script>
 
 <NavBar />

@@ -28,5 +28,8 @@ export {default as ProfileClaim} from './ProfileClaim/ProfileClaim.svelte'
 export {default as NewProfileForm} from './ProfileClaim/NewProfileForm.svelte'
 
 export {default as NavDashboard} from './NavDashboard/NavDashboard.svelte'
-
 export {default as InboxDetails} from './Dashboard/InboxDetails.svelte'
+
+export {default as TrafficReport} from './Reports/TrafficReport.svelte'
+export {default as LeadsReport} from './Reports/LeadsReport.svelte'
+export {default as ReferralsReport} from './Reports/ReferralsReport.svelte'

@@ -2,6 +2,7 @@
     import {modal} from '../../stores/modal'
 
     function close(){
+        $modal.close && $modal.close()
         $modal = {show: false}
     }
 </script>
