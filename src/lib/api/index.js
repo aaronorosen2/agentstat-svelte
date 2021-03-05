@@ -1,5 +1,6 @@
 import {link} from '../env'
 import { currentUser, setUser } from './auth'
+import Tracker from './tracker'
 
 function uparam(attr, val, andPre= true){
     if(!val) return ""
@@ -33,6 +34,8 @@ export async function fetchAgents(filter){
     )
         
     let res = await fetch(url).then(res => res.json())
+    if(res && res.results)
+        Tracker.agentProfileImpressionTrack(res.results.map(r => r.agent_id))
     return res
 }
 
@@ -82,7 +85,10 @@ export async function reClaimAgent(agent){
 }
 
 export async function agentDetails(name){
-    return await fetch(link('agents/'+name)).then(res => res.json())
+    let res = await fetch(link('agents/'+name)).then(res => res.json())
+    if(res)
+        Tracker.agentProfileViewTrack(res.id)
+    return res
 }
 
 export async function agentScores(name, duration=36){
@@ -90,11 +96,18 @@ export async function agentScores(name, duration=36){
 }
 
 export async function submitLead(data){
-    return await fetch(link('lead/'), {
+    let res =  await fetch(link('lead/'), {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'POST', 
         body: JSON.stringify(data)
     }).then(res => res.json())
+
+    // track lead
+    if(res){
+        let ifBoth = data.looking_for == 'Both'
+        Tracker.saveLeadTracking(data, ifBoth)
+    }
+    return res
 }

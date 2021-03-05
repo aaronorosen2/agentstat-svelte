@@ -3,7 +3,8 @@ export const chartOptions = (props) => {
     const customSize = window.innerWidth > 770 ? window.innerWidth/2-200 : window.innerWidth-100;
     const options = {
       chart: {
-        width: customSize>600 ? 600 : customSize,
+        width: '100%', //customSize>600 ? 600 : customSize,
+        height: 220,
         type: 'bar',
         toolbar: {
           show: false,
@@ -49,7 +50,7 @@ export const chartOptions = (props) => {
           show: true,
         },
         axisBorder: {
-          show: false,
+          show: true,
         },
         tooltip: {
           enabled: false,

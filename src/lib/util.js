@@ -12,13 +12,13 @@ function nth(d) {
 
 function formatAMPM(timedate) {
 	const date = new Date(timedate);
-	var hours = date.getHours();
-	var minutes = date.getMinutes();
-	var ampm = hours >= 12 ? 'PM' : 'AM';
+	let hours = date.getHours();
+	let minutes = date.getMinutes();
+	let ampm = hours >= 12 ? 'PM' : 'AM';
 	hours = hours % 12;
 	hours = hours ? hours : 12;
 	minutes = minutes < 10 ? '0'+minutes : minutes;
-	var strTime = hours + ':' + minutes + ' ' + ampm;
+	let strTime = hours + ':' + minutes + ' ' + ampm;
 	return strTime;
 }
 
@@ -27,16 +27,15 @@ export default {
         const fortnightAway = new Date(timedate);
         const date = fortnightAway.getDate();
         const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][fortnightAway.getMonth()];
-    
+        let cdate
         if (withyear) {
-            var cdate = `${month} ${date}${nth(date)}, ${fortnightAway.getFullYear()}`;
+            cdate = `${month} ${date}${nth(date)}, ${fortnightAway.getFullYear()}`;
         } else {
-            var cdate = `${month} ${date}${nth(date)}`;
+            cdate = `${month} ${date}${nth(date)}`;
         }
         return cdate;
     },
     niceDateTime(timedate) {
-        var datetime = `${this.niceDate(timedate)} at ${formatAMPM(timedate)}`;
-        return datetime; 
-    }
+        return  `${this.niceDate(timedate)} at ${formatAMPM(timedate)}`;
+    } 
 }

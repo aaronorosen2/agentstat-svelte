@@ -1,12 +1,47 @@
 <script>
-    import {NavDashboard , TrafficReport, LeadsReport, ReferralsReport} from '../../components'
-    let selected = 'traffic'
+    import {NavDashboard , ReportDetails, Loader} from '../../components'
+    import {trackReport} from '../../lib/api/reports'
+    import ReportUtil from '../../lib/report'
 
+    let selected = 'traffic'
     function selectReport(e){
         selected = e.currentTarget.innerText.toLowerCase()
     }
+
+   
+    let report = {}
+    let traffics = []
+    let leads = []
+    let loading = false
+    
+
+
+    async function fetchReport(evt){
+        loading = true
+        let days = evt ? evt.detail : ReportUtil.getFilter()
+        ReportUtil.setFilter(days)
+        let filter = {
+            days,
+            ...ReportUtil.getStartEndDate(days)
+        }
+        let res = await trackReport(filter)
+        report = res
+        traffics = [
+            {name: 'Impressions',...res.traffic_impression},
+            {name: 'Profile Views',...res.traffic_profile}
+        ]
+        leads = [
+            {name: 'Seller Leads',...res.lead_seller},
+            {name: 'Buyer Leads',...res.lead_buyer}
+        ]
+        loading = false
+    }
+
+
+    fetchReport()
 </script>
 
+<Loader show={loading} text="Loading Reports ... " />
 <NavDashboard />
 
 <section class="reports">
@@ -19,11 +54,11 @@
 
 <section class="container">
     {#if selected == 'traffic'}
-        <TrafficReport />
+        <ReportDetails reports={traffics} on:filter={fetchReport} />
     {:else if selected == 'leads'}
-        <LeadsReport />
+        <ReportDetails reports={leads} on:filter={fetchReport} />
     {:else if selected == 'referrals'}
-        <ReferralsReport />
+        <h1>Coming Soon</h1>
     {/if}
 </section>
 

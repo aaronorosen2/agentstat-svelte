@@ -14,6 +14,7 @@
                 font-weight: 600;
                 font-size: 1.1rem;
                 border: 1px solid #555;
+                border-radius: 0.5rem;
                 cursor: pointer;
                 .num {
                     margin: 0.5rem 0 0 0;
@@ -30,7 +31,9 @@
         gap: 1rem;
         padding: 2rem 0;
         .location{
-            border: 1px solid #555;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
             font-size: 1.1rem;
             width: 50%;
             .title{
@@ -48,8 +51,16 @@
         }
         .charts{
             margin: 0 auto;
+            width: 50%;
+
             h3{
                 margin: 0;
+            }
+            >div {
+                border: 1px solid #ccc;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                margin: 1rem 0;
             }
         }
     }
@@ -62,7 +73,7 @@
         }
         .stat{
             flex-direction: column;
-            .location{
+            .location, .charts{
                 width: 100%;
                 margin-bottom: 1rem;
             }
