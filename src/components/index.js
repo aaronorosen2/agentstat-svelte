@@ -31,3 +31,5 @@ export {default as NavDashboard} from './NavDashboard/NavDashboard.svelte'
 export {default as InboxDetails} from './Dashboard/InboxDetails.svelte'
 
 export {default as ReportDetails} from './Reports/ReportDetails.svelte'
+
+export {default as PartnerLeads} from './Marketing/PartnerLeads.svelte'

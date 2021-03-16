@@ -4,12 +4,13 @@
   import {
     Home,
     Profile,
-	Login,
+    Login,
     VerifyEmail,
     ProfileSettings,
-	ConnectProfile,
-	Inbox,
-	Reports
+    ConnectProfile,
+    Inbox,
+    Reports,
+    Marketing
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
@@ -76,25 +77,38 @@
     if (!isAuthenticated()) {
       page.redirect("/login");
       return;
-	}
-	if (!currentUser().agent_id) {
+    }
+    if (!currentUser().agent_id) {
       page.redirect("/connect-profile");
       return;
     }
     active = Inbox;
     props = {};
   });
-  
+
   page("/reports", ctx => {
     if (!isAuthenticated()) {
       page.redirect("/login");
       return;
-	}
-	if (!currentUser().agent_id) {
+    }
+    if (!currentUser().agent_id) {
       page.redirect("/connect-profile");
       return;
     }
     active = Reports;
+    props = {};
+  });
+  
+  page("/marketing", ctx => {
+    if (!isAuthenticated()) {
+      page.redirect("/login");
+      return;
+    }
+    if (!currentUser().agent_id) {
+      page.redirect("/connect-profile");
+      return;
+    }
+    active = Marketing;
     props = {};
   });
 

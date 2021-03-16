@@ -2,6 +2,8 @@
     import {NavDashboard , ReportDetails, Loader} from '../../components'
     import {trackReport} from '../../lib/api/reports'
     import ReportUtil from '../../lib/report'
+    import {onMount} from 'svelte'
+    import {showOnboarding} from '../../stores/modal'
 
     let selected = 'traffic'
     function selectReport(e){
@@ -39,6 +41,7 @@
 
 
     fetchReport()
+    onMount(() => showOnboarding('reports'))
 </script>
 
 <Loader show={loading} text="Loading Reports ... " />

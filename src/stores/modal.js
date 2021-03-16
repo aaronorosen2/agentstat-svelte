@@ -51,6 +51,22 @@ export function showOnboarding(section){
                 }
             }  
             break;
+        
+        case 'reports':
+            onbData = {
+                title: 'Reporting',
+                props: {
+                    msg: 'Track impressions and leads by demographic',
+                    steps: [
+                        'Location',
+                        'Time',
+                        'Property Type',
+                        'Price Point',
+                        'Buyer/Seller',
+                    ]
+                }
+            }  
+            break;
 
         default:
             break;

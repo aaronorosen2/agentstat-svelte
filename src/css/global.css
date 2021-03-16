@@ -138,3 +138,20 @@ button:focus {
 input:focus, textarea:focus, select:focus{
 	outline: none;
 }
+
+.btn{
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: #fff;
+	background-color: var(--dark-blue);
+	cursor: pointer;
+	padding: 0.5rem 2rem;
+	border-radius: 0.5rem;
+}
+.btn:hover{
+	opacity: .9;
+}
+.btn.disabled{
+	opacity: 0.5;
+	cursor: not-allowed;
+}
