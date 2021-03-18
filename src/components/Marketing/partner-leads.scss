@@ -84,6 +84,17 @@
             padding: 1rem 0;
         }
     }
+    .check-list{
+        font-size: 1.1rem;
+        ul, li {
+            list-style: none;
+            line-height: 2;
+        }
+        i {
+            color: #5dae48;
+            margin-right: 0.5rem;
+        }
+    }
 }
 
 @media (max-width: 1236px){

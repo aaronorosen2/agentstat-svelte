@@ -112,3 +112,15 @@ export async function fetchNotifs(){
     }
     return await fetch(link(`unread-notification/`), options).then(res => res.json())  
 }
+
+
+export async function currentAgentDetails(){
+    const user = currentUser()
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    return await fetch(link(`agents/${user.agent_id}/`), options).then(res => res.json())  
+}

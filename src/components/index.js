@@ -10,6 +10,7 @@ export {default as ContactLead} from './ContactLead/ContactLead.svelte'
 export {default as Loader} from './Loader/Loader.svelte'
 export {default as LoginForm} from './LoginForm/LoginForm.svelte'
 export {default as DropdownMenu} from './DropdownMenu/DropdownMenu.svelte'
+export {default as Alert} from './Alert/Alert.svelte'
 
 export {default as Notification} from './Notification/Notification.svelte'
 export {default as Modal} from './Modal/Modal.svelte'
@@ -33,3 +34,4 @@ export {default as InboxDetails} from './Dashboard/InboxDetails.svelte'
 export {default as ReportDetails} from './Reports/ReportDetails.svelte'
 
 export {default as PartnerLeads} from './Marketing/PartnerLeads.svelte'
+export {default as LandingPages} from './Marketing/LandingPages.svelte'

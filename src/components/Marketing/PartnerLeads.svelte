@@ -2,6 +2,7 @@
     export let data  = {}
     import {saveMarketingPartner} from '../../lib/api/marketing'
     import {show as showNotif} from '../../stores/notif'
+    import Alert from '../Alert/Alert.svelte'
 
     let saving = false
 
@@ -14,6 +15,7 @@
 </script>
 
 <div class="leads-form">
+    <Alert msg="This is not a contract to buy leads or referrals. This is to notify referring agents and/or companies that you are interested in receiving lead/referrals, and what you are willing to compensate them." />
     <div class="table">
         <div class="head">
             Leads
@@ -137,6 +139,39 @@
         <div class="msg">* This information is NOT displayed on your public profile, and will only be visible to industry professionals.</div>
         <button class="btn" on:click={save} class:disabled={saving}>Make it rain</button>
     </div>
+
+    <div class="check-list">
+        <h1>Receive Leads and Referrals</h1>
+        <ul class="list">
+            <li>
+                <i class="fas fa-check-circle"></i>
+                Get more referrals. Get more leads.
+            </li>
+            <li>
+                <i class="fas fa-check-circle"></i>
+                Stand out as the top referral agent in your city.
+            </li>
+            <li>
+                <i class="fas fa-check-circle"></i>
+                For Example:
+                <ul class="sublist">
+                    <li>
+                        <b>- How it works:</b> Referring agents will not only be able to sort and filter by stats, but by the compensation offered. Be at the top of that list.
+                    </li>
+                    <li>
+                        <b>- Need more business?</b> Increase what you are willing to pay to incentivise referring professionals to choose you.
+                    </li>
+                    <li>
+                        <b>- Maximize your referral income</b> Pick the top producing agent that offers the most for your referral! (Coming soon to the Referrals tab)
+                    </li>
+                    <li>
+                        <b>- More leads:</b> Agents, teams, and companies often have excess leads they can't handle. Let them know what you are willing to pay for them.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
+
 
 <style src="./partner-leads.scss"></style>

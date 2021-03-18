@@ -6,7 +6,7 @@
   export let perPage;
   let arr_pages = [];
 
-  $: num_pages = Math.floor(numItems / perPage);
+  $: num_pages = Math.ceil(numItems / perPage);
 
   function buildArr(c, n) {
     if (n <= 7) {
@@ -34,7 +34,7 @@
   }
 
   $: if (numItems) {
-    num_pages = Math.round(numItems / perPage);
+    num_pages = Math.ceil(numItems / perPage);
     setArrPages();
     current = current || 1;
   }

@@ -1,0 +1,52 @@
+.landing-pages{
+    padding: 2rem;
+    .container{
+        .link{
+            font-weight: 700;
+            color: var(--blue-color);
+            cursor: pointer;
+            padding: 0.7rem 0;
+            outline: none;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            th {
+                background: #eee;
+            }
+            td, th{
+                text-align: center;
+                padding: 1rem;
+                border: 1px solid #ccc;
+            }
+    
+        }
+    }
+    .paginate{
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .check-list{
+        font-size: 1.1rem;
+        ul, li {
+            list-style: none;
+            line-height: 2;
+        }
+        i {
+            color: #5dae48;
+            margin-right: 0.5rem;
+        }
+    }
+}
+
+@media (max-width: 1080px){
+    .landing-pages{
+        .container{
+            overflow-x: scroll;
+            table{
+                width: 1080px;
+            }
+        }
+    }
+}
