@@ -14,7 +14,7 @@
 
     $: links = customLinks.custom_links.slice(offset, offset+limit)
 
-    const prefix = `https://agentstat.com/${customLinks.agent_screen_name}`
+    const prefix = `/profile/${customLinks.agent_screen_name}`
 
     function link(cl){
         return `${prefix}/${cl.slug}`
@@ -87,7 +87,7 @@
                 {#each links as cl}
                     <tr>
                         <td>{Util.niceDate(cl.created_at)}</td>
-                        <td><a target="_blank" href={link(cl)}>{link(cl)}</a></td>
+                        <td><a target="_blank" href={link(cl)}>https://agentstat.com{link(cl)}</a></td>
                         <td>{cl.street_address}, {cl.address_city}, {cl.address_zipcode}, {cl.property_type}</td>
                         <td>{cl.total_view}</td>
                         <td>{cl.contact_request}</td>
@@ -100,7 +100,7 @@
 
         <div class="paginate">
             {#if customLinks.custom_links.length>limit}
-                <Pagination perPage={limit} numItems={customLinks.custom_links.length+1} bind:current />
+                <Pagination perPage={limit} numItems={customLinks.custom_links.length} bind:current />
             {/if}
         </div>
     </div>

@@ -1,7 +1,7 @@
 <script>
-    import {NavDashboard , PartnerLeads, LandingPages, Loader} from '../../components'
+    import {NavDashboard , PartnerLeads, LandingPages, AmbassadorProgram, Loader} from '../../components'
     import {marketingPartner, marketingCustomLinks} from '../../lib/api/marketing'
-    import {currentAgentDetails} from '../../lib/api/profile'
+    import {currentAgentDetails, agentProfile} from '../../lib/api/profile'
     
     import {onMount} from 'svelte'
     import {showOnboarding} from '../../stores/modal'
@@ -15,6 +15,7 @@
 
     let data = {}
     let agent = {}
+    let agentPf = {}
     async function getMPartner(){
         loading = true
         data = await marketingPartner()
@@ -28,12 +29,14 @@
 
     async function getAgentDetails(){
         agent = await currentAgentDetails()
+        agentPf = await agentProfile()
     }
 
 
     getMPartner()
     getCustomLinks()
     getAgentDetails()
+    onMount(() => showOnboarding('marketing'))
 </script>
 
 <Loader show={loading} text="Loading Information ... " />
@@ -54,9 +57,9 @@
     {:else if selected == 'landing pages'}
         <LandingPages {customLinks} cities={agent.cities} />
     {:else if selected == 'facebook ads'}
-        <h1>Coming Soon</h1>
+        <h1 class="center">Coming Soon</h1>
     {:else if selected == 'ambassador program'}
-        <h1>Ambassador</h1>
+        <AmbassadorProgram agent={agentPf} />
     {/if}
 </section>
 

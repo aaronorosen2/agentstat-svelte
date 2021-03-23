@@ -67,6 +67,16 @@ export function showOnboarding(section){
                 }
             }  
             break;
+        
+        case 'marketing':
+            onbData = {
+                title: 'Marketing',
+                props: {
+                    msg: 'Generate unique landing pages to capture future sellers and track the results. (Facebook Ad integration coming soon)',
+                    steps: []
+                }
+            }  
+            break;
 
         default:
             break;

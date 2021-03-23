@@ -8,9 +8,10 @@
     ContactLead,
     Loader
   } from "../../components";
-  import { agentDetails } from "../../lib/api";
+  import { agentDetails, agentCustomLink } from "../../lib/api";
   
   export let name;
+  export let custom = null;
   let agent;
   let error;
 
@@ -27,6 +28,13 @@
     loading = false;
   }
 
+  async function fetchCustomLink(){
+    await agentCustomLink(name,custom)
+  }
+
+  if(custom){
+    fetchCustomLink()
+  }
 
   $: if (name){
       fetchAgentDetails()

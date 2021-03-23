@@ -1,7 +1,6 @@
 <script>
     import Stars from '../Stars/Stars.svelte'
     import ReviewDetails from './ReviewDetails.svelte'
-    export let agent
     import {agentReview} from '../../lib/api/profile'
     import {modal} from '../../stores/modal'
     import {currentUser, setUser} from '../../lib/api/auth'
@@ -11,6 +10,7 @@
     import DisputeForm from '../ProfileClaim/DisputeForm.svelte'
     import {claimAgent, reClaimAgent} from '../../lib/api'
 
+    export let agent
 
     let loading = true
     let agent_review
@@ -33,7 +33,6 @@
     }
 
     async function reClaim(agent, data){
-        let reclaimed_profile = false
         let reclaimed_profile_error = false
         let user = currentUser()
         data.agent_profile_connector = agent.id
@@ -50,7 +49,6 @@
         }catch{
             reclaimed_profile_error = true
         }
-        reclaimed_profile = true
         let msg = reclaimed_profile_error ? 
                         'Error occured while submitting your data, Please try again later!':
                         'We will review your dispute and get back to you within 48 hours'
@@ -102,7 +100,7 @@
 
 <div class="profile-details">
     
-    <img src={agent.picture || '/images/agent.png'} alt="not found" >
+    <img src={agent.picture || agent.s3_image || '/images/agent.png'} alt="not found" >
     
     <div class="info">
         <h2>{agent.full_name}</h2>

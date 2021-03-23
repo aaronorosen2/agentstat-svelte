@@ -13,8 +13,31 @@
         return str.replace(/ /g,"-");
     }
 
-    let saving = false
+    let saving = false,
+    error_city, error_address, error_zipcode, error_property
+
+    function validInput(){
+        error_address = error_city = error_zipcode = error_property = false
+        if(!data.address_city){
+            error_city = true
+        }
+        if(opt == 1){
+            if(!data.street_address){
+                error_address = true
+            }
+            if(!data.address_zipcode){
+                error_zipcode = true
+            }
+        }
+        if(!data.property_type){
+            error_property = true
+        }
+        return !(error_zipcode||error_address||error_city||error_property)
+    }
+
     async function save(){
+        if(saving) return
+        if(!validInput()) return
         saving = true
         data.slug = `${data.street_address}-${data.address_city}-${data.address_zipcode}`
         if(opt == 2){
@@ -49,15 +72,15 @@
                         Search Using address
                     </label>
                     <div class="inputs">
-                        <input class="full" placeholder="Street address" bind:value={data.street_address}>
+                        <input class="full" placeholder="Street address" class:err={error_address} bind:value={data.street_address}>
                         <div class="grp">
-                            <select bind:value={data.address_city}>
+                            <select class:err={error_city&&opt==1} bind:value={data.address_city}>
                                 <option value=''>Select City</option>
                                 {#each cities as city}
                                     <option>{city}</option>
                                 {/each}
                             </select>
-                            <input placeholder="Zipcode" bind:value={data.address_zipcode}>
+                            <input placeholder="Zipcode" bind:value={data.address_zipcode} class:err={error_zipcode}>
                         </div>
                     </div>
                     <label class="option">
@@ -65,7 +88,7 @@
                         Search Using city
                     </label>
                     <div class="inputs">
-                        <select class="full" bind:value={data.address_city}>
+                        <select class:err={error_city&&opt==2} class="full" bind:value={data.address_city}>
                             <option>Select City</option>
                             {#each cities as city}
                                 <option>{city}</option>
@@ -77,8 +100,8 @@
             <div class="step">
                 <div class="title">2. Select your filters</div>
                 <label class="label">Property Type</label>
-                <select class="full" bind:value={data.property_type}>
-                    <option value="">Select Type</option>
+                <select class="full" bind:value={data.property_type} class:err={error_property}>
+                    <option value=''>Select Type</option>
                     <option>Single Family</option>
                     <option>Condo</option>
                     <option>Townhouse</option>

@@ -95,6 +95,10 @@ export async function agentScores(name, duration=36){
     return await fetch(link(`agent_scores/${name}/?time_duration=${duration}`)).then(res => res.json())
 }
 
+export async function agentCustomLink(name, custom){
+    return await fetch(link(`custom-link/${name}/${custom}`)).then(res => res.json())
+}
+
 export async function submitLead(data){
     let res =  await fetch(link('lead/'), {
         headers: {

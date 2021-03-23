@@ -41,6 +41,11 @@
     active = Profile;
     props = ctx.params;
   });
+  page("/profile/:name/:custom", ctx => {
+    active = Profile;
+    props = ctx.params;
+  });
+
   page("/verify-email/:key", ctx => {
     active = VerifyEmail;
     props = ctx.params;
