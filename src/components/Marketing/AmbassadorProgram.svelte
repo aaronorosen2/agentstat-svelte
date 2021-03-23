@@ -5,7 +5,7 @@
         onboarded_agents: []            
     }
 
-    let limit = 2
+    let limit = 10
     let current = 1
     $: offset = (current-1)*limit
 
