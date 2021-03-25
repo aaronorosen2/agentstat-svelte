@@ -16,11 +16,10 @@
 
     let transaction = {}
     async function getTransactions(){
+        loading = true
         transaction = await salesTransactions()
+        loading = false
     }
-
-    let data = {}
-    let agent = {} 
     
     async function getAgentDetails(){
         agent = await agentProfile()
@@ -31,7 +30,7 @@
     onMount(() => showOnboarding('sales'))
 </script>
 
-<Loader show={loading} text="Loading Information ... " />
+<Loader show={loading} text="Loading Sales ... " />
 <NavDashboard />
 
 <section>
