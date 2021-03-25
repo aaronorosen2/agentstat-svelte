@@ -36,3 +36,6 @@ export {default as ReportDetails} from './Reports/ReportDetails.svelte'
 export {default as PartnerLeads} from './Marketing/PartnerLeads.svelte'
 export {default as LandingPages} from './Marketing/LandingPages.svelte'
 export {default as AmbassadorProgram} from './Marketing/AmbassadorProgram.svelte'
+
+export {default as PastSalesTable} from './Sales/PastSalesTable.svelte'
+export {default as ActiveSalesTable} from './Sales/ActiveSalesTable.svelte'

@@ -5,7 +5,7 @@
 
 <div class="popup-msg">
     <p>
-        {msg}
+        {@html msg}
     </p>
     {#if steps}
         <ul>

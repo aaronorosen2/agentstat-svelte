@@ -145,8 +145,12 @@ input:focus, textarea:focus, select:focus{
 	color: #fff;
 	background-color: var(--dark-blue);
 	cursor: pointer;
-	padding: 0.5rem 2rem;
+	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
+}
+.btn.btn-yellow{
+	background-color: var(--yellow-color);
+	color: #212529;
 }
 .btn:hover{
 	opacity: .9;

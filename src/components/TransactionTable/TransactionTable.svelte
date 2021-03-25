@@ -2,8 +2,13 @@
     import Pagination from '../Pagination/Pagination.svelte'
     import SearchInput from '../SearchInput/SearchInput.svelte'
     import SortIcon from '../Icons/Sort.svelte'
+    import TransactionForm from './TransactionForm.svelte'
     import Fuse from 'fuse.js'
-
+    import {saveTransactionNote, salesTransactions} from '../../lib/api/sales'
+    import {currentUser} from '../../lib/api/auth'
+    import {show as showNotif} from '../../stores/notif'
+    import {modal} from '../../stores/modal'
+    export let editable = false
     export let list // agent_list
     let searchVal
 
@@ -14,6 +19,55 @@
     $: offset = (current-1)*limit
 
     $: transactions = filter_list.slice( offset , offset+limit)
+
+    // --- EDITABLE -- 
+    let saving = false
+    async function saveNote(tr){
+        if(saving) return
+        saving = true
+        await saveTransactionNote({
+            agent_list: String(tr.id),
+            agent_profile_id: String(currentUser().profile_id),
+            note: tr.note
+        })
+        saving = false
+        showNotif("Transaction Note Updated") 
+
+    }
+
+    async function getTransactions(data){
+        showNotif(`Transaction ${data.new ? 'Created': 'Updated'} Successfully`)
+        $modal = {show: false}
+        const transaction = await salesTransactions()
+        filter_list = transaction.agent_lists
+    }
+
+    function reloadList(data){
+        getTransactions(data)
+    }
+
+    function addTransaction(){
+        $modal = {
+            show: true,
+            cmp: TransactionForm,
+            complete: (data) => reloadList(data),
+            title: 'Add Transaction',
+            props: {
+            }
+        }
+    }
+    
+    function editTransaction(){
+        $modal = {
+            show: true,
+            cmp: TransactionForm,
+            complete: (data) => reloadList(data),
+            title: 'Edit Transaction',
+            props: {tr: {...selected}}
+        }
+    }
+
+    // END EDITABLE
 
     function currencyFormat(num) {
         if(!num) return '-'
@@ -64,7 +118,8 @@
         city: "City",
         zipcode: "Zip",
         year_built: "Built",
-        home_type: "Home Type"
+        home_type: "Home Type",
+        notes: "Notes"
     }
 
     const fuse = new Fuse(list, {
@@ -101,6 +156,10 @@
     let selected 
 
     function select(tr){
+        if(selected == tr){
+            selected = null
+            return 
+        }
         selected = tr
     }
 
@@ -112,8 +171,12 @@
 
 <div class="transactions">
     <div class="search">
-        <h1>All Transactions</h1>
-        <div>
+        {#if editable}
+            <div class="link" on:click={addTransaction}>+ Add transaction</div>
+        {:else}
+            <h1>All Transactions</h1>
+        {/if}
+        <div class="input">
             <SearchInput placeholder="Search" bind:value={searchVal} />
         </div>
     </div>
@@ -140,13 +203,46 @@
                         <td>{tr.zipcode}</td>
                         <td>{tr.year_built}</td>
                         <td>{homeType(tr)}</td>
+                        <td>
+                            {#if tr.note && !editable}
+                                <i class="icon far fa-sticky-note"></i>
+                            {/if}
+                            {#if editable}
+                                {#if tr.note}
+                                    <div role="button" class="btn btn-yellow"> 
+                                        <i class="fas fa-edit"></i>
+                                        Edit note
+                                    </div>
+                                {:else}
+                                    <div role="button" class="btn">
+                                        <i class="fas fa-plus"></i>
+                                        Add note
+                                    </div>
+                                {/if}
+                            {/if}
+                        </td>
                     </tr>
                     {#if selected == tr}
                         <tr>
-                            <td class="no-p" colspan="10">
+                            <td class="no-p" colspan="11">
                                 <div class="details">
                                     <i class="fas fa-times close" on:click={unselect}></i>
-                                    <div class="title">{tr.address_text}</div>
+                                    {#if editable}
+                                        <button class="btn" class:disabled={saving} on:click={() => saveNote(tr)}>Save</button>
+                                        <textarea bind:value={tr.note} placeholder="Type your note" rows="5"></textarea>
+                                    {:else}
+                                        {#if tr.note}
+                                            <p class="note">
+                                                <b>Note:</b> {tr.note}
+                                            </p>
+                                        {/if}
+                                    {/if}
+                                    <div class="title">
+                                        {tr.address_text}
+                                        {#if editable}
+                                            <button class="btn" on:click={editTransaction}>Edit</button>
+                                        {/if}
+                                    </div>
                                     <div class="flex">
                                         <div class="flex">
                                             <div >

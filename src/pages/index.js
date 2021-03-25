@@ -7,3 +7,4 @@ export  {default as ConnectProfile} from './ConnectProfile/ConnectProfile.svelte
 export  {default as Inbox} from './Inbox/Inbox.svelte'
 export  {default as Reports} from './Reports/Reports.svelte'
 export  {default as Marketing} from './Marketing/Marketing.svelte'
+export  {default as PastSales} from './PastSales/PastSales.svelte'

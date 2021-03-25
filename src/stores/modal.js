@@ -77,6 +77,18 @@ export function showOnboarding(section){
                 }
             }  
             break;
+        
+        case 'sales':
+            onbData = {
+                title: 'Sales',
+                props: {
+                    msg: `This shows the history of your sales. <br>
+                    We will do our best to keep this up to date.<br>
+                    You can also manually add/edit them here.`,
+                    steps: []
+                }
+            }  
+            break;
 
         default:
             break;

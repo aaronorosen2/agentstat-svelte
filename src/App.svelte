@@ -10,7 +10,8 @@
     ConnectProfile,
     Inbox,
     Reports,
-    Marketing
+    Marketing,
+    PastSales
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
@@ -32,7 +33,7 @@
   });
   page("/login", ctx => {
     if (isAuthenticated()) {
-      page.redirect("/");
+      page.redirect("/profile-settings");
       return;
     }
     active = Login;
@@ -114,6 +115,19 @@
       return;
     }
     active = Marketing;
+    props = {};
+  });
+
+page("/past-sales", ctx => {
+    if (!isAuthenticated()) {
+      page.redirect("/login");
+      return;
+    }
+    if (!currentUser().agent_id) {
+      page.redirect("/connect-profile");
+      return;
+    }
+    active = PastSales;
     props = {};
   });
 

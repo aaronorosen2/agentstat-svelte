@@ -26,7 +26,7 @@
             info = res
         }else{
             // redirect to home/profile page maybe
-            window.location = '/'
+            window.location = '/profile-settings'
         }
         submitting = false
     }
