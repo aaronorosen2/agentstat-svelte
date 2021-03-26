@@ -19,3 +19,12 @@
 
      }
 }
+
+@media (max-width: 1080px){
+    .referral{
+        overflow-x: scroll;
+        table{
+            width: 1080px;
+        }
+    }
+}
