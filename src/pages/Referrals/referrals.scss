@@ -1,0 +1,19 @@
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #aaa;
+    .tab {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        &.selected{
+            font-weight: 600;
+            color: #000;
+            background: var(--light-blue);
+        }
+    }
+}
+
+.container{
+    padding: 2rem;
+}

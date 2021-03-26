@@ -9,6 +9,7 @@
     import {profileNotif} from '../../stores/notif'
     import {onMount} from 'svelte'
     import { showOnboarding } from '../../stores/modal'
+    export let segment = ''
 
     let leads = []
     let selected_lead 
@@ -59,7 +60,7 @@
     onMount(() => showOnboarding('inbox'))
 </script>
 
-<NavDashboard />
+<NavDashboard {segment} />
 <section class="inbox">
     <Loader text="Loading Inbox ..." show={loading} />
     {#if error}

@@ -5,7 +5,7 @@
     
     import {onMount} from 'svelte'
     import {showOnboarding} from '../../stores/modal'
-
+    export let segment = ''
     let selected = 'partner'
     let loading = false
 
@@ -40,7 +40,7 @@
 </script>
 
 <Loader show={loading} text="Loading Information ... " />
-<NavDashboard />
+<NavDashboard {segment} />
 
 <section>
     <div class="tabs">

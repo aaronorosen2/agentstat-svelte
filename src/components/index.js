@@ -39,3 +39,5 @@ export {default as AmbassadorProgram} from './Marketing/AmbassadorProgram.svelte
 
 export {default as PastSalesTable} from './Sales/PastSalesTable.svelte'
 export {default as ActiveSalesTable} from './Sales/ActiveSalesTable.svelte'
+
+export {default as ReferralTable} from './Referral/ReferralTable.svelte'

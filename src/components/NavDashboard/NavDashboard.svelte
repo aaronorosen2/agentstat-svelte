@@ -4,6 +4,7 @@
     import { fetchNotifs } from '../../lib/api/profile'
     import { profileNotif } from '../../stores/notif'
 
+    export let segment = ''
     export let empty = false
     let navOpen = false
     function toggleNav(){
@@ -29,15 +30,15 @@
 
     <div class="filter" class:open={navOpen}>
         {#if !empty}
-            <a href="/inbox">Inbox
+            <a class:selected={segment == 'inbox'} href="/inbox">Inbox
                 {#if $profileNotif.inbox}
                     <span class="notif-badge">{$profileNotif.inbox}</span>
                 {/if}
             </a>
-            <a href="/reports">Reporting</a>
-            <a href="/marketing">Marketing</a>
-            <a href="/past-sales">Sales</a>
-            <a href="/referals">Referrals
+            <a class:selected={segment == 'reports'} href="/reports">Reporting</a>
+            <a class:selected={segment == 'marketing'} href="/marketing">Marketing</a>
+            <a class:selected={segment == 'past-sales'} href="/past-sales">Sales</a>
+            <a class:selected={segment == 'referrals'} href="/referrals">Referrals
                 {#if $profileNotif.referral}
                     <span class="notif-badge">{$profileNotif.referral}</span>
                 {/if}

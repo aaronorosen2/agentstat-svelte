@@ -4,7 +4,7 @@
     import ReportUtil from '../../lib/report'
     import {onMount} from 'svelte'
     import {showOnboarding} from '../../stores/modal'
-
+    export let segment = ''
     let selected = 'traffic'
     function selectReport(e){
         selected = e.currentTarget.innerText.toLowerCase()
@@ -45,7 +45,7 @@
 </script>
 
 <Loader show={loading} text="Loading Reports ... " />
-<NavDashboard />
+<NavDashboard {segment} />
 
 <section class="reports">
     <div class="tabs">

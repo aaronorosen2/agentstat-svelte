@@ -11,7 +11,8 @@
     Inbox,
     Reports,
     Marketing,
-    PastSales
+    PastSales,
+    Referrals
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
@@ -89,7 +90,7 @@
       return;
     }
     active = Inbox;
-    props = {};
+    props = {segment: 'inbox'};
   });
 
   page("/reports", ctx => {
@@ -102,7 +103,7 @@
       return;
     }
     active = Reports;
-    props = {};
+    props = {segment: 'reports'};
   });
   
   page("/marketing", ctx => {
@@ -115,10 +116,10 @@
       return;
     }
     active = Marketing;
-    props = {};
+    props = {segment: 'marketing'};
   });
 
-page("/past-sales", ctx => {
+  page("/past-sales", ctx => {
     if (!isAuthenticated()) {
       page.redirect("/login");
       return;
@@ -128,7 +129,20 @@ page("/past-sales", ctx => {
       return;
     }
     active = PastSales;
-    props = {};
+    props = {segment: 'past-sales'};
+  });
+  
+  page("/referrals", ctx => {
+    if (!isAuthenticated()) {
+      page.redirect("/login");
+      return;
+    }
+    if (!currentUser().agent_id) {
+      page.redirect("/connect-profile");
+      return;
+    }
+    active = Referrals;
+    props = {segment: 'referrals'};
   });
 
   page("*", () => page.redirect("/"));

@@ -1,12 +1,10 @@
 <script>
-    import {NavDashboard , PastSalesTable, ActiveSalesTable, Loader} from '../../components'
-    
-    import {agentProfile} from '../../lib/api/profile'
+    import {NavDashboard , PastSalesTable, ActiveSalesTable, Loader} from '../../components'    
     import {salesTransactions, activeTransactions} from '../../lib/api/sales'
-    
     import {onMount} from 'svelte'
     import {showOnboarding} from '../../stores/modal'
 
+    export let segment = ''
     let selected = 'past sales'
     let loading = false
 
@@ -29,7 +27,7 @@
 </script>
 
 <Loader show={loading} text="Loading Sales ... " />
-<NavDashboard />
+<NavDashboard {segment} />
 
 <section>
     <div class="tabs">

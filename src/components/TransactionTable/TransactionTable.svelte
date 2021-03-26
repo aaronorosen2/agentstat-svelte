@@ -8,6 +8,7 @@
     import {currentUser} from '../../lib/api/auth'
     import {show as showNotif} from '../../stores/notif'
     import {modal} from '../../stores/modal'
+    import util from '../../lib/util';
     export let editable = false
     export let list // agent_list
     export let active = false
@@ -71,11 +72,7 @@
     }
 
     // END EDITABLE
-
-    function currencyFormat(num) {
-        if(!num) return '$0'
-        return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-    }
+    
 
     function dateFormat(str, isFullYear=false) {
         let date = new Date(str);
@@ -86,7 +83,7 @@
     }
 
     function arrowStyle(v){
-        if (currencyFormat(v['sold_price_int']) >= currencyFormat(v['list_price_int'])) {
+        if (util.currencyFormat(v['sold_price_int']) >= util.currencyFormat(v['list_price_int'])) {
             return ' <i class="fas fa-long-arrow-alt-up" style="font-size:18px;color:green"></i>';
         } else {
             return ' <i class="fas fa-long-arrow-alt-down" style="font-size:18px;color:red"></i>';
@@ -97,7 +94,7 @@
         if (v['status']=='Failed') {
             return '-';
         } else {
-            return currencyFormat(v['sold_price_int']) + arrowStyle(v);
+            return util.currencyFormat(v['sold_price_int']) + arrowStyle(v);
         }
     }
 
@@ -201,7 +198,7 @@
                 {#each transactions as tr}
                     <tr on:click={() => select(tr)}>
                         <td class="status-{tr.status}">{active ? 'Active' : tr.status||''}</td>
-                        <td>{currencyFormat(tr.list_price_int)}</td>
+                        <td>{util.currencyFormat(tr.list_price_int)}</td>
                         <td><div class="no-wrap">{@html soldPrice(tr)}</div></td>
                         <td>{tr.days_on_market||''}</td>
                         <td>{dateFormat(tr.list_date)}</td>
@@ -258,7 +255,7 @@
                                             <div >
                                                 <div class="subtitle mb">Listed:</div>
                                                 <div>{dateFormat(tr.list_date)}</div>
-                                                <div>{currencyFormat(tr.list_price_int)}</div>
+                                                <div>{util.currencyFormat(tr.list_price_int)}</div>
                                                 <div class="elm">
                                                     <span class="subtitle">Days on Market:</span>
                                                     {tr.days_on_market}
@@ -271,7 +268,7 @@
                                             <div>
                                                 <div class="subtitle mb">Sold: </div>
                                                 <div>{dateFormat(tr.sold_date)}</div>
-                                                <div>{currencyFormat(tr.sold_price_int)}</div>
+                                                <div>{util.currencyFormat(tr.sold_price_int)}</div>
                                             </div>
                                         </div>
                                         <div class="grid">
