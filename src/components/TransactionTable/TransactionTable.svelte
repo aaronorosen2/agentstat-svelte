@@ -10,6 +10,9 @@
     import {modal} from '../../stores/modal'
     export let editable = false
     export let list // agent_list
+    export let active = false
+    export let noDetails = false
+    export let noNote = false
     let searchVal
 
     let filter_list = list
@@ -70,7 +73,7 @@
     // END EDITABLE
 
     function currencyFormat(num) {
-        if(!num) return '-'
+        if(!num) return '$0'
         return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
     }
 
@@ -185,7 +188,11 @@
             <thead>
                 <tr>
                     {#each Object.keys(head_values) as k}
-                    <th on:click={()=> toggleSort(k)}><div class="flex">{head_values[k]}  <SortIcon selected={sortBy==k ? sortUp ? 'up':'down':false} /></div></th>
+                        {#if k == 'notes' && noNote}
+                            <th></th>
+                        {:else}
+                            <th on:click={()=> toggleSort(k)}><div class="flex">{head_values[k]}  <SortIcon selected={sortBy==k ? sortUp ? 'up':'down':false} /></div></th>
+                        {/if}
                     {/each}
                 
                 </tr>
@@ -193,16 +200,16 @@
             <tbody>
                 {#each transactions as tr}
                     <tr on:click={() => select(tr)}>
-                        <td class="status-{tr.status}">{tr.status||''}</td>
+                        <td class="status-{tr.status}">{active ? 'Active' : tr.status||''}</td>
                         <td>{currencyFormat(tr.list_price_int)}</td>
                         <td><div class="no-wrap">{@html soldPrice(tr)}</div></td>
-                        <td>{tr.days_on_market}</td>
+                        <td>{tr.days_on_market||''}</td>
                         <td>{dateFormat(tr.list_date)}</td>
                         <td><div class="no-wrap">{onlyAddress(tr.address_text)}</div></td>
-                        <td>{tr.city}</td>
-                        <td>{tr.zipcode}</td>
-                        <td>{tr.year_built}</td>
-                        <td>{homeType(tr)}</td>
+                        <td>{tr.city||''}</td>
+                        <td>{tr.zipcode||''}</td>
+                        <td>{tr.year_built||''}</td>
+                        <td>{homeType(tr)||''}</td>
                         <td>
                             {#if tr.note && !editable}
                                 <i class="icon far fa-sticky-note"></i>
@@ -220,9 +227,12 @@
                                     </div>
                                 {/if}
                             {/if}
+                            {#if tr.zpid}
+                                <a href="/property-detail/{tr.zpid}" target="_blank">Details</a>
+                            {/if}
                         </td>
                     </tr>
-                    {#if selected == tr}
+                    {#if selected == tr && !noDetails}
                         <tr>
                             <td class="no-p" colspan="11">
                                 <div class="details">

@@ -40,7 +40,7 @@
         </div>
         <div class="links" class:open>
             
-            <a class="link" href="/dashboard" >
+            <a class="link" href="/inbox" >
                 <div class="l-name">Dashboard</div>
                 <div class="l-desc">View your stats and backend</div>
             </a>

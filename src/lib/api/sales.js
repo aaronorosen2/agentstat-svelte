@@ -14,6 +14,19 @@ export async function salesTransactions(){
     return await fetch(link('transactions/'),options).then(res => res.json())
 }
 
+export async function activeTransactions(){
+    const user = currentUser()
+    if(!user) return 
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`,
+        }
+    }
+    return await fetch(link(`agent-active-list/${user.agent_id}`),options).then(res => res.json())
+}
+
 export async function saveTransactionNote(data){
     const user = currentUser()
     if(!user) return 

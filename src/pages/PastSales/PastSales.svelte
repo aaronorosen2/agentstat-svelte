@@ -2,7 +2,7 @@
     import {NavDashboard , PastSalesTable, ActiveSalesTable, Loader} from '../../components'
     
     import {agentProfile} from '../../lib/api/profile'
-    import {salesTransactions} from '../../lib/api/sales'
+    import {salesTransactions, activeTransactions} from '../../lib/api/sales'
     
     import {onMount} from 'svelte'
     import {showOnboarding} from '../../stores/modal'
@@ -15,18 +15,16 @@
     }
 
     let transaction = {}
+    let activeSales = []
     async function getTransactions(){
         loading = true
         transaction = await salesTransactions()
         loading = false
-    }
-    
-    async function getAgentDetails(){
-        agent = await agentProfile()
+        activeSales = await activeTransactions()
     }
 
+
     getTransactions()
-    getAgentDetails()
     onMount(() => showOnboarding('sales'))
 </script>
 
@@ -44,7 +42,7 @@
     {#if selected == 'past sales'}
         <PastSalesTable {transaction} />
     {:else if selected == 'active sales'}
-        <ActiveSalesTable />
+        <ActiveSalesTable {activeSales} />
     {/if}
 </section>
 
