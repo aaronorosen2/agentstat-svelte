@@ -1,0 +1,34 @@
+.select-agent {
+    .label{
+        font-weight: 600;
+        margin: 0.5rem 0;
+    }
+    .title{
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+    .relative{
+        position: relative;
+        height: 350px;
+        overflow-y: scroll;
+        padding: 1rem;
+        border: 1px solid #212121;
+    }
+    .header{
+        padding: 0.5rem 0;
+        margin: 0.5rem 0 0;
+        font-weight: 700;
+        border: 1px solid #212121;
+    }
+    .grid-5{
+        display: grid;
+        grid-template-columns: 5% 40% 10% 10% 20%;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .grid-2 {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 1rem;
+    }
+}

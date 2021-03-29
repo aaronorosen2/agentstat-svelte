@@ -16,4 +16,14 @@
 
 .container{
     padding: 2rem;
+    .right{
+        float: right;
+    }
+    .link{
+        font-weight: 700;
+        color: var(--blue-color);
+        cursor: pointer;
+        padding: 0.7rem 0;
+        outline: none;
+    }
 }

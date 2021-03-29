@@ -27,14 +27,14 @@ export function getAgentUrlParams(filter){
     uparam('check_claimed',filter.check_claimed)
 }
 
-export async function fetchAgents(filter){
+export async function fetchAgents(filter, track=true){
     let url = link(
         `reports/${filter.state||'CA'}?`+
         getAgentUrlParams(filter)
     )
         
     let res = await fetch(url).then(res => res.json())
-    if(res && res.results)
+    if(res && res.results && track)
         Tracker.agentProfileImpressionTrack(res.results.map(r => r.agent_id))
     return res
 }

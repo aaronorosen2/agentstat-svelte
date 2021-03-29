@@ -23,7 +23,8 @@
         "svelte": "^3.0.0",
         "svelte-apexcharts": "^1.0.2",
         "svelte-easy-crop": "^1.0.3",
-        "svelte-preprocess": "^4.6.1"
+        "svelte-preprocess": "^4.6.1",
+        "svelte-slider": "^1.0.0"
     },
     "dependencies": {
         "sirv-cli": "^1.0.0",

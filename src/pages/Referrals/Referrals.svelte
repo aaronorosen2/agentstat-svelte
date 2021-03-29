@@ -1,10 +1,12 @@
 <script>
-    import {NavDashboard ,ReferralTable, Loader} from '../../components'
+    import {NavDashboard ,ReferralTable, Loader, ReferralForm} from '../../components'
     import {fetchReferrals} from '../../lib/api/referral'
+    import { modal } from '../../stores/modal';
 
     export let segment = ''
     let selected = 'received'
     let loading = false
+
     function selectTab(e){
         selected = e.currentTarget.innerText.toLowerCase()
     }
@@ -17,6 +19,15 @@
         rRefferal = await fetchReferrals({page: 1})
         loading = false
         sRefferal = await fetchReferrals({page: 1, type: 'sent'})
+    }
+
+    function addReferral(){
+        $modal = {
+                show: true,
+                cmp: ReferralForm,
+                // complete: (data) => create(agent, data),
+                title: 'Send New Referral'
+        }
     }
 
     getRefferals()
@@ -34,6 +45,9 @@
 </section>
 
 <section class="container">
+    <div class="right">
+        <div role="button" class="link" on:click={addReferral}>+ Send New Referral</div>
+    </div>
     {#if selected == 'received'}
         <ReferralTable referrals={rRefferal.results} />
     {:else if selected == 'sent'}

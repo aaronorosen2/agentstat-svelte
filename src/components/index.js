@@ -41,3 +41,4 @@ export {default as PastSalesTable} from './Sales/PastSalesTable.svelte'
 export {default as ActiveSalesTable} from './Sales/ActiveSalesTable.svelte'
 
 export {default as ReferralTable} from './Referral/ReferralTable.svelte'
+export {default as ReferralForm} from './Referral/ReferralForm.svelte'
