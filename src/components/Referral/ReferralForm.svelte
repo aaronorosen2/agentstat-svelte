@@ -8,7 +8,8 @@
 
     let ref = {
         referral_fee_percentage: 1,
-        acceptance_deadline: 1
+        acceptance_deadline: 1,
+        acceptance_deadline_nice: "1 hour"
     }
 
     let deadline_index = 0
@@ -25,6 +26,7 @@
         let val = evt.detail[1]
         deadline_index = Math.floor(val*7)
         ref.acceptance_deadline = deadlines[deadline_index]
+        ref.acceptance_deadline_nice = deadline_texts[deadline_index]
     }
 
     function next(){

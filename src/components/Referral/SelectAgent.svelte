@@ -1,8 +1,10 @@
 <script>
         
     import states from "../../data/states";
-    import {fetchAgents} from '../../lib/api'
-import Loader from "../Loader/Loader.svelte";
+    import {fetchAgents} from '../../lib/api';
+    import Loader from "../Loader/Loader.svelte";
+    import {modal} from '../../stores/modal'
+    import RecapInfo from './RecapInfo.svelte'
 
     export let ref
     export let complete 
@@ -11,6 +13,7 @@ import Loader from "../Loader/Loader.svelte";
     let loading = false
     let error = false
     let filter = {state: ref.state}
+    let agent_id
 
     function filterAgents(e){
         filter.agent_name = e.currentTarget.value
@@ -35,6 +38,23 @@ import Loader from "../Loader/Loader.svelte";
         }
         loading = false
         return list
+    }
+
+    function next(){
+        $modal = {
+            show: true,
+            cmp: RecapInfo,
+            complete,
+            title: 'Send New Referral',
+            props: {
+                ref,
+                agent: agents.find(a => a.agent_id == agent_id)
+            }
+        }
+    }
+
+    function selectAgent(id){
+        agent_id = id
     }
 
     searchAgents()
@@ -62,8 +82,8 @@ import Loader from "../Loader/Loader.svelte";
         <Loader show={loading} />
         <div class="grid-5">
             {#each agents as agent}
-                <div><input type="checkbox" /></div>
-                <div>
+                <div><input type="radio" value={agent.agent_id} bind:group={agent_id} /></div>
+                <div class="pointer" on:click={() => selectAgent(agent.agent_id)}>
                     <div class="title">
                         {agent.agent_full_name}
                     </div>
@@ -78,10 +98,15 @@ import Loader from "../Loader/Loader.svelte";
                     100%
                 </div>
                 <div>
-                    View Profile
+                    <a href="/profile/{agent.agent_screen_name}" target="_blank">
+                        View Profile
+                    </a>
                 </div>
             {/each}
         </div>
+    </div>
+    <div class="control">
+        <button class="btn" on:click={next}>Next</button>
     </div>
 </div>
 

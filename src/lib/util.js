@@ -24,7 +24,7 @@ function formatAMPM(timedate) {
 
 export default {
     niceDate(timedate, withyear=true) {
-        const fortnightAway = new Date(timedate);
+        const fortnightAway = timedate ? new Date(timedate): new Date();
         const date = fortnightAway.getDate();
         const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][fortnightAway.getMonth()];
         let cdate
