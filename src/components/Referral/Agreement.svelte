@@ -1,11 +1,14 @@
 <script>
     import { currentAgentDetails } from "../../lib/api/profile";
     import util from "../../lib/util";
-
+    import SignaturePad from 'signature_pad'
 
     export let ref
     export let agent
-
+    let signing = false
+    let canvas
+    let signaturePad
+    let signatureImg
 
     ref.full_name = ref.first_name+' '+ref.last_name
 
@@ -22,6 +25,30 @@
 
     function submit(){
 
+    }
+
+    function setCanvas(node){
+        canvas = node 
+        signaturePad = new SignaturePad(canvas);
+    }
+
+    function openToSign(){
+        signing = true
+    }
+
+    function closeSign(){
+        signing = false
+    }
+
+    function clearSign(){
+        signaturePad.clear()
+    }
+
+    function sign(){
+        console.log("is empty --> ",signaturePad.isEmpty())
+        signatureImg = signaturePad.toDataURL();
+        console.log(signatureImg)
+        signing = false
     }
 
     setCurrentAgent()
@@ -137,8 +164,11 @@
 
 
     <div class="signatures">
-        <div>
+        <div on:click={openToSign}>
             <div>Click to sign</div>
+            {#if signatureImg}
+                <img src={signatureImg} alt="signature">
+            {/if}
             <div class="info">Referring Firm (Signature)</div>
         </div>
         <div>
@@ -151,6 +181,23 @@
         <button class="btn" on:click={submit}>Submit</button>
     </div>
 </div>
+
+{#if signing}
+    <div class="sign"> 
+        <div class="container">
+            <div class="head">Draw Signature
+                <i class="fas fa-times" on:click={closeSign}></i>
+            </div>
+            <div class="body">
+                <canvas use:setCanvas></canvas>
+            </div>
+            <div class="footer">
+                <button class="btn" on:click={sign}>Sign</button>
+                <button class="btn" on:click={clearSign}>Clear</button>
+            </div>
+        </div>
+    </div>
+{/if}
 
 
 <style src="./agreement.scss"></style>
