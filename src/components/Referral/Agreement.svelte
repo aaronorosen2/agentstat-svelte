@@ -2,9 +2,12 @@
     import { currentAgentDetails } from "../../lib/api/profile";
     import util from "../../lib/util";
     import SignaturePad from 'signature_pad'
+    import { saveReferral } from '../../lib/api/referral'
+    import { currentUser } from "../../lib/api/auth";
 
     export let ref
     export let agent
+    export let complete
     let signing = false
     let canvas
     let signaturePad
@@ -23,8 +26,20 @@
         c_agent = await currentAgentDetails()
     }
 
-    function submit(){
-
+    async function submit(){
+        let refObj = {...ref, 
+            address: ref.street_address,
+            referral_fee_percentage: String(ref.referral_fee_percentage),
+            sender_sign_img: signatureImg,
+            owner: String(currentUser().profile_id),
+            phone_number: ref.phone,
+            referral_type: ref.type,
+            sender_agent: String(currentUser().agent_id),
+            agent: String(agent.agent_id)
+        }
+        console.log(refObj)
+        await saveReferral(refObj)
+        complete && complete()
     }
 
     function setCanvas(node){
@@ -45,9 +60,7 @@
     }
 
     function sign(){
-        console.log("is empty --> ",signaturePad.isEmpty())
         signatureImg = signaturePad.toDataURL();
-        console.log(signatureImg)
         signing = false
     }
 
@@ -61,12 +74,20 @@
     </div>
     <div class="title">REFEERAL FEE STRUCTURE:</div>
     <div class="flex">
-        <input class="holder sm" type="text" bind:value={ref.referral_fee_percentage}>
+        {#if ref.type == 'seller'}
+            <input class="holder sm" type="text" bind:value={ref.referral_fee_percentage}>
+        {:else}
+            <div class="holder sm"></div>
+        {/if}
         <div>% of Listing Firm Commission</div>
     </div>
 
     <div class="flex">
-        <div class="holder sm"></div>
+        {#if ref.type == 'buyer'}
+            <input class="holder sm" type="text" bind:value={ref.referral_fee_percentage}>
+        {:else}
+            <div class="holder sm"></div>
+        {/if}
         <div>% of Selling Firm Commission</div>
     </div>
 
@@ -128,7 +149,9 @@
 
     <div class="flex">
         <div>Address:</div>
-        <input class="holder auto" type="text" bind:value={ref.street_address}>
+        <div class="holder auto">
+            {ref.street_address}, {ref.city}, {ref.state}, {ref.zipcode}
+        </div>
     </div>
 
     <div class="flex">

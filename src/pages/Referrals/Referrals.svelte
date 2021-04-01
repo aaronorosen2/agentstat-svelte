@@ -15,6 +15,7 @@
     let sRefferal = {results: []}
 
     async function getRefferals(){
+        $modal = {show: false}
         loading = true
         rRefferal = await fetchReferrals({page: 1})
         loading = false
@@ -25,7 +26,7 @@
         $modal = {
                 show: true,
                 cmp: ReferralForm,
-                // complete: (data) => create(agent, data),
+                complete: () => getRefferals(),
                 title: 'Send New Referral'
         }
     }
