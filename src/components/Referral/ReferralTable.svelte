@@ -1,4 +1,5 @@
 <script>
+    import { link } from "../../lib/env";
     import util from "../../lib/util";
 
 
@@ -23,7 +24,7 @@
         <tbody>
             {#each referrals as ref}
                 <tr>
-                    <td><i class="icon fas fa-file-download"></i> </td>
+                    <td><a href={link(`referral-download/${ref.uid}/`)} target="_blank"><i class="icon fas fa-file-download"></i></a> </td>
                     <td>{util.niceDate(ref.created_at)}</td>
                     <td>{ref.referral_type}</td>
                     <td>{ref.first_name} {ref.last_name}</td>

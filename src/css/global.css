@@ -148,6 +148,10 @@ input:focus, textarea:focus, select:focus{
 	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 }
+.btn.disabled{
+	opacity: 0.5;
+	cursor: not-allowed;
+}
 .btn.btn-yellow{
 	background-color: var(--yellow-color);
 	color: #212529;

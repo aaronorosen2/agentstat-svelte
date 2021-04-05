@@ -1,6 +1,6 @@
 <script>
-    import {NavDashboard ,ReferralTable, Loader, ReferralForm} from '../../components'
-    import {fetchReferrals} from '../../lib/api/referral'
+    import {NavDashboard ,ReferralTable, Loader, ReferralForm, PendingReferrals} from '../../components'
+    import {fetchReferrals, pendingReferrals} from '../../lib/api/referral'
     import { modal } from '../../stores/modal';
 
     export let segment = ''
@@ -13,6 +13,7 @@
 
     let rRefferal = {results: []}
     let sRefferal = {results: []}
+    let pReferrals = []
 
     async function getRefferals(){
         $modal = {show: false}
@@ -20,6 +21,8 @@
         rRefferal = await fetchReferrals({page: 1})
         loading = false
         sRefferal = await fetchReferrals({page: 1, type: 'sent'})
+        pReferrals = await pendingReferrals()
+
     }
 
     function addReferral(){
@@ -46,6 +49,9 @@
 </section>
 
 <section class="container">
+    {#if pReferrals?.length && selected == 'received'}
+        <PendingReferrals referrals={pReferrals} />
+    {/if}
     <div class="right">
         <div role="button" class="link" on:click={addReferral}>+ Send New Referral</div>
     </div>

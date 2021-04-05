@@ -1,0 +1,59 @@
+.referrals{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .referral{
+        border: 1px solid #aaa;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        img{
+            max-width: 80px;
+            border-radius: 50%;
+        }
+        .grid-2{
+            display: grid;
+            grid-template-columns: minmax(auto,50%) auto;
+            column-gap: 1rem;
+            align-items: center;
+            margin: 1rem 0;
+            &.img{
+                grid-template-columns: 120px auto;
+            }
+        }
+        .label{
+            color: #aaa;
+        }
+        .mt {
+            margin-top: 1rem;
+        }
+        .value{
+            color: #212121;
+            font-weight: 600;
+            &.link{
+                color: var(--blue-color)
+            }
+        }
+        .title{
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .body{
+            display: grid;
+            grid-template-columns: minmax(auto,50%) auto;
+            gap: 2rem;
+        }
+        .time-wrapper{
+            margin: 1rem 0;
+            background: var(--red);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+        }
+        .flex{
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+}

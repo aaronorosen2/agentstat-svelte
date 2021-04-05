@@ -1,0 +1,17 @@
+.decline-msg{
+    
+    .label{
+        margin: 0 0 1rem 0;
+        color: #aaa;
+    }
+    textarea{
+        resize: none;
+        border-radius: 0.5rem;
+        width: 100%;
+    }
+    .control{
+        margin: 1rem 0;
+        justify-content: center;
+        display: flex;
+    }
+}

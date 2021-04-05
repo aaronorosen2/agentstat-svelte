@@ -8,6 +8,7 @@
 
     export let ref
     export let complete 
+    let hasErr = false
 
     let agents = []
     let loading = false
@@ -41,6 +42,8 @@
     }
 
     function next(){
+        hasErr = !agent_id
+        if(!hasErr)
         $modal = {
             show: true,
             cmp: RecapInfo,
@@ -105,6 +108,13 @@
             {/each}
         </div>
     </div>
+
+    {#if hasErr}
+        <div class="error">
+            Please select an agent
+        </div>
+    {/if}
+
     <div class="control">
         <button class="btn" on:click={next}>Next</button>
     </div>

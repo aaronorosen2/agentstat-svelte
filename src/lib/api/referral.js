@@ -32,3 +32,32 @@ export async function saveReferral(data){
     
     return await fetch(link(`referral/`),options).then(res => res.json())
 }
+
+export async function pendingReferrals(){
+    const user = currentUser()
+    if(!user) return 
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`,
+        }
+    }
+    
+    return await fetch(link(`referral-pending/`),options).then(res => res.json())
+}
+
+export async function declineReferral(id,data){
+    const user = currentUser()
+    if(!user) return 
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${user.token}`,
+        },
+        body: JSON.stringify(data)
+    }
+    
+    return await fetch(link(`referral/${id}/`),options).then(res => res.json())
+}

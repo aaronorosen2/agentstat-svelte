@@ -9,8 +9,13 @@
     let ref = {
         referral_fee_percentage: 1,
         acceptance_deadline: 1,
-        acceptance_deadline_nice: "1 hour"
+        acceptance_deadline_nice: "1 hour",
+        type: 'buyer',
+        notes: ''
     }
+
+    let err = {}
+    let hasErr = false
 
     let deadline_index = 0
 
@@ -30,6 +35,19 @@
     }
 
     function next(){
+        err = {
+            first_name: !ref.first_name,
+            last_name: !ref.last_name,
+            email: !ref.email,
+            phone: !ref.phone,
+            street_address: !ref.street_address,
+            city: !ref.city,
+            zipcode: !ref.zipcode,
+            price_min: !ref.price_min,
+            price_max: !ref.price_max
+        }
+        hasErr = Object.keys(err).map( k => err[k]).reduce((a,b) => a||b, false)
+        if(!hasErr)
         $modal = {
                 show: true,
                 cmp: SelectAgent,
@@ -48,29 +66,29 @@
 
     <div class="label">Client Contact Information</div>
     <div class="grid-2">
-        <input type="text" placeholder="First Name" bind:value={ref.first_name}>
-        <input type="text" placeholder="Last Name" bind:value={ref.last_name}>
+        <input type="text" class:err={err.first_name} placeholder="First Name" bind:value={ref.first_name}>
+        <input type="text" class:err={err.last_name} placeholder="Last Name" bind:value={ref.last_name}>
     </div>
-    <input type="text" placeholder="Email" bind:value={ref.email}>
-    <input type="text" placeholder="Phone Number" bind:value={ref.phone}>
+    <input type="text" class:err={err.email} placeholder="Email" bind:value={ref.email}>
+    <input type="text" class:err={err.phone} placeholder="Phone Number" bind:value={ref.phone}>
 
     <div class="label">Address</div>
-    <input type="text" placeholder="Street Address" bind:value={ref.street_address}>
+    <input type="text" class:err={err.street_address} placeholder="Street Address" bind:value={ref.street_address}>
     <div class="grid-3">
-        <input type="text" placeholder="City" bind:value={ref.city}>
+        <input type="text" class:err={err.city} placeholder="City" bind:value={ref.city}>
         <select bind:value={ref.state}>
             {#each states as state}
                 <option value={state}>{state}</option>
             {/each}
         </select>
-        <input type="text" placeholder="Zipcode" bind:value={ref.zipcode}>
+        <input type="text" class:err={err.zipcode} placeholder="Zipcode" bind:value={ref.zipcode}>
     </div>
 
     <div class="grid-2">
         <div class="label">Price Min</div>
         <div class="label">Price Max</div>
-        <input type="text" placeholder="Min" bind:value={ref.price_min}>
-        <input type="text" placeholder="Max" bind:value={ref.price_max}>
+        <input type="text" class:err={err.price_min} placeholder="Min" bind:value={ref.price_min}>
+        <input type="text" class:err={err.price_max} placeholder="Max" bind:value={ref.price_max}>
     </div>
 
     <div class="label">Referral fee</div>
@@ -95,6 +113,12 @@
 
     <div class="label">Notes</div>
     <textarea rows="3" placeholder="Write a message" bind:value={ref.notes}></textarea>
+
+    {#if hasErr}
+        <div class="error">
+            Please fill missing inputs
+        </div>
+    {/if}
 
     <div class="control">
         <button class="btn" on:click={next}>Next</button>
