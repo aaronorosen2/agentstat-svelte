@@ -1,8 +1,12 @@
 <script>
+    import { createEventDispatcher } from "svelte";
+    import { setReferralStatus } from "../../lib/api/referral";
     import util from "../../lib/util";
     import { modal } from "../../stores/modal";
+    import Agreement from "./Agreement.svelte";
     import DeclineMsg from "./DeclineMsg.svelte";
 
+    const dispatch = createEventDispatcher()
     export let referrals = []
 
     function timeLeft(distance){
@@ -14,7 +18,7 @@
     }
 
     function setRefInterval(ref){
-        let tout = setInterval(() => {
+        let tout = setInterval(async () => {
             let now = new Date().getTime();
             let expTime = new Date(ref.created_at)
             expTime.setTime(expTime.getTime() + (ref.acceptance_deadline*60*60*1000))
@@ -23,7 +27,8 @@
             if(tleft<0){
                 ref.time_left = 'Expired'
                 clearInterval(tout)
-                // update list!
+                await setReferralStatus(ref.id, {status: 'expired'})
+                dispatch('finish')
             }else{
                 ref.time_left = timeLeft(tleft)
                 referrals = referrals
@@ -33,15 +38,14 @@
 
     function setTimeLeft(){
         for(let ref of referrals){
-            ref.time_left = ''
+            ref.time_left = 'Calculating...'
             setRefInterval(ref)            
         }
     }
 
     function declineComplete(){
         $modal = {show: false}
-        // refresh list
-        console.log("DECLINE CMPLETE!!")
+        dispatch('finish')
     }
 
     function msgDecline(ref){
@@ -56,7 +60,34 @@
         }
     }
 
-    setTimeLeft()
+    async function complete(ref){
+        await setReferralStatus(ref.id, {
+            status: 'accept',
+            receiver_sign_img: ref.receiver_sign_img
+        })
+        dispatch('finish')
+    }
+
+    function showAgreement(ref){
+        let agent = ref.sender_agent_obj
+        $modal = {
+            show: true,
+            cmp: Agreement,
+            complete,
+            title: 'REFERRAL AGREEMENT',
+            props: {
+                ref,
+                agent,
+                receiver: true
+            }
+        }
+    }
+
+    let llength = 0
+    $: if(referrals && referrals.length != llength){
+        llength = referrals.length
+        setTimeLeft()
+    }
 </script>
 
 <div class="referrals">
@@ -81,7 +112,7 @@
                         <div class="label">Referral Fee</div>
                         <div class="label">Price Range</div>
                         <div class="value">%{ref.referral_fee_percentage}</div>
-                        <div class="value">{ref.price_min} - {ref.price_max}</div>
+                        <div class="value">{util.currencyFormat(ref.price_min)} - {util.currencyFormat(ref.price_max)}</div>
                     </div>
                     <div class="flex">
                         <div class="label">Sent: </div>
@@ -108,8 +139,8 @@
             </div>
 
             <div class="control">
-                <button class="btn">Accept</button>
-                <button class="btn" on:click={() => msgDecline(ref)}>Decline</button>
+                <button class="btn green" on:click={() => showAgreement(ref)}>Accept</button>
+                <button class="btn red" on:click={() => msgDecline(ref)}>Decline</button>
             </div>
         </div>
 

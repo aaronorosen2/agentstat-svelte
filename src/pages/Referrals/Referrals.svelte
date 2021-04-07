@@ -50,7 +50,7 @@
 
 <section class="container">
     {#if pReferrals?.length && selected == 'received'}
-        <PendingReferrals referrals={pReferrals} />
+        <PendingReferrals referrals={pReferrals} on:finish={getRefferals} />
     {/if}
     <div class="right">
         <div role="button" class="link" on:click={addReferral}>+ Send New Referral</div>

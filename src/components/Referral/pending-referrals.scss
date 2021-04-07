@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     gap: 1rem;
     .referral{
+        max-width: 600px;
         border: 1px solid #aaa;
         border-radius: 0.5rem;
         padding: 1rem;
@@ -55,5 +56,10 @@
             display: flex;
             gap: 0.5rem;
         }
+    }
+    .control{
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 0.5rem;
     }
 }

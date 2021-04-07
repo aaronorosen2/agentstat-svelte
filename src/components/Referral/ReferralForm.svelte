@@ -35,6 +35,8 @@
     }
 
     function next(){
+        ref.price_min = getPrice(ref.price_min)
+        ref.price_max = getPrice(ref.price_max)
         err = {
             first_name: !ref.first_name,
             last_name: !ref.last_name,
@@ -43,8 +45,8 @@
             street_address: !ref.street_address,
             city: !ref.city,
             zipcode: !ref.zipcode,
-            price_min: !ref.price_min,
-            price_max: !ref.price_max
+            price_min: !ref.price_min && !isNaN(ref.price_min),
+            price_max: !ref.price_max && !isNaN(ref.price_max)
         }
         hasErr = Object.keys(err).map( k => err[k]).reduce((a,b) => a||b, false)
         if(!hasErr)
@@ -55,6 +57,29 @@
                 title: 'Send New Referral',
                 props: {ref}
         }
+    }
+
+    function getPrice(val){
+        return parseInt(val.replace(/[$\,]/g,''))
+    }
+
+    function setPriceFormat(e){
+        let p = e.currentTarget.value.replace(/[$\,]/g,'')
+        e.currentTarget.value = '$'+p.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function normalizePhone(e) {
+        let value = e.currentTarget.value
+        const phoneNumber = value.replace(/[^\d]/g, "");
+        const phoneNumberLength = phoneNumber.length;
+        if (phoneNumberLength < 4) return phoneNumber;
+        if (phoneNumberLength < 7) {
+            return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+        }
+        e.currentTarget.value = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+            3,
+            6
+        )}-${phoneNumber.slice(6, 9)}`;
     }
 </script>
 
@@ -70,7 +95,7 @@
         <input type="text" class:err={err.last_name} placeholder="Last Name" bind:value={ref.last_name}>
     </div>
     <input type="text" class:err={err.email} placeholder="Email" bind:value={ref.email}>
-    <input type="text" class:err={err.phone} placeholder="Phone Number" bind:value={ref.phone}>
+    <input type="text" class:err={err.phone} on:input={normalizePhone} placeholder="Phone Number" bind:value={ref.phone}>
 
     <div class="label">Address</div>
     <input type="text" class:err={err.street_address} placeholder="Street Address" bind:value={ref.street_address}>
@@ -87,8 +112,8 @@
     <div class="grid-2">
         <div class="label">Price Min</div>
         <div class="label">Price Max</div>
-        <input type="text" class:err={err.price_min} placeholder="Min" bind:value={ref.price_min}>
-        <input type="text" class:err={err.price_max} placeholder="Max" bind:value={ref.price_max}>
+        <input type="text" class:err={err.price_min} placeholder="Min" on:input={setPriceFormat} bind:value={ref.price_min}>
+        <input type="text" class:err={err.price_max} placeholder="Max" on:input={setPriceFormat} bind:value={ref.price_max}>
     </div>
 
     <div class="label">Referral fee</div>

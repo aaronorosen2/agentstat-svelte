@@ -47,7 +47,8 @@ export async function pendingReferrals(){
     return await fetch(link(`referral-pending/`),options).then(res => res.json())
 }
 
-export async function declineReferral(id,data){
+
+export async function setReferralStatus(id, data){
     const user = currentUser()
     if(!user) return 
     const options = {
@@ -60,4 +61,5 @@ export async function declineReferral(id,data){
     }
     
     return await fetch(link(`referral/${id}/`),options).then(res => res.json())
+
 }

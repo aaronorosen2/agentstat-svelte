@@ -163,3 +163,9 @@ input:focus, textarea:focus, select:focus{
 	opacity: 0.5;
 	cursor: not-allowed;
 }
+.btn.green{
+	background-color: var(--green);
+}
+.btn.red{
+	background-color: var(--red);
+}

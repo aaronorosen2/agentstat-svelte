@@ -1,4 +1,5 @@
 <script>
+    import util from "../../lib/util";
     import { modal } from "../../stores/modal";
     import Agreement from "./Agreement.svelte";
 
@@ -60,10 +61,10 @@
             <div>{ref.zipcode}</div>
             
             <div class="label">Price Min:</div>
-            <div>{ref.price_min}</div>
+            <div>{util.currencyFormat(ref.price_min)}</div>
             
             <div class="label">Price Max:</div>
-            <div>{ref.price_max}</div>
+            <div>{util.currencyFormat(ref.price_max)}</div>
             
             <div class="label">Referral Fee:</div>
             <div>{ref.referral_fee_percentage} %</div>

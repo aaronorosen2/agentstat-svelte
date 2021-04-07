@@ -24,7 +24,11 @@
         <tbody>
             {#each referrals as ref}
                 <tr>
-                    <td><a href={link(`referral-download/${ref.uid}/`)} target="_blank"><i class="icon fas fa-file-download"></i></a> </td>
+                    <td>
+                        {#if ref.status == 'accept'}
+                            <a href={link(`referral-download/${ref.uid}/`)} target="_blank"><i class="icon fas fa-file-download"></i></a>
+                        {/if}
+                    </td>
                     <td>{util.niceDate(ref.created_at)}</td>
                     <td>{ref.referral_type}</td>
                     <td>{ref.first_name} {ref.last_name}</td>

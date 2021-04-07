@@ -1,5 +1,5 @@
 <script>
-    import { declineReferral } from "../../lib/api/referral";
+    import { setReferralStatus } from "../../lib/api/referral";
 
     export let complete
     export let ref
@@ -9,7 +9,7 @@
 
     async function decline(){
         submitting = true
-        await declineReferral(ref.id, {status: 'decline', decline_reason: msg})
+        await setReferralStatus(ref.id, {status: 'decline', decline_reason: msg})
         submitting = false
         complete && complete()
     }
@@ -20,7 +20,7 @@
     <div class="label">Reason for declining (will be sent to referring agent):</div>
     <textarea bind:value={msg} placeholder="Decline Reason" rows="15"></textarea>
     <div class="control">
-        <button class="btn" class:distabled={submitting} on:click={decline}>{submitting ? 'Declining...':'Decline'}</button>
+        <button class="btn red" class:disabled={submitting} on:click={decline}>{submitting ? 'Declining...':'Decline'}</button>
     </div>
 </div>
 

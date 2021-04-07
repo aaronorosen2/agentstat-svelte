@@ -21,6 +21,9 @@
         border: none;
         border-bottom: 1px solid #212121;
     }
+    textarea.white{
+        background: #fff;
+    }
     .title{
         text-transform: uppercase;
         font-weight: 700;
@@ -67,7 +70,12 @@
         display: flex;
         justify-content: center;
     }
-
+    .error{
+        padding: 0;
+    }
+    .lh-2 {
+        line-height: 2;
+    }
 }
 
 .sign{
