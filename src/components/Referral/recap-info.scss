@@ -9,6 +9,7 @@
     }
     .border-r{
         border-right: 1px solid #ccc;
+        padding-right: 1rem;
     }
     .label{
         font-weight: 600;
@@ -17,5 +18,33 @@
         padding: 1rem;
         display: flex;
         justify-content: center;
+    }
+    .hide-sm{
+        display: block;
+    }
+    .show-sm{
+        display: none;
+    }
+}
+
+@media(max-width: 770px){
+    .recap-info{
+        .grid-2.sm-flex {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            
+        }
+        .border-r{
+            border-right: none;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1.5rem;
+        }
+        .hide-sm{
+            display: none;
+        }
+        .show-sm{
+            display: block;
+        }
     }
 }

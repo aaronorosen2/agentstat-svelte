@@ -15,8 +15,10 @@ export async function login(user){
     }).then(res => res.json())
 
     // save key to localstorage!
-    if(!resp.msg)
+    if(!resp.msg){
         localStorage.setItem('auth/user', JSON.stringify(resp))
+        localStorage.setItem('user/visit', resp.tab_tutorial_json||'{}')
+    }
     return resp
 }
 

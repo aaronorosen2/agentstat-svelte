@@ -43,7 +43,7 @@
                     <span class="notif-badge">{$profileNotif.referral}</span>
                 {/if}
             </a>
-            <a href="/team">Team</a>
+            <a class:selected={segment == 'team'} href="/team">Team</a>
         {/if}
     </div>
 

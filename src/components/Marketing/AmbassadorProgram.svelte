@@ -9,6 +9,13 @@
     let current = 1
     $: offset = (current-1)*limit
 
+    function agName(ag){
+        if(ag.first_name || ag.last_name){
+            return ag.first_name+' '+ag.last_name
+        }
+        return ag.brokerage_name
+    }
+
     $: agents = agent?.onboarded_agents?.slice(offset, offset+limit)
 </script>
 
@@ -38,7 +45,7 @@
                 {#if agents}
                     {#each agents as ag}
                         <tr>
-                            <td><a target="_blank" href="/profile/{ag.screen_name||ag.zillow_agent_id}">{ag.first_name} {ag.last_name}</a></td>
+                            <td><a target="_blank" href="/profile/{ag.screen_name||ag.zillow_agent_id}">{agName(ag)}</a></td>
                             <td>{util.niceDate(ag.created_at, false)}</td>
                         </tr>
                     {/each}

@@ -1,7 +1,8 @@
 <script>
-    import {NavDashboard ,ReferralTable, Loader, ReferralForm, PendingReferrals} from '../../components'
+    import { onMount } from 'svelte';
+    import {NavDashboard ,ReferralTable, Loader, ReferralForm, PendingReferrals, FooterDashboard} from '../../components'
     import {fetchReferrals, pendingReferrals} from '../../lib/api/referral'
-    import { modal } from '../../stores/modal';
+    import { modal, showOnboarding } from '../../stores/modal';
 
     export let segment = ''
     let selected = 'received'
@@ -35,6 +36,9 @@
     }
 
     getRefferals()
+    onMount(() => {
+        showOnboarding('referrals')
+    })
 
 </script>
 
@@ -61,5 +65,7 @@
         <ReferralTable referrals={sRefferal.results} />
     {/if}
 </section>
+
+<FooterDashboard />
 
 <style src="./referrals.scss"></style>

@@ -10,7 +10,8 @@
         AgentReview,
         ReviewForm,
         ImportFromZillow,
-        Loader
+        Loader,
+        FooterDashboard
     } from '../../components'
 
     import { show as showNotif } from '../../stores/notif'
@@ -93,7 +94,7 @@
 
     initProfile()
 
-    onMount(() => showOnboarding('profile'))
+    onMount(() => showOnboarding('profile-settings'))
 
 </script>
 
@@ -141,5 +142,7 @@
         <div class="error">Can't load profile details</div>
     {/if}
 </section>
+
+<FooterDashboard />
 
 <style src="./profile-settings.scss"></style>

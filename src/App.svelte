@@ -12,12 +12,14 @@
     Reports,
     Marketing,
     PastSales,
-    Referrals
+    Referrals,
+    Team
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
 
   import { isAuthenticated, currentUser } from "./lib/api/auth";
+  import { setReferral } from "./lib/api/referral";
 
   page.start();
   page("*", (c, next) => {
@@ -27,6 +29,8 @@
 
   let active = Home;
   let props = {};
+  
+  setReferral()
 
   page("/", ctx => {
     active = Home;
@@ -143,6 +147,19 @@
     }
     active = Referrals;
     props = {segment: 'referrals'};
+  });
+  
+  page("/team", ctx => {
+    if (!isAuthenticated()) {
+      page.redirect("/login");
+      return;
+    }
+    if (!currentUser().agent_id) {
+      page.redirect("/connect-profile");
+      return;
+    }
+    active = Team;
+    props = {segment: 'team'};
   });
 
   page("*", () => page.redirect("/"));

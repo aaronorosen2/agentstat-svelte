@@ -1,5 +1,5 @@
 <script>
-    import {NavDashboard , PastSalesTable, ActiveSalesTable, Loader} from '../../components'    
+    import {NavDashboard , PastSalesTable, ActiveSalesTable, Loader, FooterDashboard} from '../../components'    
     import {salesTransactions, activeTransactions} from '../../lib/api/sales'
     import {onMount} from 'svelte'
     import {showOnboarding} from '../../stores/modal'
@@ -23,7 +23,7 @@
 
 
     getTransactions()
-    onMount(() => showOnboarding('sales'))
+    onMount(() => showOnboarding('past-sales'))
 </script>
 
 <Loader show={loading} text="Loading Sales ... " />
@@ -44,6 +44,6 @@
     {/if}
 </section>
 
-
+<FooterDashboard />
 
 <style src="./past-sales.scss"></style>

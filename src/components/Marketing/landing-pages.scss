@@ -7,6 +7,10 @@
             cursor: pointer;
             padding: 0.7rem 0;
             outline: none;
+            &.red{
+                font-weight: 600;
+                color: var(--red);
+            }
         }
         table{
             width: 100%;

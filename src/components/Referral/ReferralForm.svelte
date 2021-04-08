@@ -45,8 +45,8 @@
             street_address: !ref.street_address,
             city: !ref.city,
             zipcode: !ref.zipcode,
-            price_min: !ref.price_min && !isNaN(ref.price_min),
-            price_max: !ref.price_max && !isNaN(ref.price_max)
+            price_min: !ref.price_min || isNaN(ref.price_min),
+            price_max: !ref.price_max || isNaN(ref.price_max)
         }
         hasErr = Object.keys(err).map( k => err[k]).reduce((a,b) => a||b, false)
         if(!hasErr)
@@ -60,7 +60,7 @@
     }
 
     function getPrice(val){
-        return parseInt(val.replace(/[$\,]/g,''))
+        return val && parseInt(val.replace(/[$\,]/g,''))
     }
 
     function setPriceFormat(e){

@@ -52,6 +52,10 @@
         }
     }
 
+    function addr(cl){
+       return `${cl.street_address} ${cl.address_city} ${cl.address_zipcode} ${cl.property_type}`.trim().replace(/\s\s/g,' ').split(' ').join(', ')
+    }
+
 </script>
 
 <div class="landing-pages">
@@ -88,11 +92,11 @@
                     <tr>
                         <td>{Util.niceDate(cl.created_at)}</td>
                         <td><a target="_blank" href={link(cl)}>https://agentstat.com{link(cl)}</a></td>
-                        <td>{cl.street_address}, {cl.address_city}, {cl.address_zipcode}, {cl.property_type}</td>
+                        <td>{addr(cl)}</td>
                         <td>{cl.total_view}</td>
                         <td>{cl.contact_request}</td>
                         <td>{cl.unique_visitor}</td>
-                        <td><div role="button" class="link" on:click={() => remove(cl.id)}>Delete</div></td>
+                        <td><div role="button" class="link red" on:click={() => remove(cl.id)}>Delete</div></td>
                     </tr>
                 {/each}
             </tbody>

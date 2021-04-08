@@ -28,9 +28,9 @@
 </script>
 
 <div class="recap-info">
-    <div class="grid-2">
+    <div class="grid-2 sm-flex">
         <h4>Referral Information</h4>
-        <h4>Agent Information</h4>
+        <h4 class="hide-sm">Agent Information</h4>
         <div class="grid-2 border-r">
 
             <div class="label">Referral Type:</div>
@@ -77,6 +77,7 @@
 
         </div>
 
+        <h4 class="show-sm">Agent Information</h4>
         <div class="grid-2">
             
             <div class="label">Agent Name:</div>

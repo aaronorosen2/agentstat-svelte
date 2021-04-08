@@ -54,3 +54,20 @@
 .error{
     padding: 1rem 0 0;
 }
+
+@media(max-width: 480px){
+    .select-agent {
+        .title{
+            font-size: 1rem;
+        }
+        .grid-5{
+            display: grid;
+            grid-template-columns: 5% 40% 10% 10% 20%;
+            gap: 1rem;
+        }
+        input[type=radio]{
+            width: 12px;
+            height: 12px;
+        }
+    }
+}

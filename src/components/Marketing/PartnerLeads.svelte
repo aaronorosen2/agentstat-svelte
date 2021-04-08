@@ -15,7 +15,7 @@
 </script>
 
 <div class="leads-form">
-    <Alert msg="This is not a contract to buy leads or referrals. This is to notify referring agents and/or companies that you are interested in receiving lead/referrals, and what you are willing to compensate them." />
+    <Alert remember name="marketing"  msg="This is not a contract to buy leads or referrals. This is to notify referring agents and/or companies that you are interested in receiving lead/referrals, and what you are willing to compensate them." />
     <div class="table">
         <div class="head">
             Leads

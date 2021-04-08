@@ -1,5 +1,5 @@
 <script>
-    import {NavDashboard , PartnerLeads, LandingPages, AmbassadorProgram, Loader} from '../../components'
+    import {NavDashboard , PartnerLeads, LandingPages, AmbassadorProgram, Loader, FooterDashboard} from '../../components'
     import {marketingPartner, marketingCustomLinks} from '../../lib/api/marketing'
     import {currentAgentDetails, agentProfile} from '../../lib/api/profile'
     
@@ -55,7 +55,7 @@
     {#if selected == 'partner'}
         <PartnerLeads bind:data />
     {:else if selected == 'landing pages'}
-        <LandingPages {customLinks} cities={agent.cities} />
+        <LandingPages bind:customLinks cities={agent.cities} />
     {:else if selected == 'facebook ads'}
         <h1 class="center">Coming Soon</h1>
     {:else if selected == 'ambassador program'}
@@ -63,6 +63,7 @@
     {/if}
 </section>
 
+<FooterDashboard />
 
 
 <style src="./marketing.scss"></style>

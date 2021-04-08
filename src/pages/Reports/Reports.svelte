@@ -1,5 +1,5 @@
 <script>
-    import {NavDashboard , ReportDetails, Loader} from '../../components'
+    import {NavDashboard , ReportDetails, Loader, FooterDashboard} from '../../components'
     import {trackReport} from '../../lib/api/reports'
     import ReportUtil from '../../lib/report'
     import {onMount} from 'svelte'
@@ -64,5 +64,7 @@
         <h1>Coming Soon</h1>
     {/if}
 </section>
+
+<FooterDashboard />
 
 <style src="./reports.scss"></style>

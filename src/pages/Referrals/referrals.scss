@@ -16,8 +16,10 @@
 
 .container{
     padding: 2rem;
+    min-height: 75vh;
     .right{
-        float: right;
+        display: flex;
+        flex-direction: row-reverse;
     }
     .link{
         font-weight: 700;

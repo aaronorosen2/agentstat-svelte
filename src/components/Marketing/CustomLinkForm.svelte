@@ -58,7 +58,7 @@
     <div class="custom-link--created">
         <i class="fas fa-check icon"></i>
         <h1>Custom link created Successfully</h1>
-        <div class="text">{custom_link}</div>
+        <div class="text">https://agentstat.com{custom_link}</div>
     </div>
 {:else}
     <div class="custom-link-form">

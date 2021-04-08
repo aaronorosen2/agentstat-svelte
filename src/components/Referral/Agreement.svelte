@@ -135,10 +135,14 @@
     </div>
 
     <div class="flex">
-        <div>Phone:</div>
-        <div class="holder auto">{c_agent.agent_cell_phone}</div>
-        <div>Email:</div>
-        <div class="holder auto">{c_agent.profile_email||''}</div>
+        <div class="flex no-wrap">
+            <div>Phone:</div>
+            <div class="holder auto">{c_agent.agent_cell_phone}</div>
+        </div>
+        <div class="flex no-wrap">
+            <div>Email:</div>
+            <div class="holder auto">{c_agent.profile_email||''}</div>
+        </div>
     </div>
         
     <div class="title">DESTINATION FIRM:</div>
@@ -157,10 +161,14 @@
     </div>
 
     <div class="flex">
-        <div>Phone:</div>
-        <div class="holder auto">{agent.agent_cell_phone||agent.phone}</div>
-        <div>Email:</div>
-        <div class="holder auto">{agent.agent_email||agent.profile_email||''}</div>
+        <div class="flex no-wrap">
+            <div>Phone:</div>
+            <div class="holder auto">{agent.agent_cell_phone||agent.phone}</div>
+        </div>
+        <div class="flex no-wrap">
+            <div>Email:</div>
+            <div class="holder auto">{agent.agent_email||agent.profile_email||''}</div>
+        </div>
     </div>
 
 
@@ -193,18 +201,22 @@
     </div>
 
     <div class="flex">
-        <div>Phone:</div>
-        {#if receiver}
-            <div class="holder auto">{ref.phone_number}</div>
-        {:else}
-            <input class="holder auto" type="text" bind:value={ref.phone}>
-        {/if}
-        <div>Email:</div>
-        {#if receiver}
-            <div class="holder auto">{ref.email}</div>
-        {:else}
-            <input class="holder auto" type="text" bind:value={ref.email}>
-        {/if}
+        <div class="flex no-wrap">
+            <div>Phone:</div>
+            {#if receiver}
+                <div class="holder auto">{ref.phone_number}</div>
+            {:else}
+                <input class="holder auto" type="text" bind:value={ref.phone}>
+            {/if}
+        </div>
+        <div class="flex no-wrap">
+            <div>Email:</div>
+            {#if receiver}
+                <div class="holder auto">{ref.email}</div>
+            {:else}
+                <input class="holder auto" type="text" bind:value={ref.email}>
+            {/if}
+        </div>
     </div>
 
     <div class="label">Comment</div>
@@ -275,8 +287,8 @@
                 <canvas use:setCanvas></canvas>
             </div>
             <div class="footer">
-                <button class="btn" on:click={sign}>Sign</button>
-                <button class="btn" on:click={clearSign}>Clear</button>
+                <button class="btn green" on:click={sign}>Sign</button>
+                <button class="btn red" on:click={clearSign}>Clear</button>
             </div>
         </div>
     </div>

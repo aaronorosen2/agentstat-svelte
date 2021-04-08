@@ -2,7 +2,8 @@
     import {
         NavDashboard,
         InboxDetails,
-        Loader
+        Loader,
+        FooterDashboard
     } from '../../components'
     import Util from '../../lib/util'
     import {fetchInbox, readMessage} from '../../lib/api/profile'
@@ -92,5 +93,7 @@
         </div>
     {/if}
 </section>
+
+<FooterDashboard />
 
 <style src="./inbox.scss"></style>

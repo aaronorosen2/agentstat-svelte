@@ -1,5 +1,6 @@
 import {writable} from 'svelte/store'
 import PopupMsg from '../components/PopupMsg/PopupMsg.svelte'
+import { saveProfileSettings } from '../lib/api/profile'
 
 export const modal = writable({})
 
@@ -18,7 +19,10 @@ function setVisitStore(key, value){
     }
     let visit = JSON.parse(vstore)
     visit[key] = value
-    localStorage.setItem('user/visit', JSON.stringify(visit))      
+    localStorage.setItem('user/visit', JSON.stringify(visit))  
+    saveProfileSettings({
+        tab_tutorial_json: localStorage.getItem('user/visit')
+    })
 }
 
 export function showOnboarding(section){
@@ -28,7 +32,7 @@ export function showOnboarding(section){
     }
     setVisitStore(section, true)
     switch (section) {
-        case 'profile':
+        case 'profile-settings':
             onbData = {
                 title: 'Profile Settings',
                 props: {
@@ -78,13 +82,23 @@ export function showOnboarding(section){
             }  
             break;
         
-        case 'sales':
+        case 'past-sales':
             onbData = {
                 title: 'Sales',
                 props: {
                     msg: `This shows the history of your sales. <br>
                     We will do our best to keep this up to date.<br>
                     You can also manually add/edit them here.`,
+                    steps: []
+                }
+            }  
+            break;
+        
+        case 'referrals':
+            onbData = {
+                title: 'Referrals',
+                props: {
+                    msg: `Send, accept and track referrals with the click of a button.`,
                     steps: []
                 }
             }  

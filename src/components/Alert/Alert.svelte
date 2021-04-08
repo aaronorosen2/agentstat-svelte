@@ -1,12 +1,19 @@
 <script>
     export let msg = ""
-    export let show= true;
+    export let name = 'alert'
+    export let remember = false
+    let dismissing = localStorage.getItem('alert/'+name) && remember
+    export let show= dismissing ? false : true;
     export {klass as class}
     let klass = "warning"
 
     function close(){
         show=false
+        if(remember){
+            localStorage.setItem('alert/'+name,true)
+        }
     }
+
 
 </script>
 
