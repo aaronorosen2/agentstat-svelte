@@ -7,13 +7,26 @@
 
     let limit = 10
     let current = 1
+    let textNode
     $: offset = (current-1)*limit
 
     function agName(ag){
         if(ag.first_name || ag.last_name){
             return ag.first_name+' '+ag.last_name
         }
-        return ag.brokerage_name
+        return ag.brokerage_name||ag.screen_name
+    }
+    
+    let copyLabel = "Copy"
+
+    function copyText(){
+        textNode.select();
+        textNode.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        copyLabel = "Copied!"
+        setTimeout(() => {
+            copyLabel = "Copy"
+        },3000)
     }
 
     $: agents = agent?.onboarded_agents?.slice(offset, offset+limit)
@@ -28,9 +41,10 @@
         <div class="title">
             Your Ambassador Link:
         </div>
-        <p class="link">
-            https://agentstat.com/?ambassador={agent.screen_name||agent.zillow_agent_id}
-        </p>
+        <div class="copy-area">
+            <input class="link" bind:this={textNode} value="https://agentstat.com/?ambassador={agent.screen_name||agent.zillow_agent_id}" readonly>
+            <button class="btn sm" on:click={copyText}>{copyLabel}</button>
+        </div>
     </div>
     <div>
         <div class="title">Your Circle</div>

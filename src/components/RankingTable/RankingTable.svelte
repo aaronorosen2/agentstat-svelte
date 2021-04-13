@@ -111,7 +111,7 @@
     </div>
     <div class="paginate">
         {#if groups.length>limit}
-            <Pagination perPage={limit} numItems={groups.length+1} bind:current />
+            <Pagination perPage={limit} numItems={groups.length} bind:current />
         {/if}
     </div>
 </div>

@@ -60,7 +60,7 @@
         <div role="button" class="link" on:click={addReferral}>+ Send New Referral</div>
     </div>
     {#if selected == 'received'}
-        <ReferralTable referrals={rRefferal.results} />
+        <ReferralTable referrals={rRefferal.results} received />
     {:else if selected == 'sent'}
         <ReferralTable referrals={sRefferal.results} />
     {/if}

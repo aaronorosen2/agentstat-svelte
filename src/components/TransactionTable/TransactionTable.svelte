@@ -311,7 +311,7 @@
         </table>
     </div>
     <div class="paginate">
-        <Pagination perPage={limit} numItems={filter_list.length+1} bind:current />
+        <Pagination perPage={limit} numItems={filter_list.length} bind:current />
     </div>
 </div>
 

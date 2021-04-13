@@ -40,7 +40,7 @@
         {/each}
     </div>
     {#if agent.reviews.length>limit}
-            <Pagination perPage={limit} numItems={agent.reviews.length+1} bind:current />
+            <Pagination perPage={limit} numItems={agent.reviews.length} bind:current />
     {/if}
 {/if}
 

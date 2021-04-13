@@ -1,6 +1,5 @@
 <script>
     import BarChart from './BarChart.svelte'
-    import {trackReport} from '../../lib/api/reports'
     import {createEventDispatcher} from 'svelte'
     import ReportUtil from '../../lib/report'
 

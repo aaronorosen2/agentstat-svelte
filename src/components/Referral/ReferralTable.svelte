@@ -2,8 +2,10 @@
     import { link } from "../../lib/env";
     import util from "../../lib/util";
 
+    export let received = false
 
     export let referrals = []
+    
 </script>
 
 
@@ -32,7 +34,7 @@
                     <td>{util.niceDate(ref.created_at)}</td>
                     <td>{ref.referral_type}</td>
                     <td>{ref.first_name} {ref.last_name}</td>
-                    <td><a href="/profile/{ref.agent_obj.screen_name}" target="_blank">{ref.agent_obj.name}</a></td>
+                    <td><a href="/profile/{ref[`${received ? 'sender_':''}agent_obj`].screen_name}" target="_blank">{ref[`${received ? 'sender_':''}agent_obj`].name}</a></td>
                     <td>{ref.referral_fee_percentage} %</td>
                     <td>{util.currencyFormat(ref.price_min)} - {util.currencyFormat(ref.price_max)}</td>
                     <td>{ref.status}</td>

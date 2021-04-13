@@ -148,6 +148,11 @@ input:focus, textarea:focus, select:focus{
 	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 }
+.btn.sm {
+	font-size: 0.9rem;
+	font-weight: 600;
+	padding: 0.25rem 0.5rem;
+}
 .btn.disabled{
 	opacity: 0.5;
 	cursor: not-allowed;

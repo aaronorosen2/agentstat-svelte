@@ -21,8 +21,19 @@
         font-size: 1.5rem;
     }
     .link{
-        padding: 0.2rem 0.5rem;
+        padding: 0.4rem 0.5rem;
         border: 1px solid #ccc;
+        margin: 1rem 0;
+        width: 100%;
+    }
+    .copy-area{
+        position: relative;
+        .btn{
+            position: absolute;
+            top: 1.2rem;
+            right: 0.25rem;
+
+        }
     }
     .paginate{
         padding: 2rem 0;
