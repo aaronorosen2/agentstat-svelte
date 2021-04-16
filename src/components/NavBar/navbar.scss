@@ -11,6 +11,9 @@
     gap: 2rem;
     background-color: white;
     z-index: 40;
+    &.flat{
+        box-shadow: none;
+    }
     .logo {
         display: block;
         padding: 0.6rem 1rem;

@@ -3,6 +3,7 @@
   import page from "page";
   import {
     Home,
+    Agents,
     Profile,
     Login,
     VerifyEmail,
@@ -36,6 +37,13 @@
     active = Home;
     props = {};
   });
+  
+  page("/agents", ctx => {
+    console.log(location.href)
+    active = Agents;
+    props = {};
+  });
+
   page("/login", ctx => {
     if (isAuthenticated()) {
       page.redirect("/profile-settings");
@@ -165,7 +173,11 @@
   page("*", () => page.redirect("/"));
 
   onMount(() => {
-    if (location.pathname != "/") page.replace(location.pathname);
+    if (!location.pathname.startsWith("/agents")){
+      page.replace(location.pathname);
+    }else{
+      active = Agents
+    }
   });
 </script>
 

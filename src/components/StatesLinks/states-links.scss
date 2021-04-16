@@ -1,0 +1,25 @@
+.states-links{
+    background-color: #eee;
+    .container{
+        padding: 2rem 1rem;
+        margin: 0 auto;
+        max-width: 60rem;
+        .title{
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .states{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            .links{
+                a{
+                    display: block;
+                    text-decoration: none;
+                    color: var(--footer-blue);
+                }
+            }
+        }
+    }
+    
+}

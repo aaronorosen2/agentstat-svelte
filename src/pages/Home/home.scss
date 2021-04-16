@@ -1,9 +1,41 @@
-.list-agents {
+.home {
     margin: 0 auto;
     max-width: 60rem;
-    padding-bottom: 5rem; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    padding: 3rem 1rem; 
+    text-align: center;
+    h1{
+        font-size: 2.5rem;
+    }
+    .flex{
+        font-weight: 600;
+        font-size: 1rem;
+        margin: 2rem 0;
+        i {
+            color: var(--green);
+            margin: 0 0.5rem;
+        }
+    }
+    .poa-title {
+        position: relative;
+        &:after{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: url(/static/img/poa-title.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: initial;
+            bottom: -10px;
+            left: 0;
+        }
+    }
+    .video-box{
+        max-width: 700px;
+        margin: 2rem auto;
+        video{
+            max-width: 100%;
+        }
+    }
 }

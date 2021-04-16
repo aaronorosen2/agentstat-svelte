@@ -6,7 +6,8 @@
     TransactionMap,
     TransactionTable,
     ContactLead,
-    Loader
+    Loader,
+    FooterDashboard
   } from "../../components";
   import { agentDetails, agentCustomLink } from "../../lib/api";
   
@@ -61,6 +62,8 @@
     <TransactionTable list={agent.agent_lists} />
   {/if}
 </section>
+
+<FooterDashboard></FooterDashboard>
 
 <style src="./profile.scss">
 </style>
