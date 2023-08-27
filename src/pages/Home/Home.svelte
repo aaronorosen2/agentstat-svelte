@@ -24,7 +24,7 @@
     </div>
     <div class="video-box">
         <video controls autoplay muted>
-            <source src="https://agentstat.com/video/GETSTAT-7-11.10.2020.mp4" type="video/mp4">
+            <source src="https://realtorstat.com/video/GETSTAT-7-11.10.2020.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
