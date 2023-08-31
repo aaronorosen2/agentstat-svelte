@@ -32,7 +32,7 @@
 
 <div class="agent">
     <div class="agent-img">
-        <img alt={agent.agent_full_name} src={agent.agent_image == null ? "/images/blank-profile-pic.webp" : `https://app.realtorstat.com/api/agent/pic/WA/${agent.agent_image}`}/>
+        <img alt={agent.agent_full_name} src={agent.agent_image == null ? "/images/blank-profile-pic.webp" : `https://app.realtorstat.com/api/agent/pic/${agent.state}/${agent.agent_image}`}/>
     </div>
     
     <div class="agent-body">
