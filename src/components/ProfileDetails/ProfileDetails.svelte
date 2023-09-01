@@ -100,7 +100,7 @@
 
 <div class="profile-details">
     
-    <img src={agent.picture || agent.s3_image || '/images/agent.png'} alt="not found" >
+    <img src={agent.picture == null && agent.s3_image == null ? "/images/blank-profile-pic.webp" : `https://app.realtorstat.com/api/agent/pic/${agent.state}/${agent.picture || agent.s3_image}`} alt="not found" >
     
     <div class="info">
         <h2>{agent.full_name}</h2>

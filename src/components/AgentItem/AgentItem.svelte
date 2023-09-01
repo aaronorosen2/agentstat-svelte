@@ -32,11 +32,11 @@
 
 <div class="agent">
     <div class="agent-img">
-        <img alt={agent.agent_full_name} src={agent.agent_profile_pic||agent.agent_image}/>
+        <img alt={agent.agent_full_name} src={agent.agent_image == null ? "/images/blank-profile-pic.webp" : `https://app.realtorstat.com/api/agent/pic/${agent.state}/${agent.agent_image}`}/>
     </div>
     
     <div class="agent-body">
-        <a href={linkProfile(agent.agent_screen_name)} class="agent-name">
+        <a href={linkProfile(agent.agent_slug)} class="agent-name">
             {agent.agent_full_name}
             {#if agent.agent_brokerage_info}
                 <span class="info">{info(agent.agent_brokerage_info)}</span>
