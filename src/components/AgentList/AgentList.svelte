@@ -13,6 +13,16 @@
         try {
             list = await fetchAgents(filter)  
             agents = list.results
+            let urlParamSelectedUsernames = new URLSearchParams(window.location.search).get('selected_usernames') == undefined ? '' : new URLSearchParams(window.location.search).get('selected_usernames')
+            let usernames = urlParamSelectedUsernames == '' ? [] :urlParamSelectedUsernames.split(',')
+            agents.forEach((agent,index)=>{
+                if(usernames.includes(agent.agent_slug)){
+                    
+                    agents.splice(index,1)
+                    agents.unshift(agent)
+
+                }
+            })
         }catch(err){
             console.error(err.message)
             error = true

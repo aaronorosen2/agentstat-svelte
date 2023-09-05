@@ -6,8 +6,11 @@
     let submitting = false
     let error = {}
     let info = {}
+    let urlParamRedirect = new URLSearchParams(window.location.search).get('redirect') == undefined ? '' : new URLSearchParams(window.location.search).get('redirect')
 
     async function submit(){
+        
+        
         submitting = true
         error= info ={}
         let res
@@ -26,7 +29,11 @@
             info = res
         }else{
             // redirect to home/profile page maybe
-            window.location = '/profile-settings'
+            if(urlParamRedirect==''){
+                window.location = '/profile-settings'
+            }else{
+                window.location = urlParamRedirect
+            }
         }
         submitting = false
     }

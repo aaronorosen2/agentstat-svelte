@@ -14,10 +14,18 @@
 
     let loading = true
     let agent_review
+    let avg_review_value = ""
+    let sum_rating = 0
     
     async function getReviews(){
         agent_review = await agentReview(agent.id)
         loading = false
+        if(agent_review.average_review_rate===null) {
+            agent_review.reviews.forEach(review=>{
+                sum_rating += parseInt(review.rating)
+            })
+            avg_review_value  += sum_rating.toString();
+        }
     }
     getReviews()
 
@@ -75,6 +83,10 @@
             showNotif('You can only claim one profile!', true)
             return
         }
+        if(!currentUser()){
+            page.redirect(`/login?redirect=/profile/${agent.slug}`)
+            return
+        }
         if(agent.claimed){
             $modal = {
                 show: true,
@@ -112,11 +124,13 @@
                     <span class="link" on:click={claimProfile}>Claim Profile</span>    
                 {/if}
             </div>
+        {:else}
+            <span class="link" on:click={claimProfile}>Claim Profile</span>
         {/if}
         <p>{agent.brokerage_info}</p>
         <div class="review">
             {#if agent_review && agent_review.reviews.length}
-                <Stars rating={agent_review.average_review_rate} small />
+                <Stars rating={agent_review.average_review_rate === null ? avg_review_value : agent_review.average_review_rate} small />
                 {agent_review.reviews.length} Reviews 
                 <span class="link" on:click={showReviewDetails}>Details?</span>
             {:else}
