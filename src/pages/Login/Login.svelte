@@ -13,7 +13,7 @@
 </script>
 
 
-<NavBar />
+<NavBar/>
 
 
 <div class="login">
