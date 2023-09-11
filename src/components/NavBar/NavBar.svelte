@@ -24,11 +24,11 @@
     </div>
     {#if !flat}
     <div class="filter" class:open={navOpen}>
-        <SearchBar on:load on:search={updateParams} />
+        <SearchBar on:load/>
     </div>
     {/if}
     <div class="links" class:open={navOpen}>
-        <DropdownMenu />
+        <DropdownMenu/>
     </div>
 </nav>
 

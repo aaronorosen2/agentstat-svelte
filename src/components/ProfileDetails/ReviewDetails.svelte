@@ -1,5 +1,5 @@
 <script>
-    import Stars from '../Stars/Stars.svelte'
+    // import Stars from '../Stars/Stars.svelte'
     export let reviews
 </script>
 
