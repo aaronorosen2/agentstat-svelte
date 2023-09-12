@@ -40,8 +40,8 @@
     <div>
         <label>Full Name</label>
         <div class="flex">
-            <input class="input" placeholder="First Name" bind:value={agent.first_name} />
-            <input class="input" placeholder="Last Name" bind:value={agent.last_name} />
+            <input class="input readonly" placeholder="First Name" bind:value={agent.first_name} readonly />
+            <input class="input readonly" placeholder="Last Name" bind:value={agent.last_name} readonly />
         </div>
     </div>
     <div>
@@ -56,10 +56,10 @@
     <div class="flex items">
         <div class="auto">
             <label>Email</label>
-            <input class="input" placeholder="Email" bind:value={agent.email} />
+            <input class="input readonly" placeholder="Email" bind:value={agent.email} readonly />
 
             <label>Screen Name</label>
-            <input class="input" placeholder="Screen Name" bind:value={agent.screen_name} />
+            <input class="input readonly" placeholder="Screen Name" bind:value={agent.screen_name} readonly />
             <div class="helper">Profile URL: https://agentstat.com/profile/{agent.screen_name}</div>
         </div>
         <div>

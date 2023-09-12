@@ -3,6 +3,31 @@
   import Loader from "../Loader/Loader.svelte";
   import { fetchAgents } from "../../lib/api";
 
+<<<<<<< afba66ec85d9ce01ea5f1809328d84ecfa4ec50d
+    export async function searchAgents(filter={}){
+        error = false
+        loading = true
+        let list = {results: []}
+        try {
+            list = await fetchAgents(filter)  
+            agents = list.results
+            let urlParamSelectedUsernames = new URLSearchParams(window.location.search).get('selected_usernames') == undefined ? '' : new URLSearchParams(window.location.search).get('selected_usernames')
+            let usernames = urlParamSelectedUsernames == '' ? [] :urlParamSelectedUsernames.split(',')
+            agents.forEach((agent,index)=>{
+                if(usernames.includes(agent.agent_slug)){
+                    
+                    agents.splice(index,1)
+                    agents.unshift(agent)
+
+                }
+            })
+        }catch(err){
+            console.error(err.message)
+            error = true
+        }
+        loading = false
+        return list
+=======
   let agents = [];
   let loading = false;
   let error = false;
@@ -17,6 +42,7 @@
     } catch (err) {
       console.error(err.message);
       error = true;
+>>>>>>> b60275c6e7bcc852243daefd40034d84910adc0c
     }
     loading = false;
     return list;
@@ -73,4 +99,4 @@
   {/if}
 </div>
 
-<style src="./agent-list.scss"></style>
+<style src="./agent-list.scss"></style>

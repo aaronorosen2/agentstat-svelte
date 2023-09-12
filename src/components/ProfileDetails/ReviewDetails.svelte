@@ -4,10 +4,14 @@
 </script>
 
 <div class="review-details">
-    {#each reviews as review}
+    {#if reviews.length > 0}
+        {#each reviews as review}
         {review.category}
         <Stars rating={review.summary} small />
-    {/each}
+        {/each}
+    {:else}
+        <h1>Review Details Data Not coming</h1>
+    {/if}
 </div>
 
 <style>

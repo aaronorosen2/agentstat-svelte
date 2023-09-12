@@ -98,7 +98,7 @@
                                 <td>{item.home_type ? item.home_type : 'Overall'}</td>
                                 <td><div>{item.agent_rank} / {item.rank_count}</div></td>
                                 <td>{successRate(item)}</td>
-                                <td>{Math.round(item.s2l_price)}%</td>
+                                <td>{isNaN(Math.round(item.s2l_price)) ? 0 : Math.round(item.s2l_price)}%</td>
                                 <td>{item.avg_dom ? Math.round(item.avg_dom): 0}</td>
                                 <td>{item.sold_listings}</td>
                                 <td>{item.failed_listings}</td>
