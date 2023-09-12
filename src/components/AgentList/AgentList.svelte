@@ -1,11 +1,9 @@
 <script>
-    import AgentItem from '../AgentItem/AgentItem.svelte'
-    import Loader from '../Loader/Loader.svelte'
-    import {fetchAgents} from '../../lib/api'
-    let agents = []
-    let loading = false
-    let error = false
+  import AgentItem from "../AgentItem/AgentItem.svelte";
+  import Loader from "../Loader/Loader.svelte";
+  import { fetchAgents } from "../../lib/api";
 
+<<<<<<< afba66ec85d9ce01ea5f1809328d84ecfa4ec50d
     export async function searchAgents(filter={}){
         error = false
         loading = true
@@ -29,25 +27,76 @@
         }
         loading = false
         return list
-    }
+=======
+  let agents = [];
+  let loading = false;
+  let error = false;
 
+  export async function searchAgents(filter = {}) {
+    error = false;
+    loading = true;
+    let list = { results: [] };
+    try {
+      list = await fetchAgents(filter);
+      agents = list.results;
+    } catch (err) {
+      console.error(err.message);
+      error = true;
+>>>>>>> b60275c6e7bcc852243daefd40034d84910adc0c
+    }
+    loading = false;
+    return list;
+  }
 </script>
 
-<div class="list">
-    <Loader show={loading} text="Loading agents..." />
-    {#if error}
-        <div class="error">
-            Error occured while fetching agents list, please try again later
-        </div>
-    {:else if agents.length}
-        {#each agents as agent}
-            <AgentItem {agent} />
-        {/each}
-    {:else if !loading}
-        <div class="info">
-            No Agent was found with your search parameters!
-        </div>
-    {/if}
+<div class="mainContainer">
+  <div class="container1">
+    <img src="/images/free_concierge.jpg" alt="" />
+  </div>
+  <div class="container2">
+    <div class="blog1">
+      <h4 style=" color: rgb(10, 137, 255);;">
+        Ranked Top 1% On Agentstat: Nationwide Statistics
+      </h4>
+    </div>
+    <div class="blog2" />
+    <p><span>Sold Listings</span><span>00</span></p>
+    <p><span>Failed Listings</span><span>00</span></p>
+    <p><span>Avg List to Sold Price</span><span>00</span></p>
+    <p><span>Single Family Sold</span><span>00</span></p>
+    <p><span>Condos Sold</span><span>00</span></p>
+  </div>
+
+  <div class="container3">
+    <div class="formHeading">
+      <h4>For my address, text me two hand-selected Top 1% Agents</h4>
+    </div>
+    <form action="">
+      <div class="formBlog1">
+        <input type="text" name="" id="" placeholder="Name" />
+        <input type="text" name="" id="" placeholder="Phone Number" />
+      </div>
+      <div class="formBlog2">
+        <input type="text" name="" id="" placeholder="Address" />
+        <input type="submit" value="Send Now!" />
+      </div>
+    </form>
+  </div>
 </div>
 
-<style src="./agent-list.scss"></style>
+<div class="list">
+  <Loader show={loading} text="Loading agents..." />
+  {#if error}
+    <div class="error">
+      Error occurred while fetching agents list, please try again later
+    </div>
+  {:else if agents.length}
+    {#each agents as agent}
+      <AgentItem {agent} />
+    {/each}
+  {:else if !loading}
+    <div class="info">No Agent was found with your search parameters!</div>
+  {/if}
+</div>
+
+<style src="./agent-list.scss"></style>

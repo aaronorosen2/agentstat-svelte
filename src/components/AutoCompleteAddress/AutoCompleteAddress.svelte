@@ -1,5 +1,4 @@
 <script>
-   
     import {createEventDispatcher} from 'svelte'
     const dispatch = createEventDispatcher()
     export let placeholder="Search Address"
@@ -32,13 +31,13 @@
         search_data['street_address'] = place.formatted_address
         if(place.address_components){
             for(let address_comp of place.address_components) {
-                if (address_comp.types[0] == "administrative_area_level_1") {
+                if (address_comp.types[0] === "administrative_area_level_1") {
                     search_data['state'] = address_comp.short_name
                 }
-                if (address_comp.types[0] == 'locality') {
+                if (address_comp.types[0] === 'locality') {
                     search_data['city'] = address_comp.short_name
                 }
-                if (address_comp.types[0] == 'postal_code') {
+                if (address_comp.types[0] === 'postal_code') {
                     search_data['zip_code'] = address_comp.short_name
                 }
             }

@@ -2,12 +2,13 @@
     import Dropdown from '../Dropdown/Dropdown.svelte'
     import AutoCompleteAddress from '../AutoCompleteAddress/AutoCompleteAddress.svelte'
     import SearchInput from '../SearchInput/SearchInput.svelte'
-    import {createEventDispatcher} from 'svelte'
-    import {fetchStates} from '../../lib/api'
+    import { createEventDispatcher } from 'svelte'
+    import { fetchStates } from '../../lib/api'
 
     const dispatch = createEventDispatcher()
-    export let filter = {agent_name: "", filter_by: 'address'}
+    export let filter = { agent_name: "", filter_by: 'address', state: 'States', minPrice: '', maxPrice: '' } // Set default values for min and max prices
     let errorState = false
+    let priceDropdownOpen = false; // Track whether the price dropdown is open
 
     const SearchBy = [
         {
@@ -21,8 +22,8 @@
         }
     ]
 
-    function filterLabel(val){
-        if(!val) return
+    function filterLabel(val) {
+        if (!val) return
         return SearchBy.find(s => s.value == val).label
     }
 
@@ -46,6 +47,53 @@
             label: 'Townhomes', value: 'TOWNHOUSE'
         }
     ]
+    let isOpen = false;
+  let isMinSelected = false;
+  let isMaxSelected = false;
+  let minPrice = '';
+  let maxPrice = '';
+  
+  const priceOptions = [
+    '$50K',
+    '$100K',
+    '$150K',
+    '$200K',
+    '$300K',
+    '$400K',
+    '$500K',
+    '$600K',
+    '$700K',
+    '$800K',
+    '$900K',
+  ];
+
+  function toggleDropdown() {
+    isOpen = !isOpen;
+  }
+
+  function selectPrice(option) {
+    if (isMinSelected && isMaxSelected) {
+      isMinSelected = false;
+      isMaxSelected = false;
+    }
+
+    if (!isMinSelected) {
+      minPrice = option;
+      isMinSelected = true;
+    } else if (!isMaxSelected) {
+      maxPrice = option;
+      isMaxSelected = true;
+    }
+
+    if (isMinSelected && isMaxSelected) {
+      closeDropdown();
+    }
+  }
+
+  function closeDropdown() {
+    isOpen = false;
+  }
+
 
     function homeTypeLabel(val){
         if(!val) return
@@ -73,7 +121,7 @@
             filter.home_type = ""
             filter.city = ""
             filter.address = ""
-        }else{
+        } else {
             filter.agent_name = ""
         }
     }
@@ -85,14 +133,13 @@
     }
 
     function selectAddress(evt){
-        errorState= false
-        filter = {...filter,...evt.detail}
+        errorState = false
+        filter = { ...filter, ...evt.detail }
         search()
     }
 
     function selectHomeType(evt){
-        filter = {...filter, home_type: val(evt.detail)}
-        
+        filter = { ...filter, home_type: val(evt.detail) }
     }
 
     function search(){
@@ -105,34 +152,42 @@
     }
 
     // init from url params
-    async function initFilter(){
+    async function initFilter() {
         const urlParams = new URLSearchParams(window.location.search);
-        const entries = urlParams.entries()
-        for(let entry of entries){
-            filter[entry[0]] = entry[1]
+        const filterBy = urlParams.get('filter_by');
+        if (filterBy) {
+            filter.filter_by = filterBy;
         }
-        if(filter.filter_by =='agent_name'){
-            listStates = ['States'].concat(await fetchStates())
+        const entries = urlParams.entries();
+        for (let entry of entries) {
+            filter[entry[0]] = entry[1];
         }
-        filter = filter
-        setTimeout(()=>{
-            dispatch('load', filter)
-        })     
+        if (filter.filter_by === 'agent_name' && listStates.length < 2) {
+            listStates = ['States'].concat(await fetchStates());
+        }
+        filter = filter;
+        setTimeout(() => {
+            dispatch('load', filter);
+        });
     }
 
-    initFilter()
-
+    initFilter();
 </script>
 
 <div class="search-bar">
-    <Dropdown selected={filterLabel(filter.filter_by)}  options={SearchBy} on:select={selectFilter} radius="left" border={filter.filter_by == 'agent_name' ? "left":"both"} ></Dropdown>
+    <Dropdown selected={filterLabel(filter.filter_by)} options={SearchBy} on:select={selectFilter} radius="left" border={filter.filter_by == 'agent_name' ? "left" : "both"} ></Dropdown>
     {#if filter.filter_by == 'agent_name'}
         <Dropdown options={listStates} error={errorState} selected={filter.state} on:select={selectState} radius="none" ></Dropdown>
         <SearchInput bind:value={filter.agent_name} on:search={search} />
     {:else}
-        <AutoCompleteAddress bind:value={filter.address} on:select={selectAddress} optionType={optionTypes[filter.filter_by]}  />
+        {#if filter.filter_by == 'city'}
+            <AutoCompleteAddress bind:value={filter.city} on:select={selectAddress} optionType={optionTypes[filter.filter_by]} />
+        {:else}
+            <AutoCompleteAddress bind:value={filter.address} on:select={selectAddress} optionType={optionTypes[filter.filter_by]} />
+        {/if}
         <Dropdown options={HomeTypes} selected={homeTypeLabel(filter.home_type)} on:select={selectHomeType} radius="none" border="left" ></Dropdown>
     {/if}
+
     <div role="button" class="search-bar--btn" on:click={search}>
         <span class="mobile">Search</span>
         <i class="fas fa-search"></i>
