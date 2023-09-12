@@ -11,3 +11,6 @@ export  {default as Marketing} from './Marketing/Marketing.svelte'
 export  {default as PastSales} from './PastSales/PastSales.svelte'
 export  {default as Referrals} from './Referrals/Referrals.svelte'
 export  {default as Team} from './Team/Team.svelte'
+export  {default as AboutUs} from './AboutUs/AboutUs.svelte'
+/*export  {default as PasswordReset} from './PasswordReset/Index.svelte'
+export  {default as PasswordResetConfirm} from './PasswordReset/PasswordResetConfirm.svelte'*/

@@ -14,6 +14,12 @@
             height: 150px;
         }
     }
+    .agent-list-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
     .agent-body {
         // display: flex;
         // gap: 1rem;
@@ -96,7 +102,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #a80909;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -108,7 +114,7 @@
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #fff;
     -webkit-transition: .4s;
     transition: .4s;
   }

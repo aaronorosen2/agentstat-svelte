@@ -1,5 +1,5 @@
 <script>
-    export let badge
+    export let badge;
 </script>
 
 <div class="badge">

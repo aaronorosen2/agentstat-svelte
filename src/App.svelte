@@ -3,6 +3,9 @@
   import page from "page";
   import {
     Home,
+    AboutUs,
+    /*PasswordReset,
+    PasswordResetConfirm,*/
     Agents,
     Profile,
     Login,
@@ -37,6 +40,26 @@
     active = Home;
     props = {};
   });
+
+  page("/about-us", ctx => {
+    active = AboutUs;
+    props = {};
+  });
+
+  /*page("/reset-password", ctx => {
+    active = PasswordReset;
+    props = {};
+  });
+
+  page("/reset-password/:id/:token", ctx => {
+    active = PasswordReset;
+    props = ctx.params;
+  });
+
+  page("/reset-password/:id", ctx => {
+    active = PasswordResetConfirm;
+    props = ctx.params;
+  });*/
   
   page("/agents", ctx => {
     console.log(location.href)

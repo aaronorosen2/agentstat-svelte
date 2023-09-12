@@ -1,9 +1,12 @@
 <script>
     export let agent = {};
     import page from "page";
+    import {modal} from '../../stores/modal';
+    import ConnectWith from "../ConnectWith/ConnectWith.svelte";
 
     let pinned = false;
-    let selected_usernames = new URLSearchParams(window.location.search).get("selected_usernames") ==
+    let selected_usernames =
+        new URLSearchParams(window.location.search).get("selected_usernames") ==
         undefined
             ? ""
             : new URLSearchParams(window.location.search).get(
@@ -29,7 +32,7 @@
     }
 
     function round(n) {
-        return n==undefined ? 0.00 : n.toFixed(2);
+        return n == undefined ? 0.0 : n.toFixed(2);
     }
 
     function xSold(str, prop) {
@@ -56,9 +59,9 @@
 
     function handlePinned(event) {
         if (!pinned && window.confirm("Really Want To Pin?")) {
-            console.log(selected_usernames)
+            console.log(selected_usernames);
             selected_usernames += agent.agent_slug + ",";
-            console.log(selected_usernames)
+            console.log(selected_usernames);
             let u = new URLSearchParams(window.location.search);
             u.set("selected_usernames", selected_usernames);
             window.location.search = u.toString();
@@ -75,7 +78,7 @@
         });
 
         usernames.forEach((username) => {
-            temp += username+",";
+            temp += username + ",";
         });
 
         selected_usernames = temp;
@@ -83,6 +86,17 @@
         let u = new URLSearchParams(window.location.search);
         u.set("selected_usernames", selected_usernames);
         window.location.search = u.toString();
+    }
+
+    function showConnectWithModal(){
+        $modal = {
+            show: true,
+            cmp: ConnectWith,
+            title: `Connect ${agent.agent_full_name}`,
+            props: {
+                
+            }
+        }
     }
 </script>
 
@@ -105,7 +119,9 @@
         </a>
         <div class="agent-stat">
             <div class="span-1 label">Overall</div>
-            <div class="label">Clovis</div>
+            <div class="label">
+                {agent.city === undefined || null ? "Default City" : agent.city}
+            </div>
 
             <div class="label">Sold Listings</div>
             <div>
@@ -163,27 +179,31 @@
         </div>
     </div>
 
-    <div class="toggler">
-        <label class="switch">
-            <input
-                type="checkbox"
-                checked={pinned}
-                on:click|preventDefault={handlePinned}
-            />
+    <div class="agent-list-right">
+        <div class="toggler">
+            <label class="switch">
+                <input
+                    type="checkbox"
+                    checked={pinned}
+                    on:click|preventDefault={handlePinned}
+                />
 
-            <span class="slider round" />
-        </label>
-        {#if !pinned}
-            Tap to Pin
-        {:else}
-            Unpin
-        {/if}
-    </div>
+                <span class="slider round" />
+            </label>
+            <p>
+                {#if !pinned}
+                    Tap to Pin
+                {:else}
+                    Unpin
+                {/if}
+            </p>
+        </div>
 
-    <div class="agent-control">
-        <div class="connect">
-            <div role="button" class="button">
-                Connect with {agent.agent_full_name}
+        <div class="agent-control">
+            <div class="connect" on:click={showConnectWithModal}>
+                <div role="button" class="button">
+                    Connect with {agent.agent_full_name}
+                </div>
             </div>
         </div>
     </div>

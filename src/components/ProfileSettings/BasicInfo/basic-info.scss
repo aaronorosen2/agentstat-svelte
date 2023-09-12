@@ -19,6 +19,10 @@
         border-radius: 0.5rem;
         background-color: #eee;
         border: 1px solid #ccc;
+        &.readonly {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
     }
     .helper{
         font-size: 0.8rem;
