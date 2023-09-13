@@ -123,7 +123,7 @@
                 {agent.city === undefined || null ? "Default City" : agent.city}
             </div>
 
-            <div class="label">Sold Listings.........................................</div>
+            <div class="label">Sold Listings.........................................................................................</div>
             <div>
                 {agent.overall_sold_listings}
             </div>
@@ -131,7 +131,7 @@
                 {agent.sold_listings}
             </div>
 
-            <div class="label">Failed Listings.........................................</div>
+            <div class="label">Failed Listings..............................................................................................</div>
             <div>
                 {agent.overall_failed_listings}
             </div>
@@ -139,7 +139,7 @@
                 {agent.failed_listings}
             </div>
 
-            <div class="label">Avg Days On Market.........................................</div>
+            <div class="label">Avg Days On Market..............................................................................................</div>
             <div>
                 {round(agent.overall_avg_dom)}
             </div>
@@ -147,7 +147,7 @@
                 {round(agent.avg_dom)}
             </div>
 
-            <div class="label">Avg List to Sold Price.........................................</div>
+            <div class="label">Avg List to Sold Price..............................................................................</div>
             <div>
                 {round(agent.overall_s2l_price)}
             </div>
@@ -155,7 +155,7 @@
                 {round(agent.s2l_price)}
             </div>
 
-            <div class="label">Single Family Sold.........................................</div>
+            <div class="label">Single Family Sold.................................................................................</div>
             <div>
                 {xSold(
                     agent.overall_listings_breakdown_json,
@@ -169,7 +169,7 @@
                 )}
             </div>
 
-            <div class="label">Condos Sold.........................................</div>
+            <div class="label">Condos Sold....................................................................................</div>
             <div>
                 {xSold(agent.overall_listings_breakdown_json, "Condos sold")}
             </div>

@@ -39,18 +39,20 @@
         }
         .agent-stat{
             display: grid;
-            grid-template-columns: minmax(10rem,auto) 4rem 4rem;
+           // grid-template-columns: minmax(21rem,auto) 7rem 9rem;
+           grid-template-columns: 21rem 9rem 9rem;
             align-items: center;
-            justify-content: space-between;
-            // justify-content: center;
+            //justify-content: space-between;
+             justify-content: center;
             row-gap: 0.5rem;
-            column-gap: 2rem;
+            column-gap: 0.19rem;
             .span-1{
                 grid-column: 2 / 3;
             }
             .label {
                 font-weight: 500;
                 overflow: hidden;
+                white-space: nowrap;
             }
         }
     }
