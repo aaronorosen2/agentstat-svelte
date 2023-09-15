@@ -188,6 +188,27 @@
         <Dropdown options={HomeTypes} selected={homeTypeLabel(filter.home_type)} on:select={selectHomeType} radius="none" border="left" ></Dropdown>
     {/if}
 
+<div class="price-dropdown">
+  <button on:click={toggleDropdown} class="price-button">
+    Price
+    {#if isMinSelected || isMaxSelected}
+      (Min: {minPrice}, Max: {maxPrice})
+    {/if}
+  </button>
+  
+  {#if isOpen}
+    <div class="price-options">
+      <ul>
+        {#each priceOptions as option (option)}
+          <li on:click={() => selectPrice(option)}>
+            {option}
+          </li>
+        {/each}
+      </ul>
+      <button on:click={closeDropdown} class="done-button">Done</button>
+    </div>
+  {/if}
+</div>
     <div role="button" class="search-bar--btn" on:click={search}>
         <span class="mobile">Search</span>
         <i class="fas fa-search"></i>

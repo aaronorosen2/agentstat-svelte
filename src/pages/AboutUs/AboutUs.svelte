@@ -6,7 +6,6 @@
 </script>
 
 <div>
-    <NavBar />
 
     <AboutUs />
 

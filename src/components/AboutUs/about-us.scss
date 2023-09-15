@@ -1,0 +1,139 @@
+.nav-bar--head{
+     border-bottom: 1px solid black;
+     background-color:white;
+     img{
+        height: 35px;
+        padding:  10px 30px;
+    }
+}
+
+
+.mainContainer {
+  height: 100%;
+
+  .nav {
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.438);
+    padding: 0px;
+
+    .Items {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100%;
+
+      button {
+        background-color: transparent;
+        border: none;
+        height: 50px;
+        margin-bottom: 0px;
+
+        &:hover {
+          color: rgba(65, 65, 65, 0.628);
+        }
+      }
+
+      #Overview {
+        border-bottom: 4px solid rgb(7, 131, 255);
+      }
+    }
+  }
+
+  .mainContainerOfmain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .h1 {
+        font-size: 45px;
+        text-align: center;
+        @media only screen and (max-width: 1020px) {
+          font-size: 40px;
+        }
+        @media only screen and (max-width: 767px) {
+          font-size: 27px;
+          padding: 30px 0px;
+          line-height: 1.9;
+        }
+      }
+
+      .p {
+        padding:0 250px;
+        font-size: 20px;
+        line-height: 1.8;
+        text-align: center;
+        color: rgb(105, 105, 105);
+        @media only screen and (max-width: 1020px) {
+          padding: 0 100px;
+          font-size: 15px;
+          line-height: 1.4;
+        }
+
+        @media only screen and (max-width: 767px) {
+          font-size: 15px;
+          padding: 10px 30px;
+          line-height: 1.9;
+        }
+      }
+
+      .videoContainer {
+        // width: 1300px;
+        @media only screen and (max-width: 1020px) {
+            // width: 700px;
+          }
+          @media only screen and (max-width: 767px) {
+           
+          }
+        video {
+          width: 100%;
+          
+        }
+      }
+    }
+  }
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  button {
+    margin-bottom: 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      transition: 0.3s ease-in-out;
+      color: white;
+    }
+  }
+
+  .LeftBtn {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rightBtn {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
