@@ -29,7 +29,7 @@ export function getAgentUrlParams(filter){
 
 export async function fetchAgents(filter, track=true){
     let url = link(
-        `reports/${filter.state||'CA'}?`+
+        `reports/${filter.state||'CA'}?&home_type=House`+
         getAgentUrlParams(filter)
     )
         
