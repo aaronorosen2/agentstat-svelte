@@ -21,7 +21,8 @@
         activeSales = await activeTransactions()
     }
 
-
+    function handleKeyDown() {}
+    
     getTransactions()
     onMount(() => showOnboarding('past-sales'))
 </script>
@@ -31,8 +32,10 @@
 
 <section>
     <div class="tabs">
-        <div class="tab" class:selected={selected == 'past sales'} on:click={selectTab}>Past Sales</div> 
-        <div class="tab" class:selected={selected == 'active sales'} on:click={selectTab}>Active Sales</div> 
+        <div class="tab" class:selected={selected == 'past sales'} on:click={selectTab} on:keydown={handleKeyDown}
+        >Past Sales</div> 
+        <div class="tab" class:selected={selected == 'active sales'} on:click={selectTab} on:keydown={handleKeyDown}
+        >Active Sales</div> 
     </div>
 </section>
 

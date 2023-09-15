@@ -44,23 +44,23 @@
 </script>
 
 <div class="dispute-form">
-    <label>Full Name</label>
+    <label for="Full Name">Full Name</label>
     <input class="input" placeholder="Full Name" bind:value={agent.full_name}>
     
-    <label>Email</label>
+    <label for="Email">Email</label>
     <input type="email" class="input" placeholder="Email" bind:value={agent.email}>
 
-    <label>Phone</label>
+    <label for="Phone">Phone</label>
     <input class="input" placeholder="Phone" bind:value={agent.phone}>
 
-    <label>Brokerage Name</label>
+    <label for="Brokerage Name">Brokerage Name</label>
     <input class="input" placeholder="Brokerage Name" bind:value={agent.brokerage_name}>
     
-    <label>Photo ID</label>
+    <label for="Photo ID">Photo ID</label>
     <UploadImage on:input={setPhotoId} />
 
     
-    <label>Real Estate License</label>
+    <label for="Real Estate License">Real Estate License</label>
     <UploadImage on:input={setLicense} />
     
 </div>

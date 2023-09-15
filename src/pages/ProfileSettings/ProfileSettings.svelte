@@ -92,6 +92,8 @@
         }
     }
 
+    function handleKeyDown() {}
+  
     initProfile()
 
     onMount(() => showOnboarding('profile-settings'))
@@ -106,7 +108,8 @@
             <div class="tabs">
                 <h1 class="tabs--head">Profile Settings</h1>
                 {#each tabs as tab}
-                    <div class="tab" class:selected={tab.key==selected_tab} on:click={() => selectTab(tab.key)}>
+                    <div class="tab" class:selected={tab.key==selected_tab} on:click={() => selectTab(tab.key)} on:keydown={handleKeyDown}
+                        >
                         <img src={tab.img} alt={tab.name} />
                         {tab.name}
                     </div>

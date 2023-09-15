@@ -38,14 +38,14 @@
 
 <div class="basic-info">
     <div>
-        <label>Full Name</label>
+        <label for="Full Name">Full Name</label>
         <div class="flex">
             <input class="input readonly" placeholder="First Name" bind:value={agent.first_name} readonly />
             <input class="input readonly" placeholder="Last Name" bind:value={agent.last_name} readonly />
         </div>
     </div>
     <div>
-        <label>Phone Number</label>
+        <label for="Phone Number">Phone Number</label>
         <div class="flex">
             <input class="input" name="phone" placeholder="XXX XXX XXXX" bind:value={agent.phone_number} />
             <Tooltip>
@@ -55,10 +55,10 @@
     </div>
     <div class="flex items">
         <div class="auto">
-            <label>Email</label>
+            <label for="Email">Email</label>
             <input class="input readonly" placeholder="Email" bind:value={agent.email} readonly />
 
-            <label>Screen Name</label>
+            <label for="Screen Name">Screen Name</label>
             <input class="input readonly" placeholder="Screen Name" bind:value={agent.screen_name} readonly />
             <div class="helper">Profile URL: https://agentstat.com/profile/{agent.screen_name}</div>
         </div>

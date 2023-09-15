@@ -31,7 +31,7 @@
         Allow to display Brokerage info on agent profile.
     </label>
     <div>
-        <label class="label-input">
+        <label class="label-input" for="License Number">
             License Number
         </label>
         <div class="flex">
@@ -49,21 +49,21 @@
     <Chips bind:items={agent.licenses} />
 
     <div>
-        <label class="label-input">
+        <label class="label-input" for="Brokerage Name">
             Brokerage Name
         </label>
         <input class="input" placeholder="Brokerage Name" bind:value={agent.brokerage_name} />
     </div>
 
     <div>
-        <label class="label-input">
+        <label class="label-input" for="Brokerage Address">
             Brokerage Address
         </label>
         <input class="input" placeholder="Brokerage Address" bind:value={agent.brokerage_address} />
     </div>
 
     <div>
-        <label class="label-input">
+        <label class="label-input" for="City">
             City, State, ZIP
         </label>
         <div class="flex">

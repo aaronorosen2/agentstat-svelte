@@ -52,7 +52,7 @@
 </script>
 
 <div class="highlights">
-    <label class="label-input">
+    <label class="label-input" for="In Business Since">
         In Business Since
     </label>
     <select class="input" bind:value={agent.years_in_bussiness}>
@@ -62,7 +62,7 @@
         <option value="before {cy-20}">Before {cy-20}</option>
     </select>
 
-    <label class="label-input">Specialties</label>
+    <label class="label-input" for="Specialties">Specialties</label>
     <div class="grid">
         {#each specialties as [id,sp],i}
             <label >
@@ -82,7 +82,7 @@
         </div>
     {/if}
 
-    <label class="label-input">Language Fluency</label>
+    <label class="label-input" for="Language Fluency">Language Fluency</label>
     <div class="grid">
         {#each langs as [id,lang]}
             <label>

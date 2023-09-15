@@ -171,6 +171,7 @@
         });
     }
 
+    function handleKeyDown() {}
     initFilter();
 </script>
 
@@ -188,7 +189,7 @@
         <Dropdown options={HomeTypes} selected={homeTypeLabel(filter.home_type)} on:select={selectHomeType} radius="none" border="left" ></Dropdown>
     {/if}
 
-    <div role="button" class="search-bar--btn" on:click={search}>
+    <div role="button" class="search-bar--btn" on:click={search} on:keydown={handleKeyDown} tabindex="0">
         <span class="mobile">Search</span>
         <i class="fas fa-search"></i>
     </div>

@@ -55,12 +55,13 @@
     function addr(cl){
        return `${cl.street_address} ${cl.address_city} ${cl.address_zipcode} ${cl.property_type}`.trim().replace(/\s\s/g,' ').split(' ').join(', ')
     }
-
+    
+    function handleKeyDown() {}
 </script>
 
 <div class="landing-pages">
     <div class="container">
-        <div class="link" on:click={showForm}>+ Create your custom profile link</div>
+        <div class="link" on:click={showForm} on:keydown={handleKeyDown}>+ Create your custom profile link</div>
         <table>
             <thead>
                 <tr>
@@ -96,7 +97,7 @@
                         <td>{cl.total_view}</td>
                         <td>{cl.contact_request}</td>
                         <td>{cl.unique_visitor}</td>
-                        <td><div role="button" class="link red" on:click={() => remove(cl.id)}>Delete</div></td>
+                        <td><div role="button" class="link red" on:click={() => remove(cl.id)} on:keydown={handleKeyDown} tabindex='0'>Delete</div></td>
                     </tr>
                 {/each}
             </tbody>

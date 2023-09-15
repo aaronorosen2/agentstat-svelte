@@ -18,7 +18,7 @@
     over = convertValue(value);
   }
 
-  const convertValue = val => {
+  const convertValue = (val) => {
     if (val >= length) {
       val = length;
     } else if (val < 0) {
@@ -26,13 +26,13 @@
     }
     return val;
   };
-  const onOver = index => {
+  const onOver = (index) => {
     if (!readonly) over = index;
   };
   const onOut = () => {
     if (!readonly) over = rate;
   };
-  const setRate = index => {
+  const setRate = (index) => {
     if (readonly) return false;
     if (typeof beforeRate === "function") {
       beforeRate(rate);
@@ -42,10 +42,10 @@
       afterRate(rate);
     }
   };
-  const isFilled = index => {
+  const isFilled = (index) => {
     return index <= over;
   };
-  const isEmpty = index => {
+  const isEmpty = (index) => {
     return index > over || (!value && !over);
   };
 
@@ -74,13 +74,15 @@
       height="0"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink">
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
       <defs>
         <symbol id="icon-star-full" viewBox="0 0 32 32">
           <title>star-full</title>
           <path
             d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8
-            7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z" />
+            7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"
+          />
         </symbol>
       </defs>
     </svg>
@@ -90,7 +92,7 @@
         key={n}
         class:hover={n <= over}
         class:filled={n <= rate || isFilled(n)}
-        class={'Rate__star'}
+        class={"Rate__star"}
         on:mouseover={() => {
           onOver(n);
         }}
@@ -106,7 +108,10 @@
         on:keyup.enter={() => {
           setRate(n);
         }}
-        {disabled}>
+        on:focus={() => {}}
+        on:blur={() => {}}
+        {disabled}
+      >
         <svg class="icon">
           <use xlink:href="#icon-star-full" />
         </svg>

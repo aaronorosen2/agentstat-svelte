@@ -106,7 +106,7 @@
         
     }
 
-
+    function handleKeyDown() {}
 
 </script>
 
@@ -121,18 +121,18 @@
                 {#if currentUser().agent_id == agent.id}
                     <a href="/profile-settings" target="_blank">(Edit Profile)</a>
                 {:else}
-                    <span class="link" on:click={claimProfile}>Claim Profile</span>    
+                    <span class="link" on:click={claimProfile} on:keydown={handleKeyDown}>Claim Profile</span>    
                 {/if}
             </div>
         {:else}
-            <span class="link" on:click={claimProfile}>Claim Profile</span>
+            <span class="link" on:click={claimProfile} on:keydown={handleKeyDown}>Claim Profile</span>
         {/if}
         <p>{agent.brokerage_info}</p>
         <div class="review">
             {#if agent_review && agent_review.reviews.length}
                 <Stars rating={agent_review.average_review_rate === null ? avg_review_value : agent_review.average_review_rate} small />
                 {agent_review.reviews.length} Reviews 
-                <span class="link" on:click={showReviewDetails}>Details?</span>
+                <span class="link" on:click={showReviewDetails} on:keydown={handleKeyDown}>Details?</span>
             {:else}
                 {loading ? '':'No reviews yet'}
             {/if}

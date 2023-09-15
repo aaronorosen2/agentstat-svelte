@@ -98,6 +98,8 @@
             }
         }
     }
+
+    function handleKeyDown() {}
 </script>
 
 <div class="agent">
@@ -200,7 +202,7 @@
         </div>
 
         <div class="agent-control">
-            <div class="connect" on:click={showConnectWithModal}>
+            <div class="connect" on:click={showConnectWithModal} on:keydown={handleKeyDown}>
                 <div role="button" class="button">
                     Connect with {agent.agent_full_name}
                 </div>

@@ -16,7 +16,7 @@ $badge-max-size: 17px;
     text-align: center;
 
     // filter: drop-shadow(0.2em 0.3em 0.6em rgba(0, 0, 0, 0.3));
-    font-size: calc(#{$badge-min-size} + #{($badge-max-size - $badge-min-size) / 1px} * ((100vw - 420px) / (860)));
+    font-size: calc(#{$badge-min-size} + #{calc(($badge-max-size - $badge-min-size) / 1px)} * ((100vw - 420px) / (860)));
 
     @media screen and (max-width: 420px) {
         font-size: $badge-min-size;
@@ -73,36 +73,36 @@ $badge-max-size: 17px;
         text-transform: uppercase;
     }
 
-    ul.badges-list {
-        margin: 0;
+    // ul.badges-list {
+    //     margin: 0;
 
-        padding: 0 40px;
+    //     padding: 0 40px;
 
-        list-style: none;
+    //     list-style: none;
 
-        font-family: aller, sans-serif;
+    //     font-family: aller, sans-serif;
 
-        width: 100%;
+    //     width: 100%;
 
-        letter-spacing: -4px;
+    //     letter-spacing: -4px;
 
-        font-size: 1rem;
+    //     font-size: 1rem;
 
-        text-align: center;
+    //     text-align: center;
 
-    }
+    // }
 
-    ul.badges-list li {
-        width: 19%;
-        letter-spacing: normal;
-        padding: 5px;
-        position: relative;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: Aller;
-        color: #BF9704;
-        font-size: 1.5em;
-        float: none;
-        display: inline-block;
-    }
+    // ul.badges-list li {
+    //     width: 19%;
+    //     letter-spacing: normal;
+    //     padding: 5px;
+    //     position: relative;
+    //     text-align: center;
+    //     text-transform: uppercase;
+    //     font-family: Aller;
+    //     color: #BF9704;
+    //     font-size: 1.5em;
+    //     float: none;
+    //     display: inline-block;
+    // }
 }

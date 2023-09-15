@@ -59,7 +59,8 @@
     function selectAgent(id){
         agent_id = id
     }
-
+    
+    function handleKeyDown() {}
     searchAgents()
 </script>
 
@@ -86,7 +87,7 @@
         <div class="grid-5">
             {#each agents as agent}
                 <div><input type="radio" value={agent.agent_id} bind:group={agent_id} /></div>
-                <div class="pointer" on:click={() => selectAgent(agent.agent_id)}>
+                <div class="pointer" on:click={() => selectAgent(agent.agent_id)} on:keydown={handleKeyDown}>
                     <div class="title">
                         {agent.agent_full_name}
                     </div>

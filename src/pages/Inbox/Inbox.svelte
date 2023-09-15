@@ -56,6 +56,7 @@
         }
     }
 
+    function handleKeyDown() {}
 
     fetchInboxLeads()
     onMount(() => showOnboarding('inbox'))
@@ -70,7 +71,7 @@
         <div class="container">
             <div class="tabs" on:scroll={scrollTabs}>
                 {#each leads as lead}
-                    <div class="tab" class:read={lead.is_read} class:selected={lead == selected_lead} on:click={() => selectLead(lead)}>
+                    <div class="tab" class:read={lead.is_read} class:selected={lead == selected_lead} on:click={() => selectLead(lead)} on:keydown={handleKeyDown}>
                         <div class="flex">
                             <h4>{lead.name}</h4>
                             {Util.niceDate(lead.created_at, false)}

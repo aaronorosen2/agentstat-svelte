@@ -45,7 +45,7 @@
         list_groups = list_groups
     }
 
-    
+    function handleKeyDown() {}
 </script>
 
 
@@ -87,7 +87,7 @@
                             <tr>
                                 <td >
                                     {#if i == 0 }
-                                    <div on:click={()=>toggleGrp(grp)}>
+                                    <div on:click={()=>toggleGrp(grp)} on:keydown={handleKeyDown}>
                                         {item.city}
                                         {#if grp.length>1}
                                             <i class="fas fa-chevron-{grp.open ? 'down':'right'}"  />

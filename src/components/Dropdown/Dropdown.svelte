@@ -36,18 +36,20 @@
     }
 
     $: errorClass = error ? 'selected--error':''
+
+    function handleKeyDown() {}
 </script>
 
 <svelte:window on:click={close} />
 <div class="dropdown">
-    <div class="selected {errorClass} radius--{radius} border--{border}" on:click|stopPropagation={toggle}>
+    <div class="selected {errorClass} radius--{radius} border--{border}" on:click|stopPropagation={toggle} on:keydown={handleKeyDown}>
         {label(selected)}
         <i class="fas fa-chevron-{open ? 'up':'down'}">
     </div>
     {#if open}
         <div class="options">
             {#each options as opt}
-                <div class="options--item {label(opt) == label(selected) ? 'selected':''}" on:click={() => selectOption(opt)}>
+                <div class="options--item {label(opt) == label(selected) ? 'selected':''}" on:click={() => selectOption(opt)} on:keydown={handleKeyDown}>
                     {label(opt)}
                 </div>
             {/each}

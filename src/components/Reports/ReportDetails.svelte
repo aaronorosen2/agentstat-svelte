@@ -68,13 +68,15 @@
         }
     }
 
+    function handleKeyDown() {}
+
 </script>
 
 <div class="traffic-report">
     <div class="head">
         <div class="summary">
             {#each reports as report}
-                <div class="info" class:selected={report == selected} on:click={()=>selectReport(report)}>
+                <div class="info" class:selected={report == selected} on:click={()=>selectReport(report)} on:keydown={handleKeyDown}>
                     {report.name}
                     <h2 class="num">{report.views}</h2>
                 </div>

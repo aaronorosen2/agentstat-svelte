@@ -14,12 +14,13 @@
         }
     }
 
+    function handleKeyDown() {}
 
 </script>
 
 {#if show}
     <div class="alert {klass}">
-        <i class="fas fa-times" on:click={close}></i>
+        <i class="fas fa-times" on:click={close} on:keydown={handleKeyDown}></i>
         <span>Note:</span> {msg}
     </div>
 {/if}
