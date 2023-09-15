@@ -52,6 +52,7 @@
           font-weight: bolder;
           width: 100%;
             display: grid;
+<<<<<<< HEAD
             grid-template-columns: minmax(10rem,auto) 4rem 4rem;
             justify-content: space-around;
             row-gap: 0.5rem;
@@ -59,11 +60,22 @@
             .label{
               margin-right: -100px;
             }
+=======
+           // grid-template-columns: minmax(21rem,auto) 7rem 9rem;
+           grid-template-columns: 21rem 9rem 9rem;
+            align-items: center;
+            //justify-content: space-between;
+             justify-content: center;
+            row-gap: 0.5rem;
+            column-gap: 0.19rem;
+>>>>>>> 18b2f560a1c40c30334405e808ef242e51907cb8
             .span-1{
                 grid-column: 2 / 3;
             }
             .label {
                 font-weight: 500;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }

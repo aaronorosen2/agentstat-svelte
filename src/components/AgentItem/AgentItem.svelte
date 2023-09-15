@@ -191,10 +191,79 @@
       </p>
     </div>
 
+<<<<<<< HEAD
     <div class="agent-control">
       <div class="connect" on:click={showConnectWithModal}>
         <div role="button" class="button">
           Connect with {agent.agent_full_name}
+=======
+    <div class="agent-body">
+        <a href={linkProfile(agent.agent_slug)} class="agent-name">
+            {agent.agent_full_name}
+            {#if agent.agent_brokerage_info}
+                <span class="info">{info(agent.agent_brokerage_info)}</span>
+            {/if}
+        </a>
+        <div class="agent-stat">
+            <div class="span-1 label">Overall</div>
+            <div class="label">
+                {agent.city === undefined || null ? "Default City" : agent.city}
+            </div>
+
+            <div class="label">Sold Listings.........................................................................................</div>
+            <div>
+                {agent.overall_sold_listings}
+            </div>
+            <div>
+                {agent.sold_listings}
+            </div>
+
+            <div class="label">Failed Listings..............................................................................................</div>
+            <div>
+                {agent.overall_failed_listings}
+            </div>
+            <div>
+                {agent.failed_listings}
+            </div>
+
+            <div class="label">Avg Days On Market..............................................................................................</div>
+            <div>
+                {round(agent.overall_avg_dom)}
+            </div>
+            <div>
+                {round(agent.avg_dom)}
+            </div>
+
+            <div class="label">Avg List to Sold Price..............................................................................</div>
+            <div>
+                {round(agent.overall_s2l_price)}
+            </div>
+            <div>
+                {round(agent.s2l_price)}
+            </div>
+
+            <div class="label">Single Family Sold.................................................................................</div>
+            <div>
+                {xSold(
+                    agent.overall_listings_breakdown_json,
+                    "Single Family Houses sold"
+                )}
+            </div>
+            <div>
+                {xSold(
+                    agent.listings_breakdown_json,
+                    "Single Family Houses sold"
+                )}
+            </div>
+
+            <div class="label">Condos Sold....................................................................................</div>
+            <div>
+                {xSold(agent.overall_listings_breakdown_json, "Condos sold")}
+            </div>
+            <div>
+                {xSold(agent.listings_breakdown_json, "Condos sold")}
+            </div>
+>>>>>>> 18b2f560a1c40c30334405e808ef242e51907cb8
         </div>
       </div>
     </div>
