@@ -191,12 +191,6 @@
       </p>
     </div>
 
-<<<<<<< HEAD
-    <div class="agent-control">
-      <div class="connect" on:click={showConnectWithModal}>
-        <div role="button" class="button">
-          Connect with {agent.agent_full_name}
-=======
     <div class="agent-body">
         <a href={linkProfile(agent.agent_slug)} class="agent-name">
             {agent.agent_full_name}
@@ -263,7 +257,6 @@
             <div>
                 {xSold(agent.listings_breakdown_json, "Condos sold")}
             </div>
->>>>>>> 18b2f560a1c40c30334405e808ef242e51907cb8
         </div>
       </div>
     </div>
@@ -271,6 +264,5 @@
       <p>* Showing 36mo history</p>
     </div>
   </div>
-</div>
 
 <style src="./agent-item.scss"></style>
