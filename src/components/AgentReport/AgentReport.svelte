@@ -103,13 +103,12 @@
                 />
             </div>
             <div class="stat">
-                {#if overallScore}
                     <div class="stat--box">
                         <img
                             src="https://realtorstat.com/img/badges-rectangle.png"
                             alt=""
                         />
-                        <strong>{successRate(overallScore)}%</strong>
+                        <strong>100%</strong>
                         <div>Success Rate</div>
                     </div>
 
@@ -118,7 +117,7 @@
                             src="https://realtorstat.com/img/badges-rectangle.png"
                             alt=""
                         />
-                        <strong>{Math.round(overallScore.avg_dom)}</strong>
+                        <strong>0</strong>
                         <div>Avg Days On Market</div>
                     </div>
 
@@ -127,10 +126,7 @@
                             src="https://realtorstat.com/img/badges-rectangle.png"
                             alt=""
                         />
-                        <strong
-                            >{isNaN(Math.round(overallScore.s2l_price))
-                                ? 0
-                                : Math.round(overallScore.s2l_price)}%</strong
+                        <strong>0%</strong
                         >
                         <div>List To Sell Price</div>
                     </div>
@@ -140,10 +136,9 @@
                             src="https://realtorstat.com/img/badges-rectangle.png"
                             alt=""
                         />
-                        <strong>{overallScore.sold_listings}</strong>
+                        <strong>0</strong>
                         <div>Sold Listings</div>
                     </div>
-                {/if}
             </div>
 
             <div class="city-ranking">

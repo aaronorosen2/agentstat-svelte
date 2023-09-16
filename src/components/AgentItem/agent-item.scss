@@ -1,4 +1,5 @@
 .agent{
+  
     padding: 2rem;
     border-radius: 0.5rem;
     border: 1px solid #ccc;
@@ -21,9 +22,22 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: end;
+      .ConnectWithBtn{
+        background-color: transparent;
+        font-size: 14px;
+        max-width: 420px;
+        width: 100%;
+        border-radius: 10px;
+       border: 1px solid #087B9E;
+       color:#087B9E;
+      }
+      .ConnectWithBtn:hover{
+        background-color: #087B9E;
+        color: white;
+      }
     }
     .agent-body {
-        width: 80%;
+      width: 80%;
         flex: auto;
         padding: 1rem;
         .agent-name:hover{
@@ -48,14 +62,15 @@
             
         }
         .agent-stat{
-          font-size: 13px;
+          font-size: 14px;
+         color: black;
+         font-weight: bolder;
+          line-height: 1.1;
           font-weight: bolder;
           width: 100%;
             display: grid;
-           // grid-template-columns: minmax(21rem,auto) 7rem 9rem;
-           grid-template-columns: 21rem 9rem 9rem;
+           grid-template-columns: 13rem 13rem 9rem;
             align-items: center;
-            //justify-content: space-between;
              justify-content: center;
             row-gap: 0.5rem;
             column-gap: 0.19rem;

@@ -354,7 +354,6 @@
             src="https://realtorstat.com/howsearchwork_assets/videos/Organizing_real_estate_transactions.mp4"
             type="video/mp4"
           />
-          
         </video>
       </div>
 

@@ -17,7 +17,6 @@
             padding-top: 1.8rem;
             padding-bottom: .6rem;
         }
-
         .city-ranking {
             margin-left: 2rem;
             margin-right: 2rem;
@@ -49,8 +48,9 @@
 
     .filter {
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: center;
+        width: 99%;
         margin-top: 2rem;
         margin-bottom: 2.4rem;
     }
