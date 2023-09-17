@@ -7,8 +7,8 @@
         &--error{
             border: 1px solid red;
         }
-        padding: 10px 1rem;
-        border: 1px solid #aaa;
+        padding: 11px 1rem;
+        border:  1px solid #aaaaaa7a;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -22,8 +22,8 @@
                 border-radius: 0;
             }
             &--left{
-                border-top-left-radius: 0.5rem;
-                border-bottom-left-radius: 0.5rem;
+                border-top-left-radius: 1.5rem;
+                border-bottom-left-radius: 1.5rem;
             }
             &--right{
                 border-top-right-radius: 0.5rem;

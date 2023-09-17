@@ -307,15 +307,6 @@
 </script>
 
 <div class="mainContainer">
-  <div class="home">
-    <div class="logo-holder">
-      <div class="nav-bar--head">
-        <a href="/" class="logo">
-            <img alt="agentstat-logo" src="/images/logo-beta.png"> 
-        </a>
-    </div>
-    </div>
-  </div>
   <div class="nav">
     <div class="Items">
       <button id="Overview" on:click={OverviewPage}>Overview</button>

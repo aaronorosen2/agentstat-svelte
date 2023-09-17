@@ -93,8 +93,8 @@
                 </div>
             </div>
         {/if}
+        <h1>Agent Report</h1>
         <div class={badges.length <= 0 ? "agent-report-card-without-badge" : "agent-report-card-with-badge"}>
-            <h1>Agent Report</h1>
             <div class="filter">
                 <ToggleButtonGrp
                     group={toggleGrp}

@@ -1,13 +1,17 @@
 .home {
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     max-width: 60rem;
+    // width: 100%;
     padding: 3rem 1rem; 
     text-align: center;
+    // background-color: #134e60;
     h1{
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: #134e60;
     }
     .flex{
-        font-weight: 600;
+        font-weight: 400;
         font-size: 1rem;
         margin: 2rem 0;
         i {
@@ -23,7 +27,7 @@
             position: absolute;
             width: 100%;
             height: 10px;
-            background: url(/static/img/poa-title.png);
+            background: url("/static/img/poa-title.png");
             background-position: center;
             background-repeat: no-repeat;
             background-size: initial;
@@ -32,10 +36,54 @@
         }
     }
     .video-box{
+        box-shadow: 0px 0px 10px rgba(18, 18, 18, 0.507);
         max-width: 700px;
+        border-radius: 10px;
         margin: 2rem auto;
         video{
             max-width: 100%;
+            border-radius: 10px;
         }
     }
 }
+@media only screen and (max-width: 770px) {
+    .home h1 {
+      font-size: 30px;
+    }
+    .home .flex{
+        font-size: 0.8rem;
+        margin: 2rem 0;
+        i {
+            color: var(--green);
+            margin: 0 0.5rem;
+        }
+    }
+  }
+  
+  @media only screen and (max-width: 520px) {
+    .home h1 {
+      font-size: 25px;
+    }
+    .home .flex{
+        font-size: 0.6rem;
+        margin: 2rem 0;
+        i {
+            color: var(--green);
+            margin: 0 0.5rem;
+        }
+    }
+  }
+  
+  @media only screen and (max-width: 418px) {
+    .home h1 {
+      font-size: 15px;
+    }
+    .home .flex{
+        font-size: 0.6rem;
+        margin: 2rem 0;
+        i {
+            color: var(--green);
+            margin: 0 0.5rem;
+        }
+    }
+  }
