@@ -34,6 +34,9 @@
       />
     </video>
   </div>
+  <div class="link">
+    <a href="index.html">Here is our latest feature! TRY OUR AI.</a>
+  </div>
 </section>
 <StatesLinks />
 <FooterDashboard />
