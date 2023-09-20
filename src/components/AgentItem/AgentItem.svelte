@@ -94,7 +94,6 @@
 </script>
 
 <div class="agent">
-<<<<<<< 49ffcf6b0c07dbe3c54f93ab2b565526d9a6d95b
     <div class="agent-img">
         <img
             alt={agent.agent_full_name}
@@ -203,7 +202,6 @@
           type="checkbox"
           checked={pinned}
           on:click|preventDefault={handlePinned}
->>>>>>> 46428f358b7ee087e60b6939c0fb477e707648a0
         />
 
         <span class="slider round" />
