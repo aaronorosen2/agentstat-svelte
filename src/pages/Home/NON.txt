@@ -1,0 +1,96 @@
+<ul>
+                        <li><a href="#" class="btn active" onclick="filterSelection('all')"><i class="ri-asterisk"></i> All</a></li>
+                        <li><a href="#" class="btn" onclick="filterSelection('photo')"><i class="ri-image-fill"></i> Photo</a></li>
+                        <li><a href="#" class="btn" onclick="filterSelection('website')"><i class="ri-grid-fill"></i> Website</a></li>
+                        <li><a href="#" class="btn" onclick="filterSelection('email')"><i class="ri-mail-add-line"></i> Email</a></li>
+                        <li><a href="#" class="btn" onclick="filterSelection('script')"><i class="ri-file-chart-line"></i> Scripts</a></li>
+                        <li><a href="#" class="btn" onclick="filterSelection('social')"><i class="ri-heart-line"></i> Social Media</a></li>
+                        <li><a href="#" class="btn" onclick="filterSelection('sms')"><i class="ri-chat-1-line"></i> SMS</a></li>
+                    </ul>
+
+
+
+
+                                <div class="container">
+                <div class="card webiste" id="website">
+                    <h1>WEBSITE</h1>
+                    <h2>Listing Discription Generator</h2>
+                    <p>Create engaging property descriptions highlighting key features.</p>
+                </div>
+                <div class="card email" id="email">
+                    <h1>EMAIL</h1>
+                    <h2>Freeform Email Generator</h2>
+                    <p>Create professional emails tailored to your needs.</p>
+                </div>
+                <div class="card website" id="website">
+                    <h1>WEBSITE</h1>
+                    <h2>Listing Discription Generator</h2>
+                    <p>Create engaging property descriptions highlighting key features.</p>
+                </div>
+                <div class="card script" id="script">
+                    <h1>Script</h1>
+                    <h2>General Script</h2>
+                    <p>Generate talking points and scripts for planned calls or meetings.</p>
+                </div>
+                <div class="card social" id="social">
+                    <h1>Social Media</h1>
+                    <h2>Facebook Post</h2>
+                    <p>Create captivating Facebook post.</p>
+                </div>
+                <div class="card social" id="social">
+                    <h1>Social Media</h1>
+                    <h2>Instagram Post</h2>
+                    <p>Create engaging Instagram posts.</p>
+                </div>
+                <div class="card social" id="social">
+                    <h1>Social Media</h1>
+                    <h2>LinkdIn Post</h2>
+                    <p>Create professional LinkdIn posts.</p>
+                </div>
+                <div class="card photo" id="photo">
+                    <h1>Photo</h1>
+                    <h2>Photos from AI</h2>
+                    <p>Create engaging photo from AI.</p>
+                </div>
+                <div class="card sms" id="sms">
+                    <h1>SMS</h1>
+                    <h2>Listing Discription Generator</h2>
+                    <p>Create engaging property descriptions highlighting key features.</p>
+                </div>
+                <div class="card email" id="email">
+                    <h1>EMAIL</h1>
+                    <h2>Seller Congratulations</h2>
+                    <p>Compose emails to congratulate sellers on their successful sales.</p>
+                </div>
+                <div class="card email" id="email">
+                    <h1>EMAIL</h1>
+                    <h2>Listing Discription Generator</h2>
+                    <p>Create engaging property descriptions highlighting key features.</p>
+                </div>
+                <div class="card website" id="website">
+                    <h1>WEBSITE</h1>
+                    <h2>Listing Discription Generator</h2>
+                    <p>Create engaging property descriptions highlighting key features.</p>
+                </div>
+
+            </div>
+
+
+
+
+
+
+  <div class="icons">
+                <div class="search">
+                    <i class="ri-search-line"></i>
+                </div>
+                <div class="menu">
+                    <i class="ri-menu-line"></i>
+                </div>
+
+            </div>
+
+
+
+
+            

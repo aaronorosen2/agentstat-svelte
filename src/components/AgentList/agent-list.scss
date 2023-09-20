@@ -57,7 +57,7 @@
   }
   .container3{
     width: 40%;
-    border-left: 1px solid rgba(0, 0, 0, 0.342);
+    border-left: 1px solid rgba(108, 69, 69, 0.342);
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -97,6 +97,21 @@
             transition: 0.7s ease-in-out;
         }
     } 
+  }
+}
+.SortByContainer{
+  width: 114%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  select{
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  p{
+    align-items: center;
   }
 }
 

@@ -1,7 +1,7 @@
 .ranking {
     position: relative;
     min-height: 300px;
-
+    
     .agent-report-card-with-badge {
         margin-top: -6rem;
         margin-bottom: 2rem;
@@ -17,7 +17,6 @@
             padding-top: 1.8rem;
             padding-bottom: .6rem;
         }
-
         .city-ranking {
             margin-left: 2rem;
             margin-right: 2rem;
@@ -25,21 +24,11 @@
     }
 
     .agent-report-card-without-badge {
-        margin-top: 6rem;
         margin-bottom: 2rem;
         border: 1px solid #000;
         border-radius: 15px;
         padding: 0;
         box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-
-        h1 {
-            width: 100%;
-            text-align: center;
-            border-bottom: 1px solid #000;
-            padding-top: .5rem;
-            padding-bottom: 2rem;
-        }
-
         .city-ranking {
             margin-left: 2rem;
             margin-right: 2rem;
@@ -49,8 +38,9 @@
 
     .filter {
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: center;
+        width: 99%;
         margin-top: 2rem;
         margin-bottom: 2.4rem;
     }

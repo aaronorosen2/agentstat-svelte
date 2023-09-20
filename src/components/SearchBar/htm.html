@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Add CSS styles for left-aligned text */
+        ul {
+            text-align: left;
+        }
+
+        .right-align {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <button id="PriceDropDown">Price</button>
+</body>
+<script>
+const button = document.getElementById("PriceDropDown");
+const body = document.querySelector("body");
+const input1 = document.createElement("input");
+const input2 = document.createElement("input");
+input1.setAttribute("type", "number");
+input2.setAttribute("type", "number");
+
+button.addEventListener("click", () => {
+    // Create the first container
+    const container1 = document.createElement("div");
+    container1.classList.add("MinMaxContainer");
+
+    // Create the second container
+    const container2 = document.createElement("div");
+    container2.classList.add("DataContainer");
+
+    // Append input elements to the first container
+    container1.appendChild(input1);
+    container1.appendChild(input2);
+
+    // Create an unordered list
+    const ul = document.createElement("ul");
+
+// Create list items and add them to the unordered list
+for (let i = 1; i <= 5; i++) {
+    const li = document.createElement("li");
+    li.textContent = i;
+    ul.appendChild(li);
+
+    // Add a click event listener to each li
+    li.addEventListener("click", () => {
+        const clickedValue = li.textContent;
+        if (clickedValue >= 0 && clickedValue <= 10) {
+            // If the clicked value is between 0 and 10, add it to input1 and input2
+            input1.value = clickedValue;
+
+            // Change all li values to values between 10 and 20 and add right-align class
+            const lis = ul.getElementsByTagName("li");
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].textContent = clickedValue + i + 10;
+                lis[i].classList.add("right-align");
+            }
+        } else {
+            // If the clicked value is greater than 10, add it to input2 only
+            input2.value = clickedValue;
+        }
+
+        // Check if both input1 and input2 have values
+        if (input1.value !== "" && input2.value !== "") {
+            // Remove the ul element
+            container2.removeChild(ul);
+
+            // Create a "Done" button
+            const doneButton = document.createElement("button");
+            doneButton.textContent = "Done";
+            
+            // Add a click event listener to the "Done" button
+            doneButton.addEventListener("click", () => {
+                // Your code to handle the "Done" button click goes here
+                alert("Done button clicked");
+            });
+
+            // Append the "Done" button to the second container
+            container2.appendChild(doneButton);
+        }
+    });
+}
+    // Add a click event listener to the unordered list
+    ul.addEventListener("click", (event) => {
+        // Prevent the click event from propagating to the individual li elements
+        event.stopPropagation();
+    });
+
+    // Append the unordered list to the second container
+    container2.appendChild(ul);
+
+    // Append both containers to the body
+    body.appendChild(container1);
+    body.appendChild(container2);
+})
+</script>
+</html>

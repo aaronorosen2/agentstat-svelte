@@ -6,6 +6,11 @@
   let agents = [];
   let loading = false;
   let error = false;
+<<<<<<< 49ffcf6b0c07dbe3c54f93ab2b565526d9a6d95b
+=======
+  let formSubmitted = false;
+
+>>>>>>> 46428f358b7ee087e60b6939c0fb477e707648a0
   export async function searchAgents(filter = {}) {
     error = false;
     loading = true;
@@ -36,6 +41,30 @@
     }
     loading = false;
     return list;
+<<<<<<< 49ffcf6b0c07dbe3c54f93ab2b565526d9a6d95b
+=======
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.querySelector('input[name="name"]').value;
+    const phoneNumber = form.querySelector('input[name="phone"]').value;
+    const address = form.querySelector('input[name="address"]').value;
+
+    if (!name || !phoneNumber || !address) {
+      alert("All fields are required.");
+      return;
+    }
+    
+    console.log("Name:", name);
+    console.log("Phone Number:", phoneNumber);
+    console.log("Address:", address);
+
+    form.reset();
+
+    formSubmitted = true;
+>>>>>>> 46428f358b7ee087e60b6939c0fb477e707648a0
   }
 </script>
 
@@ -55,24 +84,31 @@
       <p><span>Condos Sold</span><span>00</span></p>
     </div>
   </div>
-
   <div class="container3">
     <div class="form-heading">
       <h4>For my address, text me two hand-selected Top 1% Agents</h4>
     </div>
-    <form action="">
+    <form on:submit={handleSubmit}>
       <div class="formBlog1">
-        <input type="text" name="" id="" placeholder="Name" />
-        <input type="text" name="" id="" placeholder="Phone Number" />
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="phone" placeholder="Phone Number" />
       </div>
       <div class="formBlog2">
-        <input type="text" name="" id="" placeholder="Address" />
-        <input type="submit" value="Send Now!" />
+        <input type="text" name="address" placeholder="Address" />
+        <input type="submit" value={formSubmitted ? "Sent \u2713" : "Send Now!"} />
       </div>
     </form>
   </div>
 </div>
-
+<div class="SortByContainer">
+  <p>Sort By:</p>
+  <select id="">
+    <option value="Best-Overall">Best Overall</option>
+    <option value="Most-Fails">Most Fails</option>
+    <option value="Lower-Days-on-Market">Lower Days on Market</option>
+    <option value="Higher-List-To-Sale-Price">Higher List To Sale Price</option>
+  </select>
+</div>
 <div class="list">
   <Loader show={loading} text="Loading agents..." />
   {#if error}

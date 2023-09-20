@@ -9,10 +9,10 @@
     let new_review = {
         source: 'zillow',
         categories: [
-            {id: '1', rate: 5, name: 'Local knowledge'},
-            {id: '2', rate: 5, name: 'Process expertise'},
-            {id: '3', rate: 5, name: 'Responsiveness'},
-            {id: '4', rate: 5, name: 'Negotiation skills'}
+            { slug: "local-knowledge", rate: 5, name: "Local knowledge" },
+            { slug: "process-expertise", rate: 5, name: "Process expertise" },
+            { slug: "responsiveness", rate: 5, name: "Responsiveness" },
+            { slug: "negotiation-skills", rate: 5, name: "Negotiation skills" },
         ],
         manual_create: true
     }

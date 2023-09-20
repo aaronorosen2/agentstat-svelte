@@ -1,10 +1,11 @@
 .agent{
+  
     padding: 2rem;
     border-radius: 0.5rem;
     border: 1px solid #ccc;
     margin: 1rem 0 1rem 0;
+    height: 230px;
     display: flex;
-    gap: 1rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.418) ;
     align-items: center;
     .agent-img {
@@ -15,34 +16,61 @@
         }
     }
     .agent-list-right {
+      height: 280px;
+      width: 400px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      align-items: center;
+      align-items: end;
+      .ConnectWithBtn{
+        background-color: transparent;
+        font-size: 14px;
+        max-width: 420px;
+        width: 100%;
+        border-radius: 10px;
+       border: 1px solid #087B9E;
+       color:#087B9E;
+      }
+      .ConnectWithBtn:hover{
+        background-color: #087B9E;
+        color: white;
+      }
     }
     .agent-body {
-        width: 80%;
+      width: 80%;
         flex: auto;
         padding: 1rem;
+        .agent-name:hover{
+          color:   var(--blue-color);
+        }
         .agent-name {
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 500;
-            margin-bottom: 2rem;
             display: block;
             .info{
                 font-size: 1rem;
                 color: #aaa;
                 border-left: 1px solid #aaa;
                 padding-left: 0.5rem;
+                
             }
+            .info:hover{
+              transition: 0.3s ease-in-out;
+              color: #828282;
+            }
+            
         }
         .agent-stat{
+          font-size: 14px;
+         color: black;
+         font-weight: bolder;
+          line-height: 1.1;
+          font-weight: bolder;
+          width: 100%;
             display: grid;
-           // grid-template-columns: minmax(21rem,auto) 7rem 9rem;
-           grid-template-columns: 21rem 9rem 9rem;
+           grid-template-columns: 13rem 13rem 9rem;
             align-items: center;
-            //justify-content: space-between;
              justify-content: center;
             row-gap: 0.5rem;
             column-gap: 0.19rem;
@@ -58,11 +86,12 @@
     }
     
     .agent-control {
-        max-width: 10rem;
+      margin-top: -30px;
+        max-width: 20rem;
         .connect{
             margin-right: 1rem;
             .button{
-                font-size: 0.8rem;
+                font-size: 1rem;
                 padding: 0.5rem 1.5rem;
                 text-align: center;
                 border-radius: 0.75rem;
@@ -74,12 +103,22 @@
                 font-weight: 500;
                 color: var(--blue-color);
             }
+            .button:hover{
+              color: white;
+              background-color:  var(--blue-color);
+              transition: 0.3s ease-in-out;
+            }
         }
     }
 }
 
 .toggler {
+  margin-top: 30px;
     text-align: center;
+    width: 120px;
+    p{
+      margin-top: -3px;
+    }
 }
 
 .switch {
@@ -103,6 +142,8 @@
     right: 0;
     bottom: 0;
     background-color: #a80909;
+    height: 22px;
+    width: 50px;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -110,10 +151,10 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    width: 19px;
     left: 4px;
-    bottom: 4px;
+    bottom: 2px;
+    height: 18px;
     background-color: #fff;
     -webkit-transition: .4s;
     transition: .4s;
