@@ -6,11 +6,8 @@
   let agents = [];
   let loading = false;
   let error = false;
-<<<<<<< 49ffcf6b0c07dbe3c54f93ab2b565526d9a6d95b
-=======
   let formSubmitted = false;
 
->>>>>>> 46428f358b7ee087e60b6939c0fb477e707648a0
   export async function searchAgents(filter = {}) {
     error = false;
     loading = true;
@@ -41,8 +38,6 @@
     }
     loading = false;
     return list;
-<<<<<<< 49ffcf6b0c07dbe3c54f93ab2b565526d9a6d95b
-=======
   }
 
   function handleSubmit(event) {
@@ -64,7 +59,6 @@
     form.reset();
 
     formSubmitted = true;
->>>>>>> 46428f358b7ee087e60b6939c0fb477e707648a0
   }
 </script>
 
