@@ -44,4 +44,11 @@ export default [
 ,{"label":"South Dakota", "value": "SD"}
 ,{"label":"Tennessee", "value": "TN"}
 ,{"label":"Texas", "value": "TX"}
+,{"label":"Utah", "value": "UT"}
+,{"label":"Virginia", "value": "VA"}
+,{"label":"Vermont", "value": "VT"}
+,{"label":"Washington", "value": "WA"}
+,{"label":"Wisconsin", "value": "WI"}
+,{"label":"West Virginia", "value": "WV"}
+,{"label":"Wyoming", "value": "WY"}
 ]

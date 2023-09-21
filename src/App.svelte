@@ -17,7 +17,17 @@
     Marketing,
     PastSales,
     Referrals,
-    Team
+    Team,
+    AI,
+    Website,
+    Email,
+    Script,
+    SocialFacebook,
+    SocialInstagram,
+    SocialLinkdin,
+    Photo,
+    SMS,
+    Social
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
@@ -45,7 +55,46 @@
     active = AboutUs;
     props = {};
   });
-
+  page("/Ai", ctx => {
+    active = AI;
+    props = {};
+  });
+  page("/Website", ctx => {
+    active = Website;
+    props = {};
+  });
+  page("/Email", ctx => {
+    active = Email;
+    props = {};
+  });
+  page("/Script", ctx => {
+    active = Script;
+    props = {};
+  });
+  page("/SocialFacebook", ctx => {
+    active = SocialFacebook;
+    props = {};
+  });
+  page("/SocialInstagram", ctx => {
+    active = SocialInstagram;
+    props = {};
+  });
+  page("/SocialLinkdin", ctx => {
+    active = SocialLinkdin;
+    props = {};
+  });
+  page("/Photo", ctx => {
+    active = Photo;
+    props = {};
+  });
+  page("/SMS", ctx => {
+    active = SMS;
+    props = {};
+  });
+  page("/Social", ctx => {
+    active = Social;
+    props = {};
+  });
   /*page("/reset-password", ctx => {
     active = PasswordReset;
     props = {};

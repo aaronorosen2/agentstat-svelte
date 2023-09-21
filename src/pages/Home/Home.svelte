@@ -6,6 +6,21 @@
     StatesLinks,
   } from "../../components";
   import { getAgentUrlParams } from "../../lib/api";
+  import { isAuthenticated} from "../../lib/api/auth";
+  import { onMount } from "svelte";
+  let currentPage;
+
+  let is_authenticated = isAuthenticated();
+ 
+  let open = false;
+
+  function close() {
+    open = false;
+  }
+
+  onMount(() => {
+    currentPage = location.pathname;
+  });
 
   export function updateParams(evt) {
     window.location = "/agents/?" + getAgentUrlParams(evt.detail);
@@ -13,7 +28,7 @@
 </script>
 
 <NavBar flat />
-
+<svelte:window on:click={close} />
 <section class="home">
   <h1>Real Estate <span class="poa-title">Agent</span> Search Engine</h1>
   <div class="flex">
@@ -34,6 +49,12 @@
       />
     </video>
   </div>
+  {#if !is_authenticated}
+  {#if currentPage != "/Ai"}
+  <a href="/Ai">Here is our latest feature! TRY OUR AI.</a>
+  {/if}
+  {/if}
+
 </section>
 <StatesLinks />
 <FooterDashboard />

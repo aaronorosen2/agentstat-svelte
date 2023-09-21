@@ -50,7 +50,7 @@ for (let i = 1; i <= 5; i++) {
 
     // Add a click event listener to each li
     li.addEventListener("click", () => {
-        const clickedValue = li.textContent;
+        const clickedValue = +li.textContent;
         if (clickedValue >= 0 && clickedValue <= 10) {
             // If the clicked value is between 0 and 10, add it to input1 and input2
             input1.value = clickedValue;
