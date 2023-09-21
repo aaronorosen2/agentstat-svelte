@@ -64,23 +64,22 @@
 
 <div class="mainContainer">
   <div class="container1">
-    <img src="/images/free_concierge.jpg" alt="" />
+    <img src="/images/free_concierge.jpg" alt="top-banner" />
   </div>
   <div class="container2">
     <div class="blog1">
-      <h4 style=" color: rgb(10, 137, 255);;">
-        Ranked Top 1% On Agentstat: Nationwide Statistics
-      </h4>
+      <h4>Ranked Top 1% On Agentstat: Nationwide Statistics</h4>
     </div>
-    <div class="blog2" />
-    <p><span>Sold Listings</span><span>00</span></p>
-    <p><span>Failed Listings</span><span>00</span></p>
-    <p><span>Avg List to Sold Price</span><span>00</span></p>
-    <p><span>Single Family Sold</span><span>00</span></p>
-    <p><span>Condos Sold</span><span>00</span></p>
+    <div class="blog2">
+      <p><span>Sold Listings</span><span>00</span></p>
+      <p><span>Failed Listings</span><span>00</span></p>
+      <p><span>Avg List to Sold Price</span><span>00</span></p>
+      <p><span>Single Family Sold</span><span>00</span></p>
+      <p><span>Condos Sold</span><span>00</span></p>
+    </div>
   </div>
   <div class="container3">
-    <div class="formHeading">
+    <div class="form-heading">
       <h4>For my address, text me two hand-selected Top 1% Agents</h4>
     </div>
     <form on:submit={handleSubmit}>

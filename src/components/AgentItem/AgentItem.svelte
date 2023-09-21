@@ -94,6 +94,12 @@
 </script>
 
 <div class="agent">
+    <div class="agent-img">
+        <img
+            alt={agent.agent_full_name}
+            src={agent.agent_image == null && agent.agent_s3_image == null
+                ? "/images/blank-profile-pic.webp"
+                : agent.agent_image != null ? `https://app.realtorstat.com/api/agent/pic/${agent.state}/${agent.agent_image}` : `https://app.realtorstat.com/api/agent/pic/${agent.state}/${agent.agent_s3_image}`}
   <div class="agent-img">
     <img
       alt={agent.agent_full_name}
