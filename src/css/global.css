@@ -143,7 +143,7 @@ input:focus, textarea:focus, select:focus{
 	font-size: 1.1rem;
 	font-weight: 700;
 	color: #fff;
-	background-color: var(--dark-blue);
+	/* background-color: var(--dark-blue); */
 	cursor: pointer;
 	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;

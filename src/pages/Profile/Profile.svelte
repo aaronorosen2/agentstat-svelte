@@ -50,7 +50,8 @@
         Error: Cannot fetch agent details
     </div>
 {/if}
-<section class="profile">
+<div class="mainContainerOfProfile">
+  <section class="profile">
   <Loader show={loading} text="Loading details..." />
   {#if agent}
     <div class="details">
@@ -59,10 +60,11 @@
     </div>
     <AgentReport {name} />
     <TransactionMap {agent} />
-    <TransactionTable list={agent.agent_lists} />
+    <!-- <TransactionTable list={agent.agent_lists} /> -->
   {/if}
 </section>
 
+</div>
 <FooterDashboard></FooterDashboard>
 
 <style src="./profile.scss">

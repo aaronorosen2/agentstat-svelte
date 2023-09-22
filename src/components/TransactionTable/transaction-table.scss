@@ -4,23 +4,28 @@
             font-size: 0.9rem;
             width: 100%;
             border-collapse: collapse;
+            border-radius: 1em;
+            overflow: hidden;
             th {
-                background: #eee;
+                background: #b8b7b7;
                 cursor: pointer;
+                border: 2px solid #fff;
+                padding: 1rem;
                 .flex{
                     display: flex;
                     gap: 0.5rem;
                     align-items: center;
-                    justify-content: space-between;
+                    justify-content: center;
                 }
             }
-            td, th{
-                // &.no-p{
-                //     padding: 0;
-                // }
+            td {
+                background: #f7f7f7;
+                border: 2px solid #ffffff;
+                &.no-p{
+                    padding: 0;
+                }
                 text-align: center;
                 padding: 1rem;
-                border: 1px solid #ccc;
                 div.no-wrap {
                     white-space: nowrap;
                     cursor: pointer;

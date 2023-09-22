@@ -20,6 +20,34 @@
                 }
             }
         }
-    }
-    
+    }   
 }
+@media only screen and (max-width: 770px) {
+   .states-links a{
+    font-size: 14px;
+   }
+  }
+  @media only screen and (max-width: 630px) {
+    .states-links a{
+     font-size: 13px;
+    }
+   }
+   @media only screen and (max-width: 580px) {
+    .states-links a{
+     font-size: 11px;
+    }
+   }
+   @media only screen and (max-width: 490px) {
+    .states-links a{
+     font-size: 10px;
+    }
+   }
+   @media only screen and (max-width: 418px) {
+    .states-links a{
+     font-size: 8px;
+     display:flex ;
+     justify-content: space-around;
+     flex-wrap: wrap;
+    }
+   }
+   

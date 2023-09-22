@@ -41,6 +41,26 @@ export async function verifyEmail(key){
     return resp
 }
 
+
+export async function resetPassword(user){
+    const resp = await fetch(link('forgot-password/'),{
+        ...options,
+        body: JSON.stringify(user)
+    }).then(res => res.json())
+
+    return resp
+}
+
+export async function resetPasswordConfirm(user) {
+    const resp = await fetch(link('password/reset/confirm/','rest-auth'),{
+        ...options,
+        body: JSON.stringify(user)
+    }).then(res => res.json())
+
+    return resp
+}
+
+
 export function logout(){
     localStorage.removeItem('auth/user')
 }
