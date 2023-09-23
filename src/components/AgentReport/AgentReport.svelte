@@ -26,7 +26,6 @@
     }
 
     function agentTopPercentage(item) {
-        console.log('TEST',item)
         if (!item.agent_rank || !item.rank_count) return null;
         let agent_percentage = (item.agent_rank / item.rank_count) * 100;
         agent_percentage = Math.round(agent_percentage);
