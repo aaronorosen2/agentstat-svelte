@@ -25,7 +25,7 @@
 
     .agent-report-card-without-badge {
         margin-bottom: 2rem;
-        border: 1px solid #000;
+        border: 1px solid #e5e5e5;
         border-radius: 15px;
         padding: 0;
         box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
@@ -52,6 +52,7 @@
         padding: 3rem 0;
         font-weight: 500;
         gap: 1rem;
+        border-bottom: 1px solid #c4c4c4;
 
         &--box {
             display: flex;

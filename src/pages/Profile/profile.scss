@@ -2,16 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-background-color: aqua;
+// background-color: aqua;
     .profile{
         height: 100%;
-        background-color: red;
+        // background-color: red;
         margin: 0 auto;
         max-width: 55rem;
         min-height: 100vh;
         padding: 0 2rem;
         .details{
-            background-color: aqua;
+            background-color: white;
             margin: 3rem 0;
             display: flex;
             justify-content: space-between;
