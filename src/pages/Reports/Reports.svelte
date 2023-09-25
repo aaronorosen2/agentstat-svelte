@@ -39,6 +39,7 @@
         loading = false
     }
 
+    function handleKeyDown() {}
 
     fetchReport()
     onMount(() => showOnboarding('reports'))
@@ -49,9 +50,12 @@
 
 <section class="reports">
     <div class="tabs">
-        <div class="tab" class:selected={selected == 'traffic'} on:click={selectReport}>Traffic</div> 
-        <div class="tab" class:selected={selected == 'leads'} on:click={selectReport}>Leads</div> 
-        <div class="tab" class:selected={selected == 'referrals'} on:click={selectReport}>Referrals</div> 
+        <div class="tab" class:selected={selected == 'traffic'} on:click={selectReport} on:keydown={handleKeyDown}
+        >Traffic</div> 
+        <div class="tab" class:selected={selected == 'leads'} on:click={selectReport} on:keydown={handleKeyDown}
+        >Leads</div> 
+        <div class="tab" class:selected={selected == 'referrals'} on:click={selectReport} on:keydown={handleKeyDown}
+        >Referrals</div> 
     </div>
 </section>
 

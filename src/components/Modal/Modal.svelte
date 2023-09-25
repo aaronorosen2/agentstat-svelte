@@ -5,15 +5,17 @@
         $modal.close && $modal.close()
         $modal = {show: false}
     }
+    
+    function handleKeyDown() {}
 </script>
 
 {#if $modal.show}
-    <div class="modal" on:click={close}>
-        <div class="container" on:click|stopPropagation>
+    <div class="modal" on:click={close} on:keydown={handleKeyDown}>
+        <div class="container" on:click|stopPropagation on:keydown={handleKeyDown}>
             {#if $modal.title}
                 <div class="head">
                     {$modal.title}
-                    <i class="fas fa-times" on:click={close}></i>
+                    <i class="fas fa-times" on:click={close} on:keydown={handleKeyDown}></i>
                 </div>
             {/if}
             <div class="body">

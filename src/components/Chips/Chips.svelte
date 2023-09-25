@@ -5,6 +5,8 @@
         items.splice(i,1)
         items = items
     }
+
+    function handleKeyDown() {}
 </script>
 
 {#if items}
@@ -12,7 +14,7 @@
         {#each items as item,i}
             <div class="chip">
                 {item}
-                <div class="close" on:click={()=>removeItem(i)}>
+                <div class="close" on:click={()=>removeItem(i)} on:keydown={handleKeyDown}>
                     <i class="fas fa-times"/>
                 </div>
             </div>

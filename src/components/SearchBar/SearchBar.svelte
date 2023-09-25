@@ -143,6 +143,7 @@
         'Any price'
     ];
 
+    function handleKeyDown() {}
     function handleItemClick(event) {
         const clickedValue = event.target.textContent;
         if (clickedValue >= 0 && clickedValue <= 10) {
@@ -224,7 +225,7 @@ function handlePriceButtonClick() {
     <button on:click={handlePriceButtonClick}>Price</button>
   </div>
 
-  <div role="button" class="search-bar--btn" on:click={search}>
+  <div role="button" class="search-bar--btn" on:click={search} on:keydown={handleKeyDown} tabindex="0">
     <span class="mobile">Search</span>
     <i class="fas fa-search" />
   </div>
@@ -239,7 +240,7 @@ function handlePriceButtonClick() {
     <div class="DataContainer">
       <ul>
         {#each Array.from({ length: 10 }, (_, i) => i + 1) as number}
-          <li on:click={handleItemClick} class="right-align">{number}</li>
+          <li on:click={handleItemClick} on:keydown={handleKeyDown} class="right-align">{number}</li>
         {/each}
       </ul> 
       {#if showDoneButton}

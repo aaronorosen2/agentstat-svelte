@@ -9,7 +9,7 @@
         msg = urlParams.get('success')||urlParams.get('error')
     })
 
-
+    function handleKeyDown() {}
 </script>
 
 
@@ -22,8 +22,8 @@
     {/if}
     <div class="login--box">
         <div class="tabs">
-            <div class="tab" class:selected={tab=='login'} on:click={() => tab='login'}>Login</div>
-            <div class="tab" class:selected={tab=='signup'} on:click={() => tab= 'signup'}>Sign Up</div>
+            <div class="tab" class:selected={tab=='login'} on:click={() => tab='login'} on:keydown={handleKeyDown}>Login</div>
+            <div class="tab" class:selected={tab=='signup'} on:click={() => tab= 'signup'} on:keydown={handleKeyDown}>Sign Up</div>
         </div>
         <div class="forms">
             <LoginForm state={tab} />

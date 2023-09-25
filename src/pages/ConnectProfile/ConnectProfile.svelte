@@ -51,6 +51,8 @@
         }
     }
 
+    function handleKeyDown() {}
+    
     checkCurrentDispute()
 </script>
 
@@ -62,7 +64,7 @@
         {:else}
             <div class="head">
                 <h1>Claim Your Profile</h1>
-                <div class="link" role="button" on:click={addProfile}>Can't find yourself in our system?</div>
+                <div class="link" role="button" on:click={addProfile} on:keydown={handleKeyDown} tabindex="0">Can't find yourself in our system?</div>
             </div>
             <div class="search">
                 <Loader show={loading} text="Loading..." />

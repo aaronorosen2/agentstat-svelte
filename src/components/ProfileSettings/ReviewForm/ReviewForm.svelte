@@ -37,7 +37,7 @@
 <div class="review-form">
     <div class="grid">
         <div>
-            <label>Source</label>
+            <label for="Source">Source</label>
             <select class="input" bind:value={new_review.source}>
                 <option value="zillow">Zillow</option>
                 <option value="yelp">Yelp</option>
@@ -45,26 +45,26 @@
             </select>
         </div>
         <div>
-            <label>Full Name</label>
+            <label for="Full Name">Full Name</label>
             <input class="input" placeholder="Enter Full Name" bind:value={new_review.full_name} />
         </div>
         <div>
-            <label>Date</label>
+            <label for="Date">Date</label>
             <input type="date" max={new Date().toISOString().split("T")[0]} class="input" bind:value={new_review.date} />
         </div>
         <div>
-            <label>Overall Rating</label>
+            <label for="Overall Rating">Overall Rating</label>
             <input class="input" placeholder="E.g. Highly likely to recommend" bind:value={new_review.overall_rating_desc} />
         </div>
     </div>
     
     <div class="mt">
-        <label>Work Done</label>
+        <label for="Work Done">Work Done</label>
         <input class="input" placeholder="E.g. Sold a Single Family home in 2017 in Pueblo, CO." bind:value={new_review.work_done} />
     </div>
 
     <div class="mt">
-        <label>Review Description</label>
+        <label for="Review Description">Review Description</label>
         <textarea rows="3" class="input" placeholder="Add review description ..." bind:value={new_review.review} />
     </div>
 

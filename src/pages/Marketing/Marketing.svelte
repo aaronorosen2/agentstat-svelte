@@ -31,7 +31,8 @@
         agent = await currentAgentDetails()
         agentPf = await agentProfile()
     }
-
+    
+    function handleKeyDown() {}
 
     getMPartner()
     getCustomLinks()
@@ -44,10 +45,10 @@
 
 <section>
     <div class="tabs">
-        <div class="tab" class:selected={selected == 'partner'} on:click={selectTab}>Partner</div> 
-        <div class="tab" class:selected={selected == 'landing pages'} on:click={selectTab}>Landing Pages</div> 
-        <div class="tab" class:selected={selected == 'facebook ads'} on:click={selectTab}>Facebook Ads</div> 
-        <div class="tab" class:selected={selected == 'ambassador program'} on:click={selectTab}>Ambassador Program</div> 
+        <div class="tab" class:selected={selected == 'partner'} on:click={selectTab} on:keydown={handleKeyDown}>Partner</div> 
+        <div class="tab" class:selected={selected == 'landing pages'} on:click={selectTab} on:keydown={handleKeyDown}>Landing Pages</div> 
+        <div class="tab" class:selected={selected == 'facebook ads'} on:click={selectTab} on:keydown={handleKeyDown}>Facebook Ads</div> 
+        <div class="tab" class:selected={selected == 'ambassador program'} on:click={selectTab} on:keydown={handleKeyDown}>Ambassador Program</div> 
     </div>
 </section>
 

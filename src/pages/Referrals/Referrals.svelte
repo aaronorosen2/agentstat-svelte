@@ -35,6 +35,8 @@
         }
     }
 
+    function handleKeyDown() {}
+
     getRefferals()
     onMount(() => {
         showOnboarding('referrals')
@@ -47,8 +49,8 @@
 
 <section>
     <div class="tabs">
-        <div class="tab" class:selected={selected == 'received'} on:click={selectTab}>Received</div> 
-        <div class="tab" class:selected={selected == 'sent'} on:click={selectTab}>Sent</div> 
+        <div class="tab" class:selected={selected == 'received'} on:click={selectTab} on:keydown={handleKeyDown}>Received</div> 
+        <div class="tab" class:selected={selected == 'sent'} on:click={selectTab} on:keydown={handleKeyDown}>Sent</div> 
     </div>
 </section>
 
@@ -57,7 +59,7 @@
         <PendingReferrals referrals={pReferrals} on:finish={getRefferals} />
     {/if}
     <div class="right">
-        <div role="button" class="link" on:click={addReferral}>+ Send New Referral</div>
+        <div role="button" class="link" on:click={addReferral} on:keydown={handleKeyDown} tabindex="0">+ Send New Referral</div>
     </div>
     {#if selected == 'received'}
         <ReferralTable referrals={rRefferal.results} received />

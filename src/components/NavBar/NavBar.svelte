@@ -11,6 +11,7 @@
     function toggleNav(){
         navOpen = !navOpen
     }
+    function handleKeyDown() {}
 </script>
 
 <nav class="nav-bar" class:flat>
@@ -18,7 +19,7 @@
         <a href="/" class="logo">
             <img alt="agentstat-logo" src="/images/logo-beta.png"> 
         </a>
-        <div class="nav-icon" on:click={toggleNav}>
+        <div class="nav-icon" on:click={toggleNav} on:keydown={handleKeyDown}>
             <i class="fas fa-bars"></i>
         </div>
     </div>

@@ -87,6 +87,8 @@
         return (n/24)+' Days'
     }
 
+    function handleKeyDown() {}
+
     setCurrentAgent()
 </script>
 
@@ -253,14 +255,14 @@
 
 
     <div class="signatures">
-        <div on:click={() => openToSign('sender')}>
+        <div on:click={() => openToSign('sender')} on:keydown={handleKeyDown}>
             <div>Click to sign</div>
             {#if signatureImg || ref.sender_sign_img}
                 <img src={(!receiver && signatureImg)||ref.sender_sign_img} alt="signature">
             {/if}
             <div class="info">Referring Firm (Signature)</div>
         </div>
-        <div on:click={() => openToSign('receiver')}>
+        <div on:click={() => openToSign('receiver')} on:keydown={handleKeyDown}>
             <div>Click to sign</div>
             {#if receiver && signatureImg}
                 <img src={signatureImg} alt="signature">
@@ -281,7 +283,7 @@
     <div class="sign"> 
         <div class="container">
             <div class="head">Draw Signature
-                <i class="fas fa-times" on:click={closeSign}></i>
+                <i class="fas fa-times" on:click={closeSign} on:keydown={handleKeyDown}></i>
             </div>
             <div class="body">
                 <canvas use:setCanvas></canvas>

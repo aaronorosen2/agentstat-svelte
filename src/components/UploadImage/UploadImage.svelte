@@ -48,6 +48,8 @@
     if (!label_node) return;
     label_node.click();
   }
+
+  function handleKeyDown() {}
 </script>
 
 <svelte:window
@@ -57,7 +59,7 @@
 <div class="upload-image--container" on:drop|preventDefault={onFile(getFilesFromDropEvent)}>
   <div
     class="upload-image upload-image--{uploadStatus}"
-    on:click={triggerUpload}>
+    on:click={triggerUpload} on:keydown={handleKeyDown}>
     <div class="upload-image--body">
         <label bind:this={label_node}>
           {upload_text}
