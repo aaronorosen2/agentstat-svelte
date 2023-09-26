@@ -167,12 +167,13 @@
         selected = null
     }
 
+    function handleKeyDown() {}
 </script>
 
 <div class="transactions">
     <div class="search">
         {#if editable}
-            <div class="link" on:click={addTransaction}>+ Add transaction</div>
+            <div class="link" on:click={addTransaction} on:keydown={handleKeyDown}>+ Add transaction</div>
         {:else}
             <h1>All Transactions</h1>
         {/if}
@@ -233,7 +234,7 @@
                         <tr>
                             <td class="no-p" colspan="11">
                                 <div class="details">
-                                    <i class="fas fa-times close" on:click={unselect}></i>
+                                    <i class="fas fa-times close" on:click={unselect} on:keydown={handleKeyDown}></i>
                                     {#if editable}
                                         <button class="btn" class:disabled={saving} on:click={() => saveNote(tr)}>Save</button>
                                         <textarea bind:value={tr.note} placeholder="Type your note" rows="5"></textarea>

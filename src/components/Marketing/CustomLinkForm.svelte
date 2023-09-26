@@ -99,7 +99,7 @@
             </div>
             <div class="step">
                 <div class="title">2. Select your filters</div>
-                <label class="label">Property Type</label>
+                <label class="label" for="Property Type">Property Type</label>
                 <select class="full" bind:value={data.property_type} class:err={error_property}>
                     <option value=''>Select Type</option>
                     <option>Single Family</option>

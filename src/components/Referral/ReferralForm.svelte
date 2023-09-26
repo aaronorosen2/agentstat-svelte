@@ -81,12 +81,14 @@
             6
         )}-${phoneNumber.slice(6, 9)}`;
     }
+    
+    function handleKeyDown() {}
 </script>
 
 <div class="ref-form">
     <div class="toggle">
-        <div role="button" class="t-btn" class:selected={ref.type == 'seller'} on:click={()=> ref.type = 'seller'}>Seller</div>
-        <div role="button" class="t-btn" class:selected={ref.type == 'buyer'} on:click={()=> ref.type = 'buyer'}>Buyer</div>
+        <div role="button" class="t-btn" class:selected={ref.type == 'seller'} on:click={()=> ref.type = 'seller'} on:keydown={handleKeyDown} tabindex='0'>Seller</div>
+        <div role="button" class="t-btn" class:selected={ref.type == 'buyer'} on:click={()=> ref.type = 'buyer'} on:keydown={handleKeyDown} tabindex='0'>Buyer</div>
     </div>
 
     <div class="label">Client Contact Information</div>

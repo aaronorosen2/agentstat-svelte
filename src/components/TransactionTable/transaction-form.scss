@@ -11,9 +11,9 @@
     input, select {
         width: 100%;
         margin: 0.5rem 0;
-        &.err{
-            border: 1px solid red;
-        }
+        // &.err{
+        //     border: 1px solid red;
+        // }
     }
     .grid-2, .grid-3 {
         display: grid;

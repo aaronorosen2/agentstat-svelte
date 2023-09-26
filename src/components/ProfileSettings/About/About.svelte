@@ -16,5 +16,4 @@
     </div>
 </div>
 
-<style src="./about.scss">   
-</style>
+<style src="./about.scss"></style>

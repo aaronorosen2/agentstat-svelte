@@ -10,19 +10,19 @@
 </script>
 
 <div class="social-media">
-    <label>Website</label>
+    <label for="Website">Website</label>
     <input class="input" placeholder="Company website URL" bind:value={agent.website} />
     
-    <label>Blog</label>
+    <label for="Blog">Blog</label>
     <input class="input" placeholder="Blog URL" bind:value={agent.blog} />
     
-    <label>Facebook</label>
+    <label for="Facebook">Facebook</label>
     <input class="input" placeholder="Facebook Profile URL" bind:value={agent.facebook} />
     
-    <label>Twitter</label>
+    <label for="Twitter">Twitter</label>
     <input class="input" placeholder="Twitter Profile URL" bind:value={agent.twitter} />
     
-    <label>Linkedin</label>
+    <label for="Linkedin">Linkedin</label>
     <input class="input" placeholder="Linkedin Profile URL" bind:value={agent.linkedin} />
 
     <div class="reverse">

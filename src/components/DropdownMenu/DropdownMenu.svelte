@@ -25,6 +25,9 @@
   onMount(() => {
     currentPage = location.pathname;
   });
+  
+  function handleKeyDown() {}
+
 </script>
 
 <svelte:window on:click={close} />
@@ -39,7 +42,7 @@
   </div>
 {:else}
   <div class="dropdown">
-    <div class="dropdown--head" on:click|stopPropagation={toggle}>
+    <div class="dropdown--head" on:click|stopPropagation={toggle} on:keydown={handleKeyDown}>
       <img
         src={$currentUser.picture || "/images/blank-profile-pic.webp"}
         alt="user"
@@ -57,7 +60,7 @@
         <div class="l-desc">Edit your profile info and account settings</div>
       </a>
 
-      <div class="link" on:click={logoutUser}>
+      <div class="link" on:click={logoutUser} on:keydown={handleKeyDown}>
         <div class="l-name">Logout</div>
       </div>
     </div>

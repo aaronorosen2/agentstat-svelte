@@ -7,7 +7,7 @@
     {#if reviews.length > 0}
         {#each reviews as review}
         {review.category}
-        <Stars rating={review.summary} small />
+        <!-- <Stars rating={review.summary} small /> -->
         {/each}
     {:else}
         <h1>Review Details Data Not coming</h1>

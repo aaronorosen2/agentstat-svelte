@@ -44,27 +44,29 @@
     current = i;
     dispatch('navigate', current);
   }
+  
+  function handleKeyDown() {}
 </script>
 
 {#if numItems}
     <div class="pagination">
     <div
         class="pagination--control {current > 1 ? 'pagination--pointer' : 'pagination--fade'}"
-        on:click={() => current > 1 && setCurrent(current - 1)}>
+        on:click={() => current > 1 && setCurrent(current - 1)} on:keydown={handleKeyDown}>
         <i class="fas fa-chevron-left" />
     </div>
     <div class="pagination--numbers">
         {#each arr_pages as i}
         <div
             class="pagination--number {i == current ? 'pagination--current' : ''}"
-            on:click={() => setCurrent(i)}>
+            on:click={() => setCurrent(i)} on:keydown={handleKeyDown}>
             {i}
         </div>
         {/each}
     </div>
     <div
         class="pagination--control {current < num_pages ? 'pagination--pointer' : 'pagination--fade'}"
-        on:click={() => current < num_pages && setCurrent(current + 1)}>
+        on:click={() => current < num_pages && setCurrent(current + 1)} on:keydown={handleKeyDown}>
         <i class="fas fa-chevron-right" />
     </div>
     </div>
