@@ -2,8 +2,10 @@
   let inputValue = "";
   let outputValue = "";
   let error = null;
+  let isLoading = false; // Add loading state
 
   async function generateDescription() {
+    isLoading = true; // Show loading animation
     try {
       const response = await fetch(
         "https://app.realtorstat.com/ai/generate-description/",
@@ -29,6 +31,8 @@
       console.error("Error fetching data:", err);
       error = err;
       outputValue = "";
+    } finally {
+      isLoading = false; // Hide loading animation
     }
   }
 </script>
@@ -50,7 +54,7 @@
 </svelte:head>
 <div class="main">
   <div class="left">
-    <a href="index.html">
+    <a href="/Ai">
       <div class="back"><i class="ri-arrow-left-s-line" /></div>
     </a>
     <h1>Facebook Post</h1>
@@ -70,8 +74,13 @@
     </div>
   </div>
   <div class="right">
-    {#if outputValue}
-      <p id="OutputOfData">{outputValue}</p>
+    {#if isLoading}
+    <div class="animationContainer">
+      <img src="https://cdn-images-1.medium.com/max/1200/1*bXQlVcrRxVkXnzgcVBGkOA.gif" alt="" class="LoadAnim">
+      <div class="loading-animation">Loading... Please wait</div>
+     </div>
+    {:else if outputValue}
+      <textarea id="OutputOfData">{outputValue}</textarea>
     {:else if error}
       <p id="OutputOfData">Error: {error.message}</p>
     {/if}

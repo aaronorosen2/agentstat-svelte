@@ -11,7 +11,6 @@
   let currentPage;
 
   let is_authenticated = isAuthenticated();
- 
   let open = false;
 
   function close() {

@@ -1,34 +1,39 @@
 <script>
-    let inputValue = '';
- let outputValue = '';
- let error = null;
+  let inputValue = '';
+  let outputValue = '';
+  let error = null;
+  let isLoading = false; // Add loading state
 
- async function generateDescription() {
-   try {
-     const response = await fetch("https://app.realtorstat.com/ai/generate-description/", {
-       method: "POST",
-       headers: {
-         Accept: "application/json",
-         "Content-Type": "application/json",
-       },
-       body: JSON.stringify({ input_content: inputValue }),
-     });
+  async function generateDescription() {
+    isLoading = true; // Show loading animation
+    try {
+      const response = await fetch("https://app.realtorstat.com/ai/generate-description/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input_content: inputValue }),
+      });
 
-     if (response.ok) {
-       const responseData = await response.json();
-       outputValue = JSON.stringify(responseData);
-       error = null;
-     } else {
-       error = new Error(`HTTP Error: ${response.status}`);
-       outputValue = '';
-     }
-   } catch (err) {
-     console.error("Error fetching data:", err);
-     error = err;
-     outputValue = '';
-   }
- }
- </script>
+      if (response.ok) {
+        const responseData = await response.json();
+        outputValue = JSON.stringify(responseData);
+        error = null;
+      } else {
+        error = new Error(`HTTP Error: ${response.status}`);
+        outputValue = '';
+      }
+    } catch (err) {
+      console.error("Error fetching data:", err);
+      error = err;
+      outputValue = '';
+    } finally {
+      isLoading = false; // Hide loading animation
+    }
+  }
+</script>
+
 <svelte:head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -41,7 +46,7 @@
 </svelte:head>
 <div class="main">
     <div class="left">
-        <a href="index.html">
+        <a href="/Ai">
             <div class="back"> <i class="ri-arrow-left-s-line"></i></div>
         </a>
         <h1>SMS Helper</h1>
@@ -54,11 +59,16 @@
         </div>
     </div>
     <div class="right">
-        {#if outputValue}
-        <p id="OutputOfData">{outputValue}</p>
-        {:else if error}
+      {#if isLoading}
+      <div class="animationContainer">
+        <img src="https://cdn-images-1.medium.com/max/1200/1*bXQlVcrRxVkXnzgcVBGkOA.gif" alt="" class="LoadAnim">
+        <div class="loading-animation">Loading... Please wait</div>
+       </div>
+      {:else if outputValue}
+        <textarea id="OutputOfData">{outputValue}</textarea>
+      {:else if error}
         <p id="OutputOfData">Error: {error.message}</p>
-        {/if}
-        </div>
-</div>
+      {/if}
+    </div>
+  </div>
 <style src="../Scss/social-style.scss"></style>

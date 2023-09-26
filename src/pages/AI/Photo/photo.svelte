@@ -49,7 +49,7 @@ let inputValue = '';
 
 <div class="main">
   <div class="left">
-    <a href="index.html">
+    <a href="/Ai">
       <div class="back"><i class="ri-arrow-left-s-line" /></div>
     </a>
     <h1>Modern Home Redesign</h1>
