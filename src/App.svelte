@@ -4,8 +4,6 @@
   import {
     Home,
     AboutUs,
-    /*PasswordReset,
-    PasswordResetConfirm,*/
     Agents,
     Profile,
     Login,
@@ -19,6 +17,7 @@
     Referrals,
     Team,
     AI,
+    Subscription,
     Website,
     Email,
     Script,
@@ -57,6 +56,10 @@
   });
   page("/Ai", ctx => {
     active = AI;
+    props = {};
+  });
+  page("/Subscription", ctx => {
+    active = Subscription;
     props = {};
   });
   page("/Website", ctx => {

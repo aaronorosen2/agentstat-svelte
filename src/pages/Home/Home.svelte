@@ -53,6 +53,11 @@
   <a href="/Ai">Here is our latest feature! TRY OUR AI.</a>
   {/if}
   {/if}
+  {#if is_authenticated}
+  {#if currentPage != "/Ai"}
+  <a href="/Ai">Here is our latest feature! TRY OUR AI.</a>
+  {/if}
+  {/if}
 
 </section>
 <StatesLinks />

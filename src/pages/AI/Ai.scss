@@ -237,6 +237,25 @@ footer {
     align-items: center;
     font-weight: 200;
 }
+.Catogery{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+    button{
+       border: none;
+        height: 30px;
+        width: 80px;
+        border-radius: 7px;
+        margin-left: 10px;
+        font-size: 12px;
+    }
+}
+.selected-category {
+    background-color: black;
+    color: white; /* Change text color as needed */
+  }
 
 
 

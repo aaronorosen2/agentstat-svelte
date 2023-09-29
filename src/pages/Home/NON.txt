@@ -1,4 +1,4 @@
-<ul>
+ul>
                         <li><a href="#" class="btn active" onclick="filterSelection('all')"><i class="ri-asterisk"></i> All</a></li>
                         <li><a href="#" class="btn" onclick="filterSelection('photo')"><i class="ri-image-fill"></i> Photo</a></li>
                         <li><a href="#" class="btn" onclick="filterSelection('website')"><i class="ri-grid-fill"></i> Website</a></li>

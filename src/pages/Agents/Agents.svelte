@@ -1,7 +1,7 @@
 <script>
     import {AgentList, NavBar, Pagination, FooterDashboard} from '../../components'
  
-    let searchAgents 
+    let searchAgents  
     let updateParams
     let filter
     let numItems = 0;

@@ -33,12 +33,16 @@
 <svelte:window on:click={close} />
 {#if !is_authenticated}
   <div class="unauth-menu">
+    {#if currentPage != "/Subscription"}
+    <a class="nav-link" href="/Subscription">Subscription</a>
+  {/if}
     {#if currentPage != "/about-us"}
       <a class="nav-link" href="/about-us">About Us</a>
     {/if}
     {#if currentPage != "/login"}
       <a class="nav-link" href="/login">Login</a>
     {/if}
+    
   </div>
 {:else}
   <div class="dropdown">

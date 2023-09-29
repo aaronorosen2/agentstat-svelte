@@ -14,6 +14,118 @@ a{
     text-decoration: none;
     color: black;
 }
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid rgb(12, 94, 167);
+    border-top: 20px solid rgb(12, 94, 167);
+  }
+  #outBtn{
+    margin-left: 250px;
+    font-size: 25px;
+    margin-top: -10px;
+  }
+  .popup h1{
+    font-size: 25px;
+    margin: 0px 0px 10px 80px;
+  }
+  .popup #popupTittle{
+    font-size: 20px;
+    margin: 0px 0px 20px 50px;
+  }
+  .popup button{
+    background-color: transparent;
+    border: none;
+}
+.popup .Gifts{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 50px;
+    margin-left: 25px;
+}
+.popup .Gifts p{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.popup #ContinueBtn{
+    border-radius: 7px;
+    background-color: rgb(12, 94, 167);
+    color: white;
+    height: 40px;
+    width: 90%;
+    margin-left: 14px;
+}
+
+  .popup.active {
+    display: block;
+  }
+
+  .popup2 {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid rgb(12, 94, 167);
+    border-top: 20px solid rgb(12, 94, 167);
+  }
+  #outBtn{
+    margin-left: 250px;
+    font-size: 25px;
+    margin-top: -10px;
+  }
+  .popup2 h1{
+    font-size: 25px;
+    margin: 0px 0px 10px 80px;
+  }
+  .popup2 #popupTittle{
+    font-size: 20px;
+    margin: 0px 0px 20px 50px;
+  }
+  .popup2 button{
+    background-color: transparent;
+    border: none;
+}
+.popup2 .Gifts{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 50px;
+    margin-left: 25px;
+}
+.popup2 .Gifts p{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.popup2 #ContinueBtn{
+    border-radius: 7px;
+    background-color: rgb(12, 94, 167);
+    color: white;
+    height: 40px;
+    width: 90%;
+    margin-left: 14px;
+}
+
+  .popup2 .active {
+    display: block;
+  }
+
 button:hover{
     cursor: pointer;
 }

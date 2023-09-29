@@ -1,4 +1,6 @@
 <script>
+    import { isAuthenticated } from "../../../lib/api/auth";
+  let is_authenticated = isAuthenticated();
   let inputValue = "";
   let outputValue = "";
   let error = null;
@@ -35,6 +37,10 @@
       isLoading = false; // Hide loading animation
     }
   }
+  let showPopup = false;
+function togglePopup() {
+  showPopup = !showPopup;
+}
 </script>
 
 <svelte:head>
@@ -68,9 +74,12 @@
         data-id="1"
         bind:value={inputValue}
       />
-      <button on:click={generateDescription}
-        ><i class="ri-bard-fill" /> Start Task</button
-      >
+      {#if is_authenticated}
+      <button on:click={togglePopup}><i class="ri-bard-fill"></i> Start Task</button>
+      {/if}
+      {#if !is_authenticated}
+      <button on:click={generateDescription}><i class="ri-bard-fill"></i> Start Task</button>
+      {/if}
     </div>
   </div>
   <div class="right">
@@ -84,6 +93,21 @@
     {:else if error}
       <p id="OutputOfData">Error: {error.message}</p>
     {/if}
+
+{#if showPopup}
+<div class="popup active">
+  <button on:click={togglePopup} id="outBtn">x</button>
+  <h1>$39/mo</h1>
+  <p id="popupTittle">Get instant access</p>
+  <button id="ContinueBtn">Continue</button>
+  <div class="Gifts">
+    <p>Unlimited usage</p>
+    <p>Over 50 tools</p>
+    <p>Image & text AI</p>
+    <p>Cancel anytime</p>
+  </div>
+</div>
+{/if}
   </div>
 </div>
 

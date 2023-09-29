@@ -1,20 +1,26 @@
 <script>
-  let inputValue = '';
-  let outputValue = '';
+  import { isAuthenticated } from "../../../lib/api/auth";
+  let is_authenticated = isAuthenticated();
+
+  let inputValue = "";
+  let outputValue = "";
   let error = null;
   let isLoading = false; // Add loading state
 
   async function generateDescription() {
     isLoading = true; // Show loading animation
     try {
-      const response = await fetch("https://app.realtorstat.com/ai/generate-description/", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ input_content: inputValue }),
-      });
+      const response = await fetch(
+        "https://app.realtorstat.com/ai/generate-description/",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ input_content: inputValue }),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
@@ -22,15 +28,19 @@
         error = null;
       } else {
         error = new Error(`HTTP Error: ${response.status}`);
-        outputValue = '';
+        outputValue = "";
       }
     } catch (err) {
       console.error("Error fetching data:", err);
       error = err;
-      outputValue = '';
+      outputValue = "";
     } finally {
       isLoading = false; // Hide loading animation
     }
+  }
+  let showPopup = false;
+  function togglePopup() {
+    showPopup = !showPopup;
   }
 </script>
 
@@ -62,16 +72,35 @@
         Enter features such as number of bedrooms, bathrooms, square footage,
         local amenities, and anything else that makes the property stand out.
       </h5>
-      <textarea type="textarea" maxlength="1000" data-required="no" data-id="1" bind:value={inputValue}></textarea>
-           <button on:click={generateDescription}><i class="ri-bard-fill"></i> Start Task</button>
+      <textarea
+        type="textarea"
+        maxlength="1000"
+        data-required="no"
+        data-id="1"
+        bind:value={inputValue}
+      />
+      {#if is_authenticated}
+        <button on:click={togglePopup}
+          ><i class="ri-bard-fill" /> Start Task</button
+        >
+      {/if}
+      {#if !is_authenticated}
+        <button on:click={generateDescription}
+          ><i class="ri-bard-fill" /> Start Task</button
+        >
+      {/if}
     </div>
   </div>
   <div class="right">
     {#if isLoading}
-    <div class="animationContainer">
-      <img src="https://cdn-images-1.medium.com/max/1200/1*bXQlVcrRxVkXnzgcVBGkOA.gif" alt="" class="LoadAnim">
-      <div class="loading-animation">Loading... Please wait</div>
-     </div>
+      <div class="animationContainer">
+        <img
+          src="https://cdn-images-1.medium.com/max/1200/1*bXQlVcrRxVkXnzgcVBGkOA.gif"
+          alt=""
+          class="LoadAnim"
+        />
+        <div class="loading-animation">Loading... Please wait</div>
+      </div>
     {:else}
       <div class="copy">
         <i class="ri-file-copy-line" />
@@ -82,6 +111,20 @@
         {:else if error}
           <p id="OutputOfData">Error: {error.message}</p>
         {/if}
+      </div>
+    {/if}
+    {#if showPopup}
+      <div class="popup active">
+        <button on:click={togglePopup} id="outBtn">x</button>
+        <h1>$39/mo</h1>
+        <p id="popupTittle">Get instant access</p>
+        <button id="ContinueBtn">Continue</button>
+        <div class="Gifts">
+          <p>Unlimited usage</p>
+          <p>Over 50 tools</p>
+          <p>Image & text AI</p>
+          <p>Cancel anytime</p>
+        </div>
       </div>
     {/if}
   </div>
