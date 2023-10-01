@@ -9,7 +9,7 @@
   let showParagraph7 = false;
 
 function handleClick1() {
-  showParagraph1 = !showParagraph1;
+     showParagraph1 = !showParagraph1;
 }
   function handleClick2() {
     showParagraph2 = !showParagraph2;

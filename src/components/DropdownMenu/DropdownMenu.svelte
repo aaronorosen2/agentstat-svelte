@@ -47,6 +47,12 @@
 {:else}
   <div class="dropdown">
     <div class="dropdown--head" on:click|stopPropagation={toggle} on:keydown={handleKeyDown}>
+      {#if currentPage != "/Subscription"}
+      <a class="nav-link" href="/Subscription">Subscription</a>
+    {/if}
+      {#if currentPage != "/about-us"}
+        <a class="nav-link" href="/about-us">About Us</a>
+      {/if}
       <img
         src={$currentUser.picture || "/images/blank-profile-pic.webp"}
         alt="user"

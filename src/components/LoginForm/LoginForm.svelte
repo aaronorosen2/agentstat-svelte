@@ -41,7 +41,7 @@
         } else {
             // redirect to home/profile page maybe
             if (urlParamRedirect == "") {
-                window.location = "/profile-settings";
+                window.location = "/Subscription";
             } else {
                 window.location = urlParamRedirect;
             }

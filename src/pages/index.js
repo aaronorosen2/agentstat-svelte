@@ -23,5 +23,7 @@ export  {default as Photo} from './AI/Photo/photo.svelte'
 export  {default as SMS} from './AI/SMS/sms.svelte'
 export  {default as Social} from './AI/Social/Social.svelte'
 export  {default as Subscription} from './Subscription/Subscription.svelte'
+export  {default as Checkout} from '../routes/checkout.svelte'
+export  {default as checkout_payment} from '../routes/checkout/payment.svelte'
 /*export  {default as PasswordReset} from './PasswordReset/Index.svelte'
 export  {default as PasswordResetConfirm} from './PasswordReset/PasswordResetConfirm.svelte'*/

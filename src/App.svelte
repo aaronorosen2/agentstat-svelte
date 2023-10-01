@@ -26,7 +26,9 @@
     SocialLinkdin,
     Photo,
     SMS,
-    Social
+    Social,
+    Checkout,
+    checkout_payment
   } from "./pages";
   import { Notification, Modal } from "./components";
   import { notif } from "./stores/notif";
@@ -45,8 +47,18 @@
   
   setReferral()
 
+  page("/checkout", ctx => {
+    active = Checkout;
+    props = {};
+  });
+
   page("/", ctx => {
     active = Home;
+    props = {};
+  });
+
+  page("/checkout/payment", ctx => {
+    active = checkout_payment;
     props = {};
   });
 

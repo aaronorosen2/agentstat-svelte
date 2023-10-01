@@ -1,13 +1,67 @@
+
 <script>
+  let PUBLIC_STRIPE_KEY = "pk_live_6nE4LbMc80WJmAD3PoVohLvM00KdBRzc1N";
+  let STRIPE_SECRET_KEY ="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";
   import { isAuthenticated } from "../../../lib/api/auth";
   let is_authenticated = isAuthenticated();
-
   let inputValue = "";
+  
+  export let data
+
+  // destructure server data
+  $: ({ clientSecret, returnUrl } = data)
+
+  let stripe;
+
+
   let error = null;
   let paragraph = null; // Use a single paragraph instead of an array
   let editedText = "";
   let isLoading = false; // Add loading state
+  import { loadStripe } from "@stripe/stripe-js";
+  import { onMount } from "svelte";
+  import { redirect } from '@sveltejs/kit'
+  import { Elements, PaymentElement } from 'svelte-stripe'
 
+  import Stripe from 'stripe'
+
+  onMount(async () => {
+    // load the Stripe client
+    stripe = await loadStripe(PUBLIC_STRIPE_KEY)
+  })
+
+let elements;
+
+  onMount(async () => {
+    const customer = await stripe.customers.create({
+      email: "aaronorosen@gmail.com",
+      name: "Aaron",
+    })
+  //  alert(customer.id)
+
+    // set a cookie
+    localStorage.setItem("customerId",customer.id )
+   // cookies.set('customerId', customer.id)
+
+
+   const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+    items: [
+      {
+        price: "prod_OiZNxlpPgWuJnz"
+      }
+    ],
+    payment_behavior: 'default_incomplete',
+    payment_settings: { save_default_payment_method: 'on_subscription' },
+    expand: ['latest_invoice.payment_intent']
+   })
+    console.log(subscription)
+
+    // redirect to collect payment
+    ///throw redirect(303, '/checkout/payment')
+
+
+  });
   async function generateDescription() {
     isLoading = true; // Show loading animation
     try {
@@ -22,7 +76,6 @@
           body: JSON.stringify({ input_content: inputValue }),
         }
       );
-
       if (response.ok) {
         const responseData = await response.json();
         paragraph = { text: JSON.stringify(responseData) }; // Assign the response to the single paragraph
@@ -41,6 +94,25 @@
   function togglePopup() {
     showPopup = !showPopup;
   }
+  async function submit() {
+    // ask Stripe to confirm the payment
+    const { error } = await stripe.confirmPayment({
+      // pass instance that was used to create the Payment Element
+      elements,
+      
+
+      // specify where to send the user when payment succeeeds
+      confirmParams: {
+        return_url: returnUrl
+      }
+    })
+
+    if (error) {
+      // handle error
+      console.error(error)
+    }
+  }
+
 </script>
 
 <svelte:head>
@@ -59,8 +131,24 @@
   />
 </svelte:head>
 
-<div class="main">
-  <div class="left">
+<div class="main">  
+<h1>Payment</h1>
+
+{#if stripe}
+<form on:submit|preventDefault={submit}>
+  <!-- container for Stripe components -->
+  <Elements {stripe} {clientSecret} bind:elements>
+
+    <!-- display payment related fields -->
+    <PaymentElement />
+  </Elements>
+
+  <button>Pay</button>
+</form>
+{:else}
+Loading Stripe...
+{/if}
+  <div class="left">koo
     <a href="/Ai">
       <div class="back"><i class="ri-arrow-left-s-line" /></div>
     </a>
@@ -111,7 +199,7 @@
         <button on:click={togglePopup} id="outBtn">x</button>
         <h1>$39/mo</h1>
         <p id="popupTittle">Get instant access</p>
-        <button id="ContinueBtn">Continue</button>
+        <a href="/checkout/payment"><button id="ContinueBtn">Continue</button></a>
         <div class="Gifts">
           <p>Unlimited usage</p>
           <p>Over 50 tools</p>
