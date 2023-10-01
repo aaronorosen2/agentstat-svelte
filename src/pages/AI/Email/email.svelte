@@ -59,8 +59,6 @@ let elements;
 
     // redirect to collect payment
     ///throw redirect(303, '/checkout/payment')
-
-
   });
   async function generateDescription() {
     isLoading = true; // Show loading animation
