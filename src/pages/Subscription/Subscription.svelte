@@ -41,39 +41,48 @@ function handleClick1() {
 
 <NavBar flat />
 <div class="headContainer">
-  <h1>The AI assistant for real estate agents.</h1>
-  <p>
-    AI generated emails, sales scripts, listing descriptions, and more,
-    personalized for you and your clients.
+  <h1>AgentStat Premium </h1>
+  <p>Enable marketing channels notitying facebook, 
+    linkedin or email network of deals you closed and new listings
   </p>
-  <button>Start free trail</button>
+  
+  <p>
+    Our top scoring AI generated emails, sales scripts, listing descriptions
+  </p>
+  <button>Continue</button>
 </div>
 <div class="mainContainer2">
-  <div class="navContainer">
-    <button>Emails & Scripts</button>
-    <button>Room Remodels</button>
-    <button>Personalized Outputs</button>
-    <button>Live Data</button>
-  </div>
+
   <div class="Container1">
     <div class="miniContainer1">
-      <h1>Expert-level emails and scripts</h1>
+      <h1>Leads you generate on your profile are 100% yours to keep</h1>
       <p>
-        Saleswise crafts expert level email and sales scripts trained on
-        communications from top producing agents, so you always have the right
-        words to say.
+        Use AgentStat to win listings presentation. Your AgentStat profile page shows your achievements and can highlight yourself.
       </p>
+      <p>AgentStat shows you stats and other analytics such as how manytimes your profile has been viewed or clicked on.
+      </p>
+      <p>AgentStat Referral system allows you to send referrals with esignature system.
+      </p>
+      <p></p>
       <button>Start free trial</button>
     </div>
+  </div>
     <div class="miniContainer2">
-      <video
-        src="https://lainteractive.s3.us-east-2.amazonaws.com/saleswise/images/demo_post_viewing.mp4"
-        loop
-        muted
-        autoplay
-      />
+    <br>
+    <div class="Container1">
+      <div class="miniContainer1">
+        <h1>Expert-level emails and scripts</h1>
+        <p>
+          AgentStat crafts expert level email and sales scripts trained on
+          communications from top producing agents, so you always have the right
+          words to say.
+        </p>
+        <button>Start free trial</button>
+      </div>
     </div>
   </div>
+
+
 </div>
 <div class="Container2">
   <h3>One price. All the tools.</h3>
