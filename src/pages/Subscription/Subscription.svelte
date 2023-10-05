@@ -50,26 +50,31 @@ function handleClick1() {
     Our top scoring AI generated emails, sales scripts, listing descriptions
   </p>
   <button>Continue</button>
-</div>
-<div class="mainContainer2">
+</div> 
 
-  <div class="Container1">
-    <div class="miniContainer1">
-      <h1>Leads you generate on your profile are 100% yours to keep</h1>
-      <p>
-        Use AgentStat to win listings presentation. Your AgentStat profile page shows your achievements and can highlight yourself.
-      </p>
-      <p>AgentStat shows you stats and other analytics such as how manytimes your profile has been viewed or clicked on.
-      </p>
-      <p>AgentStat Referral system allows you to send referrals with esignature system.
-      </p>
-      <p></p>
-      <button>Start free trial</button>
+
+
+  <div class="mainContainerContainer1">
+    <div class="container1">
+      <div class="miniContainer1">
+        <h1>Leads you generate on your profile are 100% yours to keep</h1>
+        <p>
+          Use AgentStat to win listings presentation. Your AgentStat profile page shows your achievements and can highlight yourself.
+        </p>
+        <p>AgentStat shows you stats and other analytics such as how manytimes your profile has been viewed or clicked on.
+        </p>
+        <p>AgentStat Referral system allows you to send referrals with esignature system.
+        </p>
+        <p></p>
+        <button>Start free trial</button>
+      </div>
+      <div class="miniContainer2">
+      </div>
     </div>
   </div>
-    <div class="miniContainer2">
-    <br>
-    <div class="Container1">
+
+  <div class="mainContainerContainer1">
+    <div class="container1">
       <div class="miniContainer1">
         <h1>Expert-level emails and scripts</h1>
         <p>
@@ -79,19 +84,25 @@ function handleClick1() {
         </p>
         <button>Start free trial</button>
       </div>
+      <div class="miniContainer2">
+      </div>
     </div>
   </div>
 
 
+
+<div class="mainContainerContainer2">
+  <div class="Container2">
+    <h1>One price. All the tools.</h1>
+    <p>
+      Whether you're drafting an email for a client, reimagining a room, or
+      creating a captivating listing description -- there's a tool for you. 
+      Saleswise subscribers get unlimited access to all of our AI tools.
+    </p>
+  </div>
 </div>
-<div class="Container2">
-  <h3>One price. All the tools.</h3>
-  <p>
-    Whether you're drafting an email for a client, reimagining a room, or
-    creating a captivating listing description -- there's a tool for you.
-    Saleswise subscribers get unlimited access to all of our AI tools.
-  </p>
-</div>
+
+
 <div class="container3">
   <div class="item1">
     <svg
@@ -201,6 +212,7 @@ function handleClick1() {
     <a href="/Ai">View tools ⟶</a>
   </div>
 </div>
+
 <div class="container4">
   <h2>Frequently Asked Questions</h2>
   <div class="container4Item1" id="C4I1" style={divStyle1} on:click={handleClick1}>
@@ -249,21 +261,28 @@ function handleClick1() {
     {/if}
   </div>
 </div>
-<div class="container5">
-  <div class="container5Item1">
-    <h1>Simple pricing</h1>
+<div class="mainContainerNum5Main">
+
+<div class="containerNum5">
+  <div class="mini1ContainerNum5">
+    <div class="smalldiv1">
+      <h1>Simple pricing</h1>
     <p>
       Get started with Saleswise's full suite of AI tools for real estate agents
       today. Cancel anytime.
     </p>
+    </div>
   </div>
-  <div class="container5Item2">
+  <div class="mini2ContainerNum5">
+   <div class="smalldiv2">
     <h1>$39/mo</h1>
     <p>Free 7-day trial</p>
     <p>Access to all tools</p>
     <p>Unlimited usage</p>
     <button>Start free trial</button>
+   </div>
   </div>
+</div>
 </div>
 <FooterDashboard />
 
