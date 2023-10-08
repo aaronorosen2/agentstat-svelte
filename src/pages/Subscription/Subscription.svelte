@@ -90,28 +90,15 @@ function handleClick1() {
   </div>
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 612ca48 (small text updates)
-
 <div class="mainContainerContainer2">
   <div class="Container2">
     <h1>One price. All the tools.</h1>
     <p>
       Whether you're drafting an email for a client, reimagining a room, or
       creating a captivating listing description -- there's a tool for you. 
-<<<<<<< HEAD
-      Saleswise subscribers get unlimited access to all of our AI tools.
-    </p>
-  </div>
-=======
       AgentStat subscribers get unlimited access to all of our AI tools.
     </p>
   </div>
->>>>>>> 2dbd431 (small text updates)
->>>>>>> 612ca48 (small text updates)
 </div>
 
 
