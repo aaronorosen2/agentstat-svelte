@@ -1,5 +1,8 @@
 <script>
   import { isAuthenticated } from "../../../lib/api/auth";
+  import { link } from "../../../lib/env";
+  import { loadStripe } from "@stripe/stripe-js";
+
   let is_authenticated = isAuthenticated();
 
   let inputValue = "";
@@ -7,8 +10,14 @@
   let error = null;
   let isLoading = false; // Add loading state
 
+  const isSubscribed = () =>
+    fetch(link("retrieve-subscription"))
+      .then((res) => res.json())
+      .then((data) => data.length);
+
   async function generateDescription() {
     isLoading = true; // Show loading animation
+
     try {
       const response = await fetch(
         "https://app.realtorstat.com/ai/generate-description/",
@@ -39,9 +48,26 @@
     }
   }
   let showPopup = false;
-  function togglePopup() {
-    showPopup = !showPopup;
-  }
+
+  const startTask = async () => {
+    const subscribed = await isSubscribed();
+    if (!subscribed) showPopup = true;
+  };
+
+  const togglePopup = () => (showPopup = !showPopup);
+
+  const redirectToCheckout = async () => {
+    const res = await fetch(link("create-checkout-session", "checkout"));
+    const json = await res.json();
+
+    if (!json.sessionId) {
+      window.alert("session_id is missing");
+      return;
+    }
+
+    const stripe = await loadStripe("pk_test_");
+    stripe.redirectToCheckout({ sessionId: json?.sessionId });
+  };
 </script>
 
 <svelte:head>
@@ -80,14 +106,16 @@
         bind:value={inputValue}
       />
       {#if is_authenticated}
-        <button on:click={togglePopup}
-          ><i class="ri-bard-fill" /> Start Task</button
-        >
+        <button on:click={startTask}>
+          <i class="ri-bard-fill" />
+          Start Task
+        </button>
       {/if}
       {#if !is_authenticated}
-        <button on:click={generateDescription}
-          ><i class="ri-bard-fill" /> Start Task</button
-        >
+        <button on:click={generateDescription}>
+          <i class="ri-bard-fill" />
+          Start Task
+        </button>
       {/if}
     </div>
   </div>
@@ -118,7 +146,7 @@
         <button on:click={togglePopup} id="outBtn">x</button>
         <h1>$39/mo</h1>
         <p id="popupTittle">Get instant access</p>
-        <button id="ContinueBtn">Continue</button>
+        <button id="ContinueBtn" on:click={redirectToCheckout}>Continue</button>
         <div class="Gifts">
           <p>Unlimited usage</p>
           <p>Over 50 tools</p>
